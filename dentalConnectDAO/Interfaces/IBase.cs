@@ -14,6 +14,5 @@ namespace dentalConnectDAO.Interfaces
         DataTable Select();
         int Update(T t);
         int Delete(T t);
-
     }
 }

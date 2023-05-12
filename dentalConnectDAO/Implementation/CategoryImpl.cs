@@ -21,8 +21,8 @@ namespace dentalConnectDAO.Implementation
 
             command.Parameters.AddWithValue("@name", t.Name);
             command.Parameters.AddWithValue("@description", t.Description);
-            command.Parameters.AddWithValue("@idUser", t.IdUser); // TO DO: Mas adelante usaremos sesiones y modificaremos esta
-                                                                  //        parte
+            command.Parameters.AddWithValue("@idUser", t.IdUser); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte
+
             try
             {
                 return ExecuteBasicCommand(command);    
@@ -34,16 +34,59 @@ namespace dentalConnectDAO.Implementation
         }
         public DataTable Select()
         {
-            throw new NotImplementedException();
+            query = @"SELECT *
+                      FROM vwCategory
+                      ORDER BY 2";
+            SqlCommand command = CreateBasicCommand(query);
+            try
+            {
+                return GetTable(command);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public int Update(Category t)
         {
-            throw new NotImplementedException();
+            query = @"UPDATE Category SET name=@name, description=@description, lastUpdate=CURRENT_TIMESTAMP, idUser=@idUser
+                    WHERE id = @id";
+
+            SqlCommand command = CreateBasicCommand(query);
+
+            command.Parameters.AddWithValue("@name", t.Name);
+            command.Parameters.AddWithValue("@description", t.Description);
+            command.Parameters.AddWithValue("@idUser", t.IdUser); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte
+            command.Parameters.AddWithValue("@id", t.Id);
+            
+            try
+            {
+                return ExecuteBasicCommand(command);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public int Delete(Category t)
         {
-            throw new NotImplementedException();
+            query = @"UPDATE Category SET status=0, lastUpdate=CURRENT_TIMESTAMP, idUser=@idUser
+                        WHERE id = @id";
+
+            SqlCommand command = CreateBasicCommand(query);
+
+            command.Parameters.AddWithValue("@idUser", t.IdUser); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte                                                        
+            command.Parameters.AddWithValue("@id", t.Id);
+
+            try
+            {
+                return ExecuteBasicCommand(command);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
