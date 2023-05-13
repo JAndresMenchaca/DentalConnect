@@ -34,7 +34,12 @@ namespace dentalConnectWPF
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if((txtUser.Text == "iam") && txtPass.Password == "456")
+            {
+                winMenu winMenu = new winMenu();
+                winMenu.Show();
+                this.Close();
+            }
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)

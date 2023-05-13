@@ -16,3 +16,15 @@ D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\dentalCon
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\dentalConnectWPF.csproj.CopyComplete
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\dentalConnectWPF.exe
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\dentalConnectWPF.pdb
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winMenu.g.cs
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\dentalConnectWPF_MarkupCompile.lref
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winMenu.baml
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\MaterialDesignColors.dll
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\MaterialDesignColors.pdb
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\bin\Debug\Microsoft.Xaml.Behaviors.xml
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\App.baml
