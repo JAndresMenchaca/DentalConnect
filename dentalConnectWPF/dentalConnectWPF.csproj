@@ -100,5 +100,17 @@
       <Name>dentalConnectDAO</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="back-image.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
