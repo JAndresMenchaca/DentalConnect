@@ -73,6 +73,9 @@
     <Compile Include="winMenu.xaml.cs">
       <DependentUpon>winMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="winSupplier.xaml.cs">
+      <DependentUpon>winSupplier.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="winMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="winSupplier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +154,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="aplicacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="flecha-hacia-atras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="flecha-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="camion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

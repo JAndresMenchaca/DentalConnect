@@ -9,7 +9,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True">
+        AllowsTransparency="True" Icon="/logo1.png">
 
     <Border CornerRadius="12">
         <Border CornerRadius="10"                    
@@ -27,7 +27,7 @@
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                     <GradientStop Color="#B5E6D4" Offset="0"/>
-                    <GradientStop Color="#32403B" Offset="1"/>
+                    <GradientStop Color="#658076" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -47,8 +47,8 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="LOG IN"
-                               Foreground="DarkGray"
-                               FontSize="10"
+                               Foreground="White"
+                               FontSize="18"
                                FontFamily="Montserrat"
                                Grid.Column="0"
                                VerticalAlignment="Center"
@@ -68,7 +68,7 @@
                                 <Setter Property="Background" Value="#7C9C90"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
+                                        <Setter Property="Background" Value="Yellow"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -101,7 +101,7 @@
                                 <Setter Property="Background" Value="#658076"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#C62DAE"/>
+                                        <Setter Property="Background" Value="Red"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -212,7 +212,7 @@
                                 <Setter Property="Background" Value="#32403B"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#28AEED"/>
+                                        <Setter Property="Background" Value="#112c52"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>

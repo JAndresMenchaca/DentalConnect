@@ -23,6 +23,7 @@ namespace dentalConnectWPF
         public MainWindow()
         {
             InitializeComponent();
+            txtUser.Focus();
         }
 
         

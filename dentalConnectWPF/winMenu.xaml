@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MenuView" Height="650" Width="1300"
+        Title="MenuView" Height="650" Width="1130"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True">
+        AllowsTransparency="True" Icon="/logo1.png">
 
     <Border CornerRadius="12">
         <Border CornerRadius="10"                    
@@ -27,7 +27,7 @@
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                     <GradientStop Color="#B5E6D4" Offset="0"/>
-                    <GradientStop Color="#32403B" Offset="1"/>
+                    <GradientStop Color="#658076" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -48,11 +48,11 @@
 
                     <TextBlock Text="MENU"
                                Foreground="White"
-                               FontSize="10"
+                               FontSize="18"
                                FontFamily="Montserrat"
                                Grid.Column="0"
                                VerticalAlignment="Center"
-                               Margin="10,0,0,0"/>
+                               Margin="35,0,47,0" Height="21"/>
 
                     <Button x:Name="btnMinimize"                           
                             BorderThickness="0"
@@ -68,7 +68,7 @@
                                 <Setter Property="Background" Value="#7C9C90"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
+                                        <Setter Property="Background" Value="Yellow"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -101,7 +101,7 @@
                                 <Setter Property="Background" Value="#658076"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#C62DAE"/>
+                                        <Setter Property="Background" Value="Red"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -118,26 +118,102 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
+                    <Button x:Name="btnMenu"                          
+                        BorderThickness="0"
+                        Content="&lt;-"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand" Margin="5,0,1041,0" Click="btnMenu_Click">
+
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#658076"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="DarkGreen"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </Grid>
 
 
-                <Image Source="/logo1.png" Margin="69,20,1178,572" Grid.RowSpan="2"/>
+                <Image Source="/logo1.png" Margin="78,28,998,554" Grid.RowSpan="2"/>
                 <TextBlock Text="DENTAL CONNECT"
                                Foreground="White"
                                FontSize="36"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
-                               HorizontalAlignment="Left" Margin="115,28,0,570" Width="310" Grid.RowSpan="2"/>
+                               HorizontalAlignment="Left" Margin="125,12,0,556" Width="310" Grid.Row="1"/>
                 <Button Content="" HorizontalAlignment="Left" Margin="78,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226" Click="Button_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/opc1.jpg"/>
                     </Button.Background>
                 </Button>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="631,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="129" Width="246"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="908,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="129" Width="246"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="78,0,0,0" Grid.Row="1" VerticalAlignment="Center" Height="94" Width="246"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="78,402,0,0" Grid.Row="1" VerticalAlignment="Top" Height="128" Width="246"/>
-                <Button Content="" HorizontalAlignment="Left" Margin="330,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                <Button Content="" HorizontalAlignment="Left" Margin="322,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226" Click="Button_Click_1">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="570,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc3.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" Margin="820,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" HorizontalAlignment="Left" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="78,248,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="322,248,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="570,248,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="820,248,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="78,422,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="322,422,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="570,422,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/opc2.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="" HorizontalAlignment="Left" Margin="820,422,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
                         <ImageBrush ImageSource="/opc2.jpg"/>
                     </Button.Background>

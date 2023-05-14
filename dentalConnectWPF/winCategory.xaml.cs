@@ -16,6 +16,7 @@ using dentalConnectDAO.Model;
 using dentalConnectDAO.Implementation;
 using System.Data;
 using Microsoft.VisualBasic;
+using System.Xml.Linq;
 
 
 namespace dentalConnectWPF
@@ -75,6 +76,16 @@ namespace dentalConnectWPF
             txbDescrip.IsEnabled = false;
             txbName.IsEnabled    = false;
         }
+        private void sendMessages(int opt, string message)
+        {
+            if(opt == 1)
+                txtMessage.Foreground = Brushes.Red;    
+
+            else if(opt == 2)
+                txtMessage.Foreground = Brushes.Green;
+
+            txtMessage.Text = message;
+        }
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
@@ -88,8 +99,7 @@ namespace dentalConnectWPF
 
             if (dgDatos.SelectedItem == null && category == null)
             {
-                txtMessage.Foreground = Brushes.Red;
-                txtMessage.Text = "Debe seleccionar un registro";
+                sendMessages(1, "Debe seleccionar un registro");
                 diseable();
             }
             else
@@ -115,31 +125,27 @@ namespace dentalConnectWPF
                         int test = categoryImpl.Delete(category);
                         if(test>0)
                         {
-                            txtMessage.Foreground = Brushes.Green;
-                            txtMessage.Text = "Registro eliminado con exito";
+                            sendMessages(2, "Registro eliminado con exito");
                             select();
                             diseable();
                         }
                     }
                     catch(Exception ex)
                     {
-                        txtMessage.Foreground = Brushes.Red;
-                        txtMessage.Text = "Hubo un error, comuniquese con el Administrador";
+                        sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
                         diseable();
                     }
                 }
                 else
                 {
-                    txtMessage.Foreground = Brushes.Green;
-                    txtMessage.Text = "No se elimino el registro";
+                    sendMessages(2, "Se cancelo la accion de ELIMINAR el registro");
                     select();
                     diseable();
                 }
             }
             else
             {
-                txtMessage.Foreground = Brushes.Red;
-                txtMessage.Text = "Debe seleccionar un registro";
+                sendMessages(1, "Debe seleccionar un registro");
                 diseable();
             }
 
@@ -149,79 +155,77 @@ namespace dentalConnectWPF
 
         }
 
+        private void insertData(string name, string descrip)
+        {
+            if (name == "")
+            {
+                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                return;
+            }
+
+            try
+            {
+                category = new Category(name, descrip);
+                categoryImpl = new CategoryImpl();
+                int test = categoryImpl.Insert(category);
+                if (test > 0)
+                {
+                    sendMessages(2, "Se inserto el registro con exito");
+                    select();
+                    diseable();
+                }
+            }
+            catch
+            {
+                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+            }
+            dgDatos.SelectedItem = null;
+            category = null;
+        }
+        private void updateData(string name , string descrip)
+        {
+            try
+            {
+                if (name == "")
+                {
+                    sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                    return;
+                }
+
+                category.Name = name;
+                category.Description = descrip;
+
+                categoryImpl = new CategoryImpl();
+                int test = categoryImpl.Update(category);
+
+                if (test > 0)
+                {
+                    sendMessages(2, "Se modifico el registro con exito");
+                    select();
+                    diseable();
+                }
+            }
+            catch
+            {
+                sendMessages(1, "Hubo un error al MODIFICAR el registro, contacte al administrador");
+            }
+            dgDatos.SelectedItem = null;
+            category = null;
+        }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string name = txbName.Text;
             string descrip = txbDescrip.Text;
 
-            
-
             diseable();
             switch (opt)
             {
                 case 1:
-                    if (name == "")
-                    {
-                        txtMessage.Foreground = Brushes.Red;
-                        txtMessage.Text = "Hubo un error al INSERTAR el registro, verifique los datos";
-                        return;
-                    }
-
-                    try
-                    {
-                        category = new Category(name, descrip);
-                        categoryImpl = new CategoryImpl();
-                        int test = categoryImpl.Insert(category);
-                        if(test > 0)
-                        {
-                            txtMessage.Foreground = Brushes.Green;
-                            txtMessage.Text = "Se inserto el registro con exito";
-                            select();
-                            diseable();
-                        }
-                    }
-                    catch(Exception ex)
-                    {
-                        txtMessage.Foreground = Brushes.Red;
-                        txtMessage.Text = "Hubo un error al INSERTAR el registro, verifique los datos";
-                    }
-                    dgDatos.SelectedItem = null;
-                    category = null;
-
+                    insertData(name, descrip);
                     break; 
                 case 2:
-                    try
-                    {
-                        if (name == "")
-                        {
-                            txtMessage.Foreground = Brushes.Red;
-                            txtMessage.Text = "Hubo un error al INSERTAR el registro, verifique los datos";
-                            return;
-                        }
-
-                        category.Name = name;
-                        category.Description = descrip;
-
-                        categoryImpl = new CategoryImpl();
-                        int test = categoryImpl.Update(category);
-
-                        if (test > 0)
-                        {
-                            txtMessage.Foreground = Brushes.Green;
-                            txtMessage.Text = "Se modifico el registro con exito";
-                            select();
-                            diseable();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        txtMessage.Foreground = Brushes.Red;
-                        txtMessage.Text = "Hubo un error al MODIFICAR el registro, contacte al administrador";
-                    }
-                    dgDatos.SelectedItem = null;
-                    category = null;
+                    updateData(name, descrip);
                     break;
-              
             }
             
         }
@@ -240,10 +244,9 @@ namespace dentalConnectWPF
                 dgDatos.Columns[0].Visibility = Visibility.Collapsed;
               
             }
-            catch(Exception ex)
+            catch
             {
-                txtMessage.Foreground = Brushes.Red;
-                txtMessage.Text = "No se pudo acceder a los datos, comuniquese con el Administrador";
+                sendMessages(1, "No se pudo acceder a los datos, comuniquese con el Administrador");
             }
         }
 
@@ -266,12 +269,18 @@ namespace dentalConnectWPF
                     txbName.Text = category.Name;
                     txbDescrip.Text = category.Description;
                 }
-                catch(Exception ex )
+                catch
                 {
-                    txtMessage.Foreground = Brushes.Red;
-                    txtMessage.Text = "No se pudo acceder a los datos, comuniquese con el Administrador";
+                    sendMessages(1, "No se pudo acceder a los datos, comuniquese con el Administrador");
                 }
             }
+        }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            winMenu menu = new winMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }

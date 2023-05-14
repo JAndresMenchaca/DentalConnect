@@ -40,5 +40,19 @@ namespace dentalConnectWPF
             winCategory.Show();
             this.Close();
         }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            winSupplier supplier = new winSupplier();
+            supplier.Show();
+            this.Close();
+        }
     }
 }
