@@ -10,7 +10,7 @@ WHERE id = @id
 
 CREATE VIEW vwCategory
 AS
-SELECT id, name AS Categoría, registerDate AS 'Se creó en: '
+SELECT id, name AS Categorï¿½a, registerDate AS 'Se creï¿½ en: '
 FROM Category
 WHERE status=1
 
@@ -18,3 +18,21 @@ WHERE status=1
 SELECT *
 FROM vwCategory
 ORDER BY 2
+
+
+ALTER VIEW dbo.vwCategory
+AS
+SELECT id, name AS Categorï¿½a, 
+    CASE WHEN description = '' THEN 'No hay descripciï¿½n' ELSE description END AS Descripciï¿½n, 
+    registerDate AS 'Registro creado el:'
+FROM Category
+WHERE status = 1
+
+
+
+SELECT *
+FROM vwCategory
+ORDER BY 2
+
+SELECT id, name, description, status, registerDate, ISNULL(lastUpdate, CURRENT_TIMESTAMP), idUser
+FROM Category

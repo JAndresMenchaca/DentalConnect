@@ -9,5 +9,6 @@ namespace dentalConnectDAO.Interfaces
 {
     internal interface ICategory : IBase<Category>
     {
+        Category Get(byte id);
     }
 }

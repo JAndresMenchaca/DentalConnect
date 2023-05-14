@@ -14,6 +14,9 @@ using System.Windows.Shapes;
 using dentalConnectDAO;
 using dentalConnectDAO.Model;
 using dentalConnectDAO.Implementation;
+using System.Data;
+using Microsoft.VisualBasic;
+
 
 namespace dentalConnectWPF
 {
@@ -30,7 +33,7 @@ namespace dentalConnectWPF
         public winCategory()
         {
             InitializeComponent();
-            disenable();
+            diseable();
 
         }
 
@@ -57,7 +60,7 @@ namespace dentalConnectWPF
             txbName.IsEnabled    = true;
             txbName.Focus();
         }
-        private void disenable()
+        private void diseable()
         {
             txbName.Text    = "";
             txbDescrip.Text = "";
@@ -81,14 +84,66 @@ namespace dentalConnectWPF
 
         private void btnModify_Click(object sender, RoutedEventArgs e)
         {
-            enable();
-            opt = 2;
+            
+
+            if (dgDatos.SelectedItem == null && category == null)
+            {
+                txtMessage.Foreground = Brushes.Red;
+                txtMessage.Text = "Debe seleccionar un registro";
+                diseable();
+            }
+            else
+            {
+                enable();
+                opt = 2;
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             enable();
             opt = 3;
+
+            if (dgDatos.SelectedItem != null && category != null)
+            {
+                string respuesta = Microsoft.VisualBasic.Interaction.InputBox("Escribe 'seguro' para confirmar:", "Confirmación", "");
+                if (respuesta == "seguro")
+                {
+                    try
+                    {
+                       categoryImpl = new CategoryImpl();
+                        int test = categoryImpl.Delete(category);
+                        if(test>0)
+                        {
+                            txtMessage.Foreground = Brushes.Green;
+                            txtMessage.Text = "Registro eliminado con exito";
+                            select();
+                            diseable();
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        txtMessage.Foreground = Brushes.Red;
+                        txtMessage.Text = "Hubo un error, comuniquese con el Administrador";
+                        diseable();
+                    }
+                }
+                else
+                {
+                    txtMessage.Foreground = Brushes.Green;
+                    txtMessage.Text = "No se elimino el registro";
+                    select();
+                    diseable();
+                }
+            }
+            else
+            {
+                txtMessage.Foreground = Brushes.Red;
+                txtMessage.Text = "Debe seleccionar un registro";
+                diseable();
+            }
+
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -96,18 +151,18 @@ namespace dentalConnectWPF
             string name = txbName.Text;
             string descrip = txbDescrip.Text;
 
-            if (name == "")
-            {
-                txtMessage.Foreground = Brushes.Red;
-                txtMessage.Text = "Hubo un error al INSERTAR el registro, verifique los datos";
-                return;
-            }
+            
 
-            disenable();
+            diseable();
             switch (opt)
             {
                 case 1:
-                    category = new Category(name, descrip);
+                    if (name == "")
+                    {
+                        txtMessage.Foreground = Brushes.Red;
+                        txtMessage.Text = "Hubo un error al INSERTAR el registro, verifique los datos";
+                        return;
+                    }
 
                     try
                     {
@@ -119,7 +174,7 @@ namespace dentalConnectWPF
                             txtMessage.Foreground = Brushes.Green;
                             txtMessage.Text = "Se inserto el registro con exito";
                             select();
-                            disenable();
+                            diseable();
                         }
                     }
                     catch(Exception ex)
@@ -131,8 +186,39 @@ namespace dentalConnectWPF
 
                     break; 
                 case 2:
+                    try
+                    {
+                        if (name == "")
+                        {
+                            txtMessage.Foreground = Brushes.Red;
+                            txtMessage.Text = "Hubo un error al INSERTAR el registro, verifique los datos";
+                            return;
+                        }
+
+                        category.Name = name;
+                        category.Description = descrip;
+
+                        categoryImpl = new CategoryImpl();
+                        int test = categoryImpl.Update(category);
+
+                        if (test > 0)
+                        {
+                            txtMessage.Foreground = Brushes.Green;
+                            txtMessage.Text = "Se modifico el registro con exito";
+                            select();
+                            diseable();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        txtMessage.Foreground = Brushes.Red;
+                        txtMessage.Text = "Hubo un error al MODIFICAR el registro, contacte al administrador";
+                    }
                     break;
                 case 3:
+
+
+
                     break;
             }
             
@@ -140,7 +226,7 @@ namespace dentalConnectWPF
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            disenable();
+            diseable();
         }
         private void select()
         {
@@ -149,6 +235,8 @@ namespace dentalConnectWPF
                 categoryImpl = new CategoryImpl();
                 dgDatos.ItemsSource = null;
                 dgDatos.ItemsSource = categoryImpl.Select().DefaultView;
+                dgDatos.Columns[0].Visibility = Visibility.Collapsed;
+              
             }
             catch(Exception ex)
             {
@@ -160,6 +248,28 @@ namespace dentalConnectWPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             select();
+        }
+
+        private void dgDatos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(dgDatos.Items.Count > 0 && dgDatos.SelectedItem!=null)
+            {
+                category = null;
+                DataRowView dataRow = (DataRowView)dgDatos.SelectedItem;
+                byte id = byte.Parse(dataRow.Row.ItemArray[0].ToString());
+                try
+                {
+                    categoryImpl = new CategoryImpl();
+                    category = categoryImpl.Get(id);
+                    txbName.Text = category.Name;
+                    txbDescrip.Text = category.Description;
+                }
+                catch(Exception ex )
+                {
+                    txtMessage.Foreground = Brushes.Red;
+                    txtMessage.Text = "No se pudo acceder a los datos, comuniquese con el Administrador";
+                }
+            }
         }
     }
 }

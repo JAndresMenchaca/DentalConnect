@@ -147,7 +147,7 @@
                 <Button x:Name="btnSave" Content="💾 Guardar" HorizontalAlignment="Left" Margin="648,134,0,0" Grid.Row="1" VerticalAlignment="Top" Width="106" FontSize="14" Click="btnSave_Click"/>
                 <Button x:Name="btnCancel" Content="❌ Cancelar" HorizontalAlignment="Left" Margin="759,134,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110" Click="btnCancel_Click"/>
                 <Button x:Name="btnDelete" Content="🗑️ Eliminar" HorizontalAlignment="Left" Margin="648,179,0,0" Grid.Row="1" VerticalAlignment="Top" Width="221" FontSize="18" Click="btnDelete_Click"/>
-                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="51,278,127,10" Background="Transparent"/>
+                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="51,278,127,10" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
                 <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="51,233,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="818" Height="45" FontSize="22"/>
 
             </Grid>

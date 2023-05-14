@@ -35,8 +35,8 @@ namespace dentalConnectDAO.Implementation
         public DataTable Select()
         {
             query = @"SELECT *
-                      FROM vwCategory
-                      ORDER BY 2";
+                        FROM vwCategory
+                        ORDER BY 2";
             SqlCommand command = CreateBasicCommand(query);
             try
             {
@@ -87,6 +87,40 @@ namespace dentalConnectDAO.Implementation
             {
                 throw ex;
             }
+        }
+
+        public Category Get(byte id)
+        {
+            Category category=null;
+            query = @"SELECT id, name, description, status, registerDate, ISNULL(lastUpdate, CURRENT_TIMESTAMP), idUser
+                        FROM Category
+                        WHERE id = @id";
+            SqlCommand command = CreateBasicCommand(query);
+            command.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                DataTable table = GetTable(command);
+                if(table.Rows.Count > 0)
+                {
+                    byte ID = byte.Parse(table.Rows[0][0].ToString());
+                    string nombre = table.Rows[0][1].ToString();
+                    string descrip = table.Rows[0][2].ToString();
+                    byte status = byte.Parse(table.Rows[0][3].ToString());
+                    DateTime registerDate = DateTime.Parse(table.Rows[0][4].ToString());
+                    DateTime lastUpdate = DateTime.Parse(table.Rows[0][5].ToString());
+                    byte idUser = byte.Parse(table.Rows[0][6].ToString());
+
+                    category = new Category(ID, nombre, descrip, status, registerDate, lastUpdate, idUser);
+                    
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
+            return category;
         }
     }
 }
