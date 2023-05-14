@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace dentalConnectWPF
 {
     /// <summary>
-    /// Interaction logic for winMenu.xaml
+    /// Interaction logic for winCategory.xaml
     /// </summary>
-    public partial class winMenu : Window
+    public partial class winCategory : Window
     {
-        public winMenu()
+        public winCategory()
         {
             InitializeComponent();
         }
@@ -32,13 +32,6 @@ namespace dentalConnectWPF
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            winCategory winCategory = new winCategory();
-            winCategory.Show();
-            this.Close();
         }
     }
 }
