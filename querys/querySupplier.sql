@@ -6,13 +6,15 @@ VALUES(@name, @phone, @email, @webSite,
 
 ALTER VIEW vwSupplier
 AS
-SELECT id, name AS Proveedor, phone AS Teléfono, email AS Email, 
-    CASE WHEN webSite = '' OR webSite IS NULL THEN 'No tiene sitio Web' ELSE webSite END AS 'Sitio Web',
-    mainStreet AS 'Calle Principal', 
-    CASE WHEN adjacentStreet = '' OR adjacentStreet IS NULL THEN 'Sin calle adyacente' ELSE adjacentStreet END AS 'Calle Adyacente', 
-    idCity AS 'Ciudad', registerDate AS 'Registro creado el:'
-FROM Supplier
-WHERE status=1
+SELECT s.id, s.name AS Proveedor, s.phone AS Teléfono, s.email AS Email, 
+    CASE WHEN s.webSite = '' OR s.webSite IS NULL THEN 'No tiene sitio Web' ELSE s.webSite END AS 'Sitio Web',
+    s.mainStreet AS 'Calle Principal', 
+    CASE WHEN s.adjacentStreet = '' OR s.adjacentStreet IS NULL THEN 'Sin calle adyacente' ELSE s.adjacentStreet END AS 'Calle Adyacente', 
+    c.name AS 'Ciudad', s.registerDate AS 'Registro creado el:'
+FROM Supplier s
+JOIN City c ON s.idCity = c.id
+WHERE s.status = 1
+
 
 
 SELECT * 

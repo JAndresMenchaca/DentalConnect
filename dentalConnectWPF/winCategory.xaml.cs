@@ -112,7 +112,6 @@ namespace dentalConnectWPF
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             enable();
-            opt = 3;
 
             if (dgDatos.SelectedItem != null && category != null)
             {

@@ -216,12 +216,12 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     HorizontalAlignment="Left" Margin="420,73,0,611" Width="122" Grid.Row="1"/>
-                <TextBox x:Name="txbName_Copy" HorizontalAlignment="Left" Margin="193,107,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="38" FontSize="24" Foreground="White"/>
-                <TextBox x:Name="txbName_Copy1" HorizontalAlignment="Left" Margin="193,151,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="38" FontSize="24" Foreground="White"/>
-                <TextBox x:Name="txbName_Copy2" HorizontalAlignment="Left" Margin="193,202,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="38" FontSize="24" Foreground="White"/>
-                <TextBox x:Name="txbName_Copy3" HorizontalAlignment="Left" Margin="641,104,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="38" FontSize="24" Foreground="White"/>
-                <TextBox x:Name="txbName_Copy4" HorizontalAlignment="Left" Margin="641,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Height="38" FontSize="24" Foreground="White"/>
-                <ComboBox HorizontalAlignment="Left" Margin="641,58,0,0" Grid.Row="1" VerticalAlignment="Top" Width="208" FontSize="24"/>
+                <TextBox x:Name="txbPhone" HorizontalAlignment="Left" Margin="193,107,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="38" FontSize="24" Foreground="White"/>
+                <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Margin="193,151,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="38" FontSize="24" Foreground="White"/>
+                <TextBox x:Name="txbWeb" HorizontalAlignment="Left" Margin="193,202,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="38" FontSize="24" Foreground="White"/>
+                <TextBox x:Name="txbMain" HorizontalAlignment="Left" Margin="641,104,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="38" FontSize="24" Foreground="White"/>
+                <TextBox x:Name="txbAd" HorizontalAlignment="Left" Margin="641,160,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Height="38" FontSize="24" Foreground="White"/>
+                <ComboBox x:Name="cbCity" HorizontalAlignment="Left" Margin="641,58,0,0" Grid.Row="1" VerticalAlignment="Top" Width="208" FontSize="24"/>
 
             </Grid>
 
