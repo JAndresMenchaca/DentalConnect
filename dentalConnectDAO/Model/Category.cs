@@ -28,8 +28,7 @@ namespace dentalConnectDAO.Model
 
 
         // Insert
-        public Category(string name, string description, int idUser)
-            : base(idUser) 
+        public Category(string name, string description)
         {
             Name = name;
             Description = description;

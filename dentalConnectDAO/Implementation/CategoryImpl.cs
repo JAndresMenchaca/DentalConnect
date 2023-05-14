@@ -21,7 +21,7 @@ namespace dentalConnectDAO.Implementation
 
             command.Parameters.AddWithValue("@name", t.Name);
             command.Parameters.AddWithValue("@description", t.Description);
-            command.Parameters.AddWithValue("@idUser", t.IdUser); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte
+            command.Parameters.AddWithValue("@idUser", 1); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte, t.IdUser
 
             try
             {
@@ -57,7 +57,7 @@ namespace dentalConnectDAO.Implementation
 
             command.Parameters.AddWithValue("@name", t.Name);
             command.Parameters.AddWithValue("@description", t.Description);
-            command.Parameters.AddWithValue("@idUser", t.IdUser); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte
+            command.Parameters.AddWithValue("@idUser", 1); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte
             command.Parameters.AddWithValue("@id", t.Id);
             
             try
@@ -72,11 +72,11 @@ namespace dentalConnectDAO.Implementation
         public int Delete(Category t)
         {
             query = @"UPDATE Category SET status=0, lastUpdate=CURRENT_TIMESTAMP, idUser=@idUser
-                        WHERE id = @id";
+                       WHERE id = @id";
 
             SqlCommand command = CreateBasicCommand(query);
 
-            command.Parameters.AddWithValue("@idUser", t.IdUser); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte                                                        
+            command.Parameters.AddWithValue("@idUser", 1); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte                                                        
             command.Parameters.AddWithValue("@id", t.Id);
 
             try
