@@ -143,6 +143,9 @@ namespace dentalConnectWPF
                 diseable();
             }
 
+            dgDatos.SelectedItem = null;
+            category = category = null;
+
 
         }
 
@@ -182,7 +185,8 @@ namespace dentalConnectWPF
                         txtMessage.Foreground = Brushes.Red;
                         txtMessage.Text = "Hubo un error al INSERTAR el registro, verifique los datos";
                     }
-
+                    dgDatos.SelectedItem = null;
+                    category = null;
 
                     break; 
                 case 2:
@@ -214,12 +218,10 @@ namespace dentalConnectWPF
                         txtMessage.Foreground = Brushes.Red;
                         txtMessage.Text = "Hubo un error al MODIFICAR el registro, contacte al administrador";
                     }
+                    dgDatos.SelectedItem = null;
+                    category = null;
                     break;
-                case 3:
-
-
-
-                    break;
+              
             }
             
         }
