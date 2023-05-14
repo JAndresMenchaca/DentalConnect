@@ -121,13 +121,13 @@
                 </Grid>
 
 
-                <Image Source="/logo1.png" Margin="5,21,1250,579" Grid.RowSpan="2"/>
+                <Image Source="/logo1.png" Margin="69,20,1178,572" Grid.RowSpan="2"/>
                 <TextBlock Text="DENTAL CONNECT"
                                Foreground="White"
                                FontSize="36"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
-                               HorizontalAlignment="Left" Margin="46,26,0,572" Width="310" Grid.RowSpan="2"/>
+                               HorizontalAlignment="Left" Margin="115,28,0,570" Width="310" Grid.RowSpan="2"/>
                 <Button Content="" HorizontalAlignment="Left" Margin="78,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226" Click="Button_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/opc1.jpg"/>

@@ -43,10 +43,13 @@
   <ItemGroup>
     <Compile Include="Implementation\BaseImpl.cs" />
     <Compile Include="Implementation\CategoryImpl.cs" />
+    <Compile Include="Implementation\SupplierImpl.cs" />
     <Compile Include="Interfaces\IBase.cs" />
     <Compile Include="Interfaces\ICategory.cs" />
+    <Compile Include="Interfaces\ISupplier.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
