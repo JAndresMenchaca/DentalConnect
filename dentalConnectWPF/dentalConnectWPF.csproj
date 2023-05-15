@@ -170,6 +170,39 @@
   <ItemGroup>
     <Resource Include="camion.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="opc14.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

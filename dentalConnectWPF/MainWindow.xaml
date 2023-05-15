@@ -46,13 +46,13 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="LOG IN"
+                    <TextBlock Text="INICIO DE SESIÓN"
                                Foreground="White"
                                FontSize="18"
                                FontFamily="Montserrat"
                                Grid.Column="0"
                                VerticalAlignment="Center"
-                               Margin="10,0,0,0"/>
+                               Margin="10,0,0,0" FontWeight="Bold"/>
 
                     <Button x:Name="btnMinimize"                           
                             BorderThickness="0"
@@ -145,7 +145,7 @@
                                Margin="0,5,0,0"/>
 
 
-                    <TextBlock Text="Username"
+                    <TextBlock Text="Usuario"
                                Foreground="white"
                                FontSize="12"
                                FontWeight="Medium"
@@ -172,7 +172,7 @@
                         </TextBox.Background>
                     </TextBox>
 
-                    <TextBlock Text="Password"
+                    <TextBlock Text="Contraseña"
                                Foreground="white"
                                FontSize="12"
                                FontWeight="Medium"
@@ -200,7 +200,7 @@
 
                     <Button x:Name="btnLogin"                          
                             BorderThickness="0"
-                            Content="LOG IN"
+                            Content="INGRESAR"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"
@@ -251,6 +251,7 @@
                     </StackPanel>
 
                 </StackPanel>
+                <TextBlock x:Name="txbError" HorizontalAlignment="Center" Margin="0,356,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="25" FontSize="16" TextAlignment="Center"/>
 
             </Grid>
 

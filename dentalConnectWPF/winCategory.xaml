@@ -52,7 +52,7 @@
                                FontFamily="Montserrat"
                                Grid.Column="0"
                                VerticalAlignment="Center"
-                               Margin="30,0,17,0"/>
+                               Margin="30,0,17,0" FontWeight="Bold"/>
 
                     <Button x:Name="btnMinimize"                           
                             BorderThickness="0"

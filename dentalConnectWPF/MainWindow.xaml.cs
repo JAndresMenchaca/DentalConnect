@@ -41,6 +41,14 @@ namespace dentalConnectWPF
                 winMenu.Show();
                 this.Close();
             }
+            else
+            {
+                txtPass.Password = "";
+                txtUser.Text = "";
+                txtUser.Focus();
+                txbError.Foreground = Brushes.Red;
+                txbError.Text = "Los datos no son correctos";
+            }
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)

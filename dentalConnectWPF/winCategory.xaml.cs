@@ -76,6 +76,11 @@ namespace dentalConnectWPF
             txbDescrip.IsEnabled = false;
             txbName.IsEnabled    = false;
         }
+        private void clean()
+        {
+            txbName.Text = "";
+            txbDescrip.Text = "";
+        }
         private void sendMessages(int opt, string message)
         {
             if(opt == 1)
@@ -89,7 +94,10 @@ namespace dentalConnectWPF
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
+            txtMessage.Text = "";
             enable();
+            dgDatos.IsEnabled= false;
+            clean();
             opt = 1;
         }
 
@@ -156,6 +164,7 @@ namespace dentalConnectWPF
 
         private void insertData(string name, string descrip)
         {
+            
             if (name == "")
             {
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
@@ -183,6 +192,7 @@ namespace dentalConnectWPF
         }
         private void updateData(string name , string descrip)
         {
+            txtMessage.Text = "";
             try
             {
                 if (name == "")
@@ -215,7 +225,7 @@ namespace dentalConnectWPF
         {
             string name = txbName.Text;
             string descrip = txbDescrip.Text;
-
+            dgDatos.IsEnabled = true;
             diseable();
             switch (opt)
             {
@@ -232,6 +242,10 @@ namespace dentalConnectWPF
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             diseable();
+            dgDatos.IsEnabled = true;
+
+            getData();
+
         }
         private void select()
         {
@@ -256,7 +270,19 @@ namespace dentalConnectWPF
 
         private void dgDatos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(dgDatos.Items.Count > 0 && dgDatos.SelectedItem!=null)
+            getData();
+        }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            winMenu menu = new winMenu();
+            menu.Show();
+            this.Close();
+        }
+
+        private void getData()
+        {
+            if (dgDatos.Items.Count > 0 && dgDatos.SelectedItem != null)
             {
                 category = null;
                 DataRowView dataRow = (DataRowView)dgDatos.SelectedItem;
@@ -273,13 +299,6 @@ namespace dentalConnectWPF
                     sendMessages(1, "No se pudo acceder a los datos, comuniquese con el Administrador");
                 }
             }
-        }
-
-        private void btnMenu_Click(object sender, RoutedEventArgs e)
-        {
-            winMenu menu = new winMenu();
-            menu.Show();
-            this.Close();
         }
     }
 }

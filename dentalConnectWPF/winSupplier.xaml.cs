@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -91,6 +92,16 @@ namespace dentalConnectWPF
 
             
         }
+        private void clean()
+        {
+            txbName.Text = "";
+            txbPhone.Text = "";
+            txbEmail.Text = "";
+            txbWeb.Text = "";
+            txbMain.Text = "";
+            txbAd.Text = "";
+            cbCity.Text = "";
+        }
         private void btnClose_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -111,11 +122,17 @@ namespace dentalConnectWPF
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
             enable();
+            dgDatos.IsEnabled = false;
+            txtMessage.Text = "";
+            clean();
+            dgDatos.SelectedItem = null;
+            supplier = null;
             opt = 1;
         }
 
         private void btnModify_Click(object sender, RoutedEventArgs e)
         {
+            txtMessage.Text = "";
             if (dgDatos.SelectedItem == null &&  supplier == null)
             {
                 sendMessages(1, "Debe seleccionar un registro");
@@ -131,7 +148,7 @@ namespace dentalConnectWPF
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string name = txbName.Text;
-
+            dgDatos.IsEnabled = true;
             string phone = txbPhone.Text;
             string email = txbEmail.Text;
             string web = txbWeb.Text;
@@ -143,7 +160,7 @@ namespace dentalConnectWPF
             string main = txbMain.Text;
             string adja = txbAd.Text;
 
-            diseable();
+           
             switch (opt)
             {
                 case 1:
@@ -153,15 +170,22 @@ namespace dentalConnectWPF
                     updateData(name, phone, email, web, main, adja, city);
                     break;
             }
+            diseable();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            txtMessage.Text = "";
+            dgDatos.IsEnabled = true;
             diseable();
+
+            getData();
+
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            txtMessage.Text = "";
             enable();
 
             if (dgDatos.SelectedItem != null && supplier != null)
@@ -210,28 +234,7 @@ namespace dentalConnectWPF
 
         private void dgDatos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgDatos.Items.Count > 0 && dgDatos.SelectedItem != null)
-            {
-                supplier = null;
-                DataRowView dataRow = (DataRowView)dgDatos.SelectedItem;
-                byte id = byte.Parse(dataRow.Row.ItemArray[0].ToString());
-                try
-                {
-                    supplierImpl = new SupplierImpl();
-                    supplier = supplierImpl.Get(id);
-                    txbName.Text = supplier.Name;
-                    txbPhone.Text = supplier.Phone;
-                    txbEmail.Text = supplier.Email;
-                    txbWeb.Text = supplier.Website;
-                    txbMain.Text = supplier.MainStreet;
-                    txbAd.Text = supplier.AdjacentStreet;
-                    cbCity.Text = showCity(supplier.IdCity);
-                }
-                catch
-                {
-                    sendMessages(1, "No se pudo acceder a los datos, comuniquese con el Administrador");
-                }
-            }
+            getData();
         }
 
         private void insertData(string name, string phone, string email, string website, string main, string adjacent, int idCity)
@@ -242,60 +245,77 @@ namespace dentalConnectWPF
                 return;
             }
 
-            try
+            if (Regex.IsMatch(phone, @"^[0-9+]+$") && email.Contains("@"))
             {
-                supplier = new Supplier(name, phone, email, website, main, adjacent, idCity);
-                supplierImpl = new SupplierImpl();
-                int test = supplierImpl.Insert(supplier); 
-
-                if (test > 0)
+                try
                 {
-                    sendMessages(2, "Se inserto el registro con exito");
-                    select();
-                    diseable();
+                    supplier = new Supplier(name, phone, email, website, main, adjacent, idCity);
+                    supplierImpl = new SupplierImpl();
+                    int test = supplierImpl.Insert(supplier);
+
+                    if (test > 0)
+                    {
+                        sendMessages(2, "Se inserto el registro con exito");
+                        select();
+                        diseable();
+                    }
+                }
+                catch 
+                {
+                    sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
             }
+
+          
             dgDatos.SelectedItem = null;
             supplier = null;
         }
         private void updateData(string name, string phone, string email, string website, string main, string adjacent, int idCity)
         {
-            try
+            if (Regex.IsMatch(phone, @"^[0-9+]+$") && email.Contains("@"))
             {
-                if (name == "" || phone == "" || email == "" || main == "")
+                try
                 {
-                    sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
-                    return;
+                    if (name == "" || phone == "" || email == "" || main == "")
+                    {
+                        sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                        return;
+                    }
+
+                    supplier.Name = name;
+                    supplier.Phone = phone;
+                    supplier.Email = email;
+                    supplier.Website = website;
+                    supplier.Email = email;
+                    supplier.MainStreet = main;
+                    supplier.AdjacentStreet = adjacent;
+                    supplier.IdCity = idCity;
+
+                    supplierImpl = new SupplierImpl();
+                    int test = supplierImpl.Update(supplier);
+
+                    if (test > 0)
+                    {
+                        sendMessages(2, "Se modifico el registro con exito");
+                        select();
+                        diseable();
+                    }
                 }
-
-                supplier.Name = name;
-                supplier.Phone = phone;
-                supplier.Email = email;
-                supplier.Website = website;
-                supplier.Email = email;
-                supplier.MainStreet= main;
-                supplier.AdjacentStreet= adjacent;
-                supplier.IdCity= idCity;
-
-                supplierImpl = new SupplierImpl();
-                int test = supplierImpl.Update(supplier);
-
-                if (test > 0)
+                catch
                 {
-                    sendMessages(2, "Se modifico el registro con exito");
-                    select();
-                    diseable();
+                    sendMessages(1, "Hubo un error al MODIFICAR el registro, contacte al administrador");
                 }
             }
-            catch
+            else
             {
-                sendMessages(1, "Hubo un error al MODIFICAR el registro, contacte al administrador");
+                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
             }
+
             dgDatos.SelectedItem = null;
             supplier = null;
         }
@@ -321,6 +341,7 @@ namespace dentalConnectWPF
             {
                 case "":
                     sendMessages(1, "Verifique los datos");
+                    diseable();
                     return 0;
                     break;
                 case "Cochabamba":
@@ -336,7 +357,7 @@ namespace dentalConnectWPF
                     break;
             }
             return city;
-        }
+        } // string -> int -/- Cbba -> 1
         private string showCity(int idCity)
         {
             string city = "";
@@ -355,6 +376,31 @@ namespace dentalConnectWPF
                     break;
             }
             return city;
+        } // int -> string -/- 1 -> Cbba
+        private void getData()
+        {
+            if (dgDatos.Items.Count > 0 && dgDatos.SelectedItem != null)
+            {
+                supplier = null;
+                DataRowView dataRow = (DataRowView)dgDatos.SelectedItem;
+                byte id = byte.Parse(dataRow.Row.ItemArray[0].ToString());
+                try
+                {
+                    supplierImpl = new SupplierImpl();
+                    supplier = supplierImpl.Get(id);
+                    txbName.Text = supplier.Name;
+                    txbPhone.Text = supplier.Phone;
+                    txbEmail.Text = supplier.Email;
+                    txbWeb.Text = supplier.Website;
+                    txbMain.Text = supplier.MainStreet;
+                    txbAd.Text = supplier.AdjacentStreet;
+                    cbCity.Text = showCity(supplier.IdCity);
+                }
+                catch
+                {
+                    sendMessages(1, "No se pudo acceder a los datos, comuniquese con el Administrador");
+                }
+            }
         }
 
     }
