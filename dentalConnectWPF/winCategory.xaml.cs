@@ -27,9 +27,10 @@ namespace dentalConnectWPF
     public partial class winCategory : Window
     {
         byte opt;
-
         Category category;
         CategoryImpl categoryImpl;
+        private List<DataGridColumn> botonesColumns = new List<DataGridColumn>();
+        
 
         public winCategory()
         {
@@ -51,30 +52,27 @@ namespace dentalConnectWPF
         private void enable()
         {
             btnInsert.IsEnabled = false;
-            btnDelete.IsEnabled = false;
-            btnModify.IsEnabled = false;
+
 
             btnCancel.IsEnabled = true;
-            btnSave.IsEnabled   = true;
+            btnSave.IsEnabled = true;
 
             txbDescrip.IsEnabled = true;
-            txbName.IsEnabled    = true;
+            txbName.IsEnabled = true;
             txbName.Focus();
         }
         private void diseable()
         {
-            txbName.Text    = "";
+            txbName.Text = "";
             txbDescrip.Text = "";
 
             btnInsert.IsEnabled = true;
-            btnDelete.IsEnabled = true;
-            btnModify.IsEnabled = true;
 
             btnCancel.IsEnabled = false;
-            btnSave.IsEnabled   = false;
+            btnSave.IsEnabled = false;
 
             txbDescrip.IsEnabled = false;
-            txbName.IsEnabled    = false;
+            txbName.IsEnabled = false;
         }
         private void clean()
         {
@@ -83,10 +81,10 @@ namespace dentalConnectWPF
         }
         private void sendMessages(int opt, string message)
         {
-            if(opt == 1)
-                txtMessage.Foreground = Brushes.Red;    
+            if (opt == 1)
+                txtMessage.Foreground = Brushes.Red;
 
-            else if(opt == 2)
+            else if (opt == 2)
                 txtMessage.Foreground = Brushes.Green;
 
             txtMessage.Text = message;
@@ -96,75 +94,25 @@ namespace dentalConnectWPF
         {
             txtMessage.Text = "";
             enable();
-            dgDatos.IsEnabled= false;
+            dgDatos.SelectedItem = null;
+            category = null;
+
+            dgDatos.IsEnabled = false;
+
+            //string colorHexadecimal = "#000000"; // Valor hexadecimal del color
+            //BrushConverter brushConverter = new BrushConverter();
+            //Brush colorBrush = (Brush)brushConverter.ConvertFrom(colorHexadecimal);
+
+            //dgDatos.Background = colorBrush;
+
             clean();
             opt = 1;
         }
 
-        private void btnModify_Click(object sender, RoutedEventArgs e)
-        {
-            
-
-            if (dgDatos.SelectedItem == null && category == null)
-            {
-                sendMessages(1, "Debe seleccionar un registro");
-                diseable();
-            }
-            else
-            {
-                enable();
-                opt = 2;
-            }
-        }
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-            enable();
-
-            if (dgDatos.SelectedItem != null && category != null)
-            {
-                string respuesta = Microsoft.VisualBasic.Interaction.InputBox("Escribe 'seguro' para confirmar:", "Confirmación", "");
-                if (respuesta == "seguro")
-                {
-                    try
-                    {
-                       categoryImpl = new CategoryImpl();
-                        int test = categoryImpl.Delete(category);
-                        if(test>0)
-                        {
-                            sendMessages(2, "Registro eliminado con exito");
-                            select();
-                            diseable();
-                        }
-                    }
-                    catch(Exception ex)
-                    {
-                        sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
-                        diseable();
-                    }
-                }
-                else
-                {
-                    sendMessages(2, "Se cancelo la accion de ELIMINAR el registro");
-                    select();
-                    diseable();
-                }
-            }
-            else
-            {
-                sendMessages(1, "Debe seleccionar un registro");
-                diseable();
-            }
-
-            dgDatos.SelectedItem = null;
-            category = category = null;
-
-
-        }
 
         private void insertData(string name, string descrip)
         {
-            
+
             if (name == "")
             {
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
@@ -190,7 +138,7 @@ namespace dentalConnectWPF
             dgDatos.SelectedItem = null;
             category = null;
         }
-        private void updateData(string name , string descrip)
+        private void updateData(string name, string descrip)
         {
             txtMessage.Text = "";
             try
@@ -231,12 +179,12 @@ namespace dentalConnectWPF
             {
                 case 1:
                     insertData(name, descrip);
-                    break; 
+                    break;
                 case 2:
                     updateData(name, descrip);
                     break;
             }
-            
+
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -251,15 +199,21 @@ namespace dentalConnectWPF
         {
             try
             {
+
                 categoryImpl = new CategoryImpl();
                 dgDatos.ItemsSource = null;
                 dgDatos.ItemsSource = categoryImpl.Select().DefaultView;
+
+                comprobarBtns();
+
+                generarBtns();
+
                 dgDatos.Columns[0].Visibility = Visibility.Collapsed;
-              
+
             }
-            catch
+            catch (Exception ex) 
             {
-                sendMessages(1, "No se pudo acceder a los datos, comuniquese con el Administrador");
+                sendMessages(1, ex.Message);
             }
         }
 
@@ -298,6 +252,110 @@ namespace dentalConnectWPF
                 {
                     sendMessages(1, "No se pudo acceder a los datos, comuniquese con el Administrador");
                 }
+            }
+        }
+
+        private void Eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            enable();
+
+            if (dgDatos.SelectedItem != null && category != null)
+            {
+                string respuesta = Microsoft.VisualBasic.Interaction.InputBox("Escribe 'seguro' para confirmar:", "Confirmación", "");
+                if (respuesta == "seguro")
+                {
+                    try
+                    {
+                        categoryImpl = new CategoryImpl();
+                        int test = categoryImpl.Delete(category);
+                        if (test > 0)
+                        {
+                            sendMessages(2, "Registro eliminado con exito");
+                            select();
+                            diseable();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
+                        diseable();
+                    }
+                }
+                else
+                {
+                    sendMessages(2, "Se cancelo la accion de ELIMINAR el registro");
+                    select();
+                    diseable();
+                }
+            }
+        }
+
+        private void Editar_Click(object sender, RoutedEventArgs e)
+        {
+            txtMessage.Text = "";
+            if (dgDatos.SelectedItem == null && category == null)
+            {
+                sendMessages(1, "Debe seleccionar un registro");
+                diseable();
+            }
+            else
+            {
+                enable();
+                opt = 2;
+            }
+
+        }
+        public void generarBtns()
+        {
+            // Crear las columnas de botones
+            DataGridTemplateColumn editarColumna = new DataGridTemplateColumn();
+            DataGridTemplateColumn eliminarColumna = new DataGridTemplateColumn();
+
+            // Crear las plantillas de las celdas con los botones
+            editarColumna.Header = "Editar";
+            FrameworkElementFactory editarButtonFactory = new FrameworkElementFactory(typeof(Button));
+            editarButtonFactory.AddHandler(Button.ClickEvent, new RoutedEventHandler(Editar_Click));
+
+            string colorHexadecimal = "#2367E6"; // Valor hexadecimal del color
+            BrushConverter brushConverter = new BrushConverter();
+            Brush colorBrush = (Brush)brushConverter.ConvertFrom(colorHexadecimal);
+
+            editarButtonFactory.SetValue(Button.BackgroundProperty, colorBrush);
+
+            editarButtonFactory.SetValue(Button.ContentProperty, "✏️");
+
+            eliminarColumna.Header = "Eliminar";
+            FrameworkElementFactory eliminarButtonFactory = new FrameworkElementFactory(typeof(Button));
+            eliminarButtonFactory.AddHandler(Button.ClickEvent, new RoutedEventHandler(Eliminar_Click));
+
+            string colorHexadecimal1 = "#F0272E"; // Valor hexadecimal del color
+            BrushConverter brushConverter1 = new BrushConverter();
+            Brush colorBrush1 = (Brush)brushConverter.ConvertFrom(colorHexadecimal1);
+
+            eliminarButtonFactory.SetValue(Button.BackgroundProperty, colorBrush1);
+
+            eliminarButtonFactory.SetValue(Button.ContentProperty, "🗑");
+
+            // Asignar las plantillas a las columnas
+            editarColumna.CellTemplate = new DataTemplate { VisualTree = editarButtonFactory };
+            eliminarColumna.CellTemplate = new DataTemplate { VisualTree = eliminarButtonFactory };
+
+            // Añadir las columnas al DataGrid
+            dgDatos.Columns.Add(editarColumna);
+            dgDatos.Columns.Add(eliminarColumna);
+        }
+        public void comprobarBtns()
+        {
+            DataGridColumn columna = dgDatos.Columns.SingleOrDefault(c => c.Header.ToString() == "Editar");
+            if (columna != null)
+            {
+                dgDatos.Columns.Remove(columna);
+            }
+
+            DataGridColumn columna1 = dgDatos.Columns.SingleOrDefault(c => c.Header.ToString() == "Eliminar");
+            if (columna != null)
+            {
+                dgDatos.Columns.Remove(columna1);
             }
         }
     }

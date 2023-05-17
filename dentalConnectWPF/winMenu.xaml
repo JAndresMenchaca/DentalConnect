@@ -158,64 +158,66 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Left" Margin="125,12,0,556" Width="310" Grid.Row="1"/>
+                
                 <Button Content="" HorizontalAlignment="Left" Margin="78,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226" Click="Button_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc1.jpg"/>
+                        <ImageBrush ImageSource="/2.png">
+                        </ImageBrush>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="322,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226" Click="Button_Click_1">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc14.png"/>
+                        <ImageBrush ImageSource="/3.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="570,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc3.png"/>
+                        <ImageBrush ImageSource="/4.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" Margin="820,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" HorizontalAlignment="Left" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc4.png"/>
+                        <ImageBrush ImageSource="/5.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="78,248,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc5.png"/>
+                        <ImageBrush ImageSource="/9.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="322,248,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc6.png"/>
+                        <ImageBrush ImageSource="/10.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="570,248,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc7.png"/>
+                        <ImageBrush ImageSource="/11.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="820,248,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc8.png"/>
+                        <ImageBrush ImageSource="/12.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="78,422,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc9.png"/>
+                        <ImageBrush ImageSource="/1.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="322,422,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc10.png"/>
+                        <ImageBrush ImageSource="/8.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="570,422,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc11.png"/>
+                        <ImageBrush ImageSource="/7.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" HorizontalAlignment="Left" Margin="820,422,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
                     <Button.Background>
-                        <ImageBrush ImageSource="/opc13.png"/>
+                        <ImageBrush ImageSource="/6.png"/>
                     </Button.Background>
                 </Button>
 

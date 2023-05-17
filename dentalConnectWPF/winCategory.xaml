@@ -10,6 +10,8 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True" Loaded="Window_Loaded" Icon="/aplicacion.png">
+    
+    
 
     <Border CornerRadius="12">
         <Border CornerRadius="10"                    
@@ -119,7 +121,7 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-
+                
 
                 <Image Source="/aplicacion.png" Margin="51,0,894,563" Grid.Row="1"/>
                 <TextBlock Text="CATEGORIAS"
@@ -142,13 +144,11 @@
                     HorizontalAlignment="Left" Margin="51,154,0,415" Width="210" Grid.Row="1"/>
                 <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="275,86,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" Height="38" FontSize="24" Foreground="White"/>
                 <TextBox x:Name="txbDescrip" HorizontalAlignment="Left" Margin="275,154,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" Height="38" FontSize="24" Foreground="White"/>
-                <Button x:Name="btnInsert" Content="➕ Insertar" HorizontalAlignment="Left" Margin="648,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="221" FontSize="18" Click="btnInsert_Click"/>
-                <Button x:Name="btnModify" Content="✏️ Modificar" HorizontalAlignment="Left" Margin="648,90,0,0" Grid.Row="1" VerticalAlignment="Top" Width="221" FontSize="18" Click="btnModify_Click"/>
-                <Button x:Name="btnSave" Content="💾 Guardar" HorizontalAlignment="Left" Margin="648,134,0,0" Grid.Row="1" VerticalAlignment="Top" Width="106" FontSize="14" Click="btnSave_Click"/>
-                <Button x:Name="btnCancel" Content="❌ Cancelar" HorizontalAlignment="Left" Margin="759,134,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110" Click="btnCancel_Click"/>
-                <Button x:Name="btnDelete" Content="🗑️ Eliminar" HorizontalAlignment="Left" Margin="648,179,0,0" Grid.Row="1" VerticalAlignment="Top" Width="221" FontSize="18" Click="btnDelete_Click"/>
-                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="51,278,127,10" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
-                <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="51,233,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="818" Height="45" FontSize="22"/>
+                <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="688,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44"/>
+                <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="688,94,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44"/>
+                <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="688,156,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24"/>
+                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="107,263,169,25" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
+                <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="51,206,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="818" Height="45" FontSize="22"/>
                 <Button x:Name="btnMenu"                          
                     BorderThickness="0"
                     Content="&lt;-"
