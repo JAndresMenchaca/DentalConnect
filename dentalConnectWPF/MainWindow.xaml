@@ -168,7 +168,7 @@
                         <TextBox.Background>
                             <ImageBrush ImageSource="/user1.png"
                                         Stretch="Uniform"
-                                        AlignmentX="Left"/>
+                                        AlignmentX="Left" />
                         </TextBox.Background>
                     </TextBox>
 

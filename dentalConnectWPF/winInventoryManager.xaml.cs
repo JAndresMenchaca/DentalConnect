@@ -18,9 +18,9 @@ namespace dentalConnectWPF
     /// <summary>
     /// Interaction logic for winMenu.xaml
     /// </summary>
-    public partial class winMenu : Window
+    public partial class winInventoryManager : Window
     {
-        public winMenu()
+        public winInventoryManager()
         {
             InitializeComponent();
         }

@@ -16,7 +16,6 @@ namespace dentalConnectDAO.Model
 
         #region Constructors
 
-
         // GET
         public Category(byte id, string name, string description, byte status, DateTime registerDate, DateTime lastUpdate, int idUser)
             :base(status, registerDate, lastUpdate, idUser)

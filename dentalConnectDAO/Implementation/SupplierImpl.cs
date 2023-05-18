@@ -19,7 +19,7 @@ namespace dentalConnectDAO.Implementation
 
             SqlCommand command = CreateBasicCommand(query);
 
-            command.Parameters.AddWithValue("@idUser", 1); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte                                                        
+            command.Parameters.AddWithValue("@idUser", Session.SessionID);                                                       
             command.Parameters.AddWithValue("@id", t.Id);
 
             try
@@ -88,8 +88,7 @@ namespace dentalConnectDAO.Implementation
             command.Parameters.AddWithValue("@mainStreet", t.MainStreet);
             command.Parameters.AddWithValue("@adjacentStreet", t.AdjacentStreet);
             command.Parameters.AddWithValue("@idCity", t.IdCity);
-            command.Parameters.AddWithValue("@idUser", 1); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte, t.IdUser
-
+            command.Parameters.AddWithValue("@idUser", Session.SessionID);
             try
             {
                 return ExecuteBasicCommand(command);
@@ -132,7 +131,7 @@ namespace dentalConnectDAO.Implementation
             command.Parameters.AddWithValue("@mainStreet", t.MainStreet);
             command.Parameters.AddWithValue("@adjacentStreet", t.AdjacentStreet);
             command.Parameters.AddWithValue("@idCity", t.IdCity);
-            command.Parameters.AddWithValue("@idUser", 1); // TO DO: Mas adelante usaremos sesiones y modificaremos esta parte, t.IdUser
+            command.Parameters.AddWithValue("@idUser", Session.SessionID);
             command.Parameters.AddWithValue("@id", t.Id);
 
             try

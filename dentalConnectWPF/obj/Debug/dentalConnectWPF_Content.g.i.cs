@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("i3.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("opc9.1.png")]
 
 

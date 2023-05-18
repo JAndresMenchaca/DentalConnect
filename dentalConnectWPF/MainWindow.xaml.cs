@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using dentalConnectDAO.Implementation;
+using dentalConnectDAO.Model;
 
 namespace dentalConnectWPF
 {
@@ -35,20 +38,59 @@ namespace dentalConnectWPF
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if((txtUser.Text == "iam") && txtPass.Password == "456")
+
+            try
             {
-                winMenu winMenu = new winMenu();
-                winMenu.Show();
-                this.Close();
+                UserImpl userImpl = new UserImpl();
+
+                DataTable table = userImpl.Login(txtUser.Text, txtPass.Password);
+                if (table.Rows.Count>0)
+                {
+                    Session.SessionID = int.Parse(table.Rows[0][0].ToString());
+                    Session.SessionUserName = table.Rows[0][1].ToString();
+                    Session.SessionRole = table.Rows[0][2].ToString();
+
+                    
+                }
+                else
+                {
+                    txbError.Foreground = Brushes.Red;
+                    txbError.Text = "Los datos no son correctos";
+
+                    if (txtPass.Password == "" || txtUser.Text == "")
+                        txbError.Text = "Introduzca las credenciales";
+   
+                    txtPass.Password = "";
+                    txtUser.Text = "";
+                    txtUser.Focus();
+                }
+
+                switch (Session.SessionRole)
+                {
+                    case "Administrador":
+                        winMenu winMenu = new winMenu();
+                        winMenu.Show();
+                        this.Close();
+                        break;
+                    case "GerenteVentas":
+                        winSalesManager winSalesManager = new winSalesManager();
+                        winSalesManager.Show();
+                        this.Close();
+                        break;
+                    case "GerenteInventario":
+                        winInventoryManager winInventoryManager = new winInventoryManager();
+                        winInventoryManager.Show();
+                        this.Close();
+                        break;
+                }
             }
-            else
+            catch (Exception)
             {
-                txtPass.Password = "";
-                txtUser.Text = "";
-                txtUser.Focus();
-                txbError.Foreground = Brushes.Red;
-                txbError.Text = "Los datos no son correctos";
+
+                throw;
             }
+
+
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
