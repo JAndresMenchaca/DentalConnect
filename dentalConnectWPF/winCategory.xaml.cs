@@ -261,9 +261,14 @@ namespace dentalConnectWPF
 
             if (dgDatos.SelectedItem != null && category != null)
             {
-                string respuesta = Microsoft.VisualBasic.Interaction.InputBox("Escribe 'seguro' para confirmar:", "Confirmación", "");
-                if (respuesta == "seguro")
+
+                winDelete confirmarVentana = new winDelete();
+                confirmarVentana.Owner = this; // Establecer la ventana principal como propietaria
+                bool? resultado = confirmarVentana.ShowDialog();
+
+                if (resultado.HasValue && resultado.Value)
                 {
+                    // Realizar la acción de eliminación
                     try
                     {
                         categoryImpl = new CategoryImpl();
@@ -283,7 +288,7 @@ namespace dentalConnectWPF
                 }
                 else
                 {
-                    sendMessages(2, "Se cancelo la accion de ELIMINAR el registro");
+                    sendMessages(2, "Se cancelo la acción de ELIMINAR el registro");
                     select();
                     diseable();
                 }

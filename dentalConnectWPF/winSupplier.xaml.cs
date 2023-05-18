@@ -47,8 +47,8 @@ namespace dentalConnectWPF
         private void enable()
         {
             btnInsert.IsEnabled = false;
-            btnDelete.IsEnabled = false;
-            btnModify.IsEnabled = false;
+            //btnDelete.IsEnabled = false;
+            //btnModify.IsEnabled = false;
 
             btnCancel.IsEnabled = true;
             btnSave.IsEnabled   = true;
@@ -75,8 +75,8 @@ namespace dentalConnectWPF
             
 
             btnInsert.IsEnabled = true;
-            btnDelete.IsEnabled = true;
-            btnModify.IsEnabled = true;
+            //btnDelete.IsEnabled = true;
+            //btnModify.IsEnabled = true;
 
             btnCancel.IsEnabled = false;
             btnSave.IsEnabled = false;
@@ -326,6 +326,11 @@ namespace dentalConnectWPF
                 supplierImpl = new SupplierImpl();
                 dgDatos.ItemsSource = null;
                 dgDatos.ItemsSource = supplierImpl.Select().DefaultView;
+
+                comprobarBtns();
+
+                generarBtns();
+
                 dgDatos.Columns[0].Visibility = Visibility.Collapsed;
 
             }
@@ -399,6 +404,113 @@ namespace dentalConnectWPF
                 catch
                 {
                     sendMessages(1, "No se pudo acceder a los datos, comuniquese con el Administrador");
+                }
+            }
+        }
+        public void comprobarBtns()
+        {
+            DataGridColumn columna = dgDatos.Columns.SingleOrDefault(c => c.Header.ToString() == "Editar");
+            if (columna != null)
+            {
+                dgDatos.Columns.Remove(columna);
+            }
+
+            DataGridColumn columna1 = dgDatos.Columns.SingleOrDefault(c => c.Header.ToString() == "Eliminar");
+            if (columna != null)
+            {
+                dgDatos.Columns.Remove(columna1);
+            }
+        }
+        public void generarBtns()
+        {
+            // Crear las columnas de botones
+            DataGridTemplateColumn editarColumna = new DataGridTemplateColumn();
+            DataGridTemplateColumn eliminarColumna = new DataGridTemplateColumn();
+
+            // Crear las plantillas de las celdas con los botones
+            editarColumna.Header = "Editar";
+            FrameworkElementFactory editarButtonFactory = new FrameworkElementFactory(typeof(Button));
+            editarButtonFactory.AddHandler(Button.ClickEvent, new RoutedEventHandler(Editar_Click));
+
+            string colorHexadecimal = "#2367E6"; // Valor hexadecimal del color
+            BrushConverter brushConverter = new BrushConverter();
+            Brush colorBrush = (Brush)brushConverter.ConvertFrom(colorHexadecimal);
+
+            editarButtonFactory.SetValue(Button.BackgroundProperty, colorBrush);
+
+            editarButtonFactory.SetValue(Button.ContentProperty, "✏️");
+
+            eliminarColumna.Header = "Eliminar";
+            FrameworkElementFactory eliminarButtonFactory = new FrameworkElementFactory(typeof(Button));
+            eliminarButtonFactory.AddHandler(Button.ClickEvent, new RoutedEventHandler(Eliminar_Click));
+
+            string colorHexadecimal1 = "#F0272E"; // Valor hexadecimal del color
+            BrushConverter brushConverter1 = new BrushConverter();
+            Brush colorBrush1 = (Brush)brushConverter.ConvertFrom(colorHexadecimal1);
+
+            eliminarButtonFactory.SetValue(Button.BackgroundProperty, colorBrush1);
+
+            eliminarButtonFactory.SetValue(Button.ContentProperty, "🗑");
+
+            // Asignar las plantillas a las columnas
+            editarColumna.CellTemplate = new DataTemplate { VisualTree = editarButtonFactory };
+            eliminarColumna.CellTemplate = new DataTemplate { VisualTree = eliminarButtonFactory };
+
+            // Añadir las columnas al DataGrid
+            dgDatos.Columns.Add(editarColumna);
+            dgDatos.Columns.Add(eliminarColumna);
+        }
+        private void Editar_Click(object sender, RoutedEventArgs e)
+        {
+            txtMessage.Text = "";
+            if (dgDatos.SelectedItem == null && supplier == null)
+            {
+                sendMessages(1, "Debe seleccionar un registro");
+                diseable();
+            }
+            else
+            {
+                enable();
+                opt = 2;
+            }
+
+        }
+        private void Eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            enable();
+
+            if (dgDatos.SelectedItem != null && supplier != null)
+            {
+
+                winDelete confirmarVentana = new winDelete();
+                confirmarVentana.Owner = this; // Establecer la ventana principal como propietaria
+                bool? resultado = confirmarVentana.ShowDialog();
+
+                if (resultado.HasValue && resultado.Value)
+                {
+                    // Realizar la acción de eliminación
+                    try
+                    {
+                        supplierImpl = new SupplierImpl();
+                        int test = supplierImpl.Delete(supplier);
+                        if (test > 0)
+                        {
+                            sendMessages(2, "Registro eliminado con exito");
+                            select();
+                            diseable();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
+                        diseable();
+                    }
+                }
+                else
+                {
+                    sendMessages(2, "Se cancelo la acción de ELIMINAR el registro");
+                    select();
+                    diseable();
                 }
             }
         }

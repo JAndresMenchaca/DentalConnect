@@ -128,16 +128,16 @@
                     <Image 
                            Width="130" Height="120" Source="/logo1.png"/>
 
-                    <TextBlock Text="DENTAL CONNECT"
+                    <TextBlock Text="CODENSA"
                                Foreground="White"
-                               FontSize="25"
+                               FontSize="36"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="The Easy Way"
+                    <TextBlock Text="POWER BY QUANTUMBYTE"
                                Foreground="LightGray"
-                               FontSize="12"
+                               FontSize="14"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                TextWrapping="Wrap"

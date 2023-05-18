@@ -32,3 +32,5 @@ D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winCatego
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winCategory.g.cs
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winSupplier.baml
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winSupplier.g.cs
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winDelete.baml
+D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winDelete.g.cs
