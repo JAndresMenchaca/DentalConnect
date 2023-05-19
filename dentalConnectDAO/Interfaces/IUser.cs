@@ -11,5 +11,7 @@ namespace dentalConnectDAO.Interfaces
     internal interface IUser:IBase<User>
     {
         DataTable Login(string username, string password);
+        User Get(byte id);
+        bool Verify(string nameUser);
     }
 }

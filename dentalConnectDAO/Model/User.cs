@@ -15,13 +15,12 @@ namespace dentalConnectDAO.Model
 
         // GET
         public User(byte id, string ci, string name, string lastName, string secondLastName, DateTime birthdate,
-                        char gender, string phone, string email, string username, string password, string role,
+                        char gender, string phone, string email, string username, string role,
                         byte status, DateTime registerDate, DateTime lastUpdate, int idUser) 
                         : base(id, ci, name, lastName, secondLastName, birthdate, gender, phone, email, status,
                         registerDate, lastUpdate, idUser)
         {
             Username = username;
-            Password = password;
             Role = role;
         }
 
@@ -34,6 +33,14 @@ namespace dentalConnectDAO.Model
 
         // Insert
 
+        public User(string ci, string name, string lastName, string secondLastName, DateTime birthdate,
+                    char gender, string phone, string email, string username, string password, string role)
+                    : base(ci, name, lastName, secondLastName, birthdate, gender, phone, email)
+        {
+            Username = username;
+            Password = password;
+            Role = role;
+        }
 
 
         #endregion

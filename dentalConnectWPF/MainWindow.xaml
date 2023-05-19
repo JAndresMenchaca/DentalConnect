@@ -166,7 +166,7 @@
                              Padding="20,0,0,0">
 
                         <TextBox.Background>
-                            <ImageBrush ImageSource="/user1.png"
+                            <ImageBrush ImageSource="/user1898.png"
                                         Stretch="Uniform"
                                         AlignmentX="Left" />
                         </TextBox.Background>

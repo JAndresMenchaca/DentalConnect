@@ -43,6 +43,7 @@ namespace dentalConnectDAO.Model
             Email = email;
         }
 
+        //INSERT
         public Person(string ci, string name, string lastName, string secondLastName, DateTime birthdate, char gender, string phone, string email)
         {
             Ci = ci;
@@ -55,7 +56,9 @@ namespace dentalConnectDAO.Model
             Email = email;
         }
 
-        // Insert
+        public Person(string ci, string name, string lastName, string secondLastName, DateTime birthdate, char gender, string phone, string email, int idUser) : this(ci, name, lastName, secondLastName, birthdate, gender, phone, email)
+        {
+        }
 
 
         #endregion

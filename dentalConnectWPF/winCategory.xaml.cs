@@ -29,7 +29,7 @@ namespace dentalConnectWPF
         byte opt;
         Category category;
         CategoryImpl categoryImpl;
-        private List<DataGridColumn> botonesColumns = new List<DataGridColumn>();
+
         
 
         public winCategory()

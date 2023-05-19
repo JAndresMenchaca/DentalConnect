@@ -72,12 +72,12 @@ namespace dentalConnectWPF
                         winMenu.Show();
                         this.Close();
                         break;
-                    case "GerenteVentas":
+                    case "Gerente de ventas":
                         winSalesManager winSalesManager = new winSalesManager();
                         winSalesManager.Show();
                         this.Close();
                         break;
-                    case "GerenteInventario":
+                    case "Gerente de inventario":
                         winInventoryManager winInventoryManager = new winInventoryManager();
                         winInventoryManager.Show();
                         this.Close();

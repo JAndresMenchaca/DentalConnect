@@ -170,7 +170,7 @@
                         <ImageBrush ImageSource="/opc2.png"/>
                     </Button.Background>
                 </Button>
-                <Button Content="" HorizontalAlignment="Left" Margin="570,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226">
+                <Button Content="" HorizontalAlignment="Left" Margin="570,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="149" Width="226" Click="Button_Click_2">
                     <Button.Background>
                         <ImageBrush ImageSource="/opc3.png"/>
                     </Button.Background>
