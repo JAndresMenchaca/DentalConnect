@@ -50,10 +50,30 @@ namespace dentalConnectWPF
                     Session.SessionUserName = table.Rows[0][1].ToString();
                     Session.SessionRole = table.Rows[0][2].ToString();
 
-                    
+                    switch (Session.SessionRole)
+                    {
+                        case "Administrador":
+                            winMenu winMenu = new winMenu();
+                            winMenu.Show();
+                            this.Close();
+                            break;
+                        case "Gerente de ventas":
+                            winSalesManager winSalesManager = new winSalesManager();
+                            winSalesManager.Show();
+                            this.Close();
+                            break;
+                        case "Gerente de inventario":
+                            winInventoryManager winInventoryManager = new winInventoryManager();
+                            winInventoryManager.Show();
+                            this.Close();
+                            break;
+                    }
+
                 }
                 else
                 {
+                    //MessageBox.Show(txtPass.Password);
+
                     txbError.Foreground = Brushes.Red;
                     txbError.Text = "Los datos no son correctos";
 
@@ -65,24 +85,7 @@ namespace dentalConnectWPF
                     txtUser.Focus();
                 }
 
-                switch (Session.SessionRole)
-                {
-                    case "Administrador":
-                        winMenu winMenu = new winMenu();
-                        winMenu.Show();
-                        this.Close();
-                        break;
-                    case "Gerente de ventas":
-                        winSalesManager winSalesManager = new winSalesManager();
-                        winSalesManager.Show();
-                        this.Close();
-                        break;
-                    case "Gerente de inventario":
-                        winInventoryManager winInventoryManager = new winInventoryManager();
-                        winInventoryManager.Show();
-                        this.Close();
-                        break;
-                }
+                
             }
             catch (Exception)
             {

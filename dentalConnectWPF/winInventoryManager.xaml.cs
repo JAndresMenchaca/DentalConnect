@@ -55,5 +55,11 @@ namespace dentalConnectWPF
             supplier.Show();
             this.Close();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            winPassword pass = new winPassword();
+            pass.ShowDialog();
+        }
     }
 }

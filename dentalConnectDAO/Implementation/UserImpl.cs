@@ -12,6 +12,26 @@ namespace dentalConnectDAO.Implementation
 {
     public class UserImpl : BaseImpl, IUser
     {
+        public int change(string password)
+        {
+            query = @"UPDATE [User] SET password = HASHBYTES('MD5', @password) , lastUpdate=CURRENT_TIMESTAMP, userID=@userID
+                        WHERE id = @userID";
+
+            SqlCommand command = CreateBasicCommand(query);
+
+            command.Parameters.AddWithValue("@password", password).SqlDbType = SqlDbType.VarChar;
+            command.Parameters.AddWithValue("@userID", Session.SessionID);
+
+            try
+            {
+                return ExecuteBasicCommand(command);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int Delete(User t)
         {
             query = @"UPDATE [User] SET status=0, lastUpdate=CURRENT_TIMESTAMP, userID=@userID
@@ -125,7 +145,7 @@ namespace dentalConnectDAO.Implementation
             command.Parameters.AddWithValue("@phone", t.Phone);
 
             command.Parameters.AddWithValue("@username", t.Username);
-            command.Parameters.AddWithValue("@password", t.Password);
+            command.Parameters.AddWithValue("@password", t.Password).SqlDbType = SqlDbType.VarChar;
             command.Parameters.AddWithValue("@role", t.Role);
             
             command.Parameters.AddWithValue("@userID", Session.SessionID);

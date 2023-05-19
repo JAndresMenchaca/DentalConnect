@@ -180,19 +180,10 @@ namespace dentalConnectWPF
             }
             userImpl = new UserImpl();
 
-
-
             username = GenerarNombreUnico(name, lastName, secondLastName);
 
-            while (userImpl.Verify(username))
-            {
-                username = GenerarNombreUnico(name, lastName, secondLastName);
-            }
-
-
-
-          
             password = GenerarContrasenaAleatoria();
+            MessageBox.Show(password);
             try
             {
                 User user = new User(ci, name, lastName, secondLastName, date, gender, phone, email, username, password, role);
@@ -219,7 +210,7 @@ namespace dentalConnectWPF
             txtMessage.Text = "";
             try
             {
-                if (name == "" || ci == "" || lastName == "" || secondLastName == "" || date == DateTime.MinValue || phone == "" || email == "" || role == ""|| gender == ' ')
+                if (name == "" || ci == "" || secondLastName == "" || date == DateTime.MinValue || phone == "" || email == "" || role == ""|| gender == ' ')
                 {
                     sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
                     return;
@@ -320,6 +311,7 @@ namespace dentalConnectWPF
         private void Editar_Click(object sender, RoutedEventArgs e)
         {
             txtMessage.Text = "";
+           
             if (dgDatos.SelectedItem == null && user == null)
             {
                 sendMessages(1, "Debe seleccionar un registro");
@@ -462,6 +454,12 @@ namespace dentalConnectWPF
 
         public string GenerarNombreUnico(string nombre, string primerApellido, string segundoApellido)
         {
+            Random random = new Random();
+            char randomLetter = (char)random.Next('A', 'Z' + 1); // Genera una letra mayúscula aleatoria
+
+            if (segundoApellido == "")
+            { segundoApellido = randomLetter.ToString(); }
+
             string primerasLetras = $"{nombre.Substring(0, 1)}{primerApellido.Substring(0, 1)}{segundoApellido.Substring(0, 1)}";
             string nombreUnico = $"{primerasLetras}{new Random().Next(1000)}";
             return nombreUnico.ToUpper();

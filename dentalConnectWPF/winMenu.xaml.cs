@@ -47,6 +47,9 @@ namespace dentalConnectWPF
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
+            Session.SessionRole = "";
+            Session.SessionUserName = "";
+            Session.SessionID = 0;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -61,6 +64,13 @@ namespace dentalConnectWPF
             winUser user = new winUser();
             user.Show();
             this.Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            winPassword pass = new winPassword();
+            pass.ShowDialog();
+            
         }
     }
 }

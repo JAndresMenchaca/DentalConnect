@@ -79,6 +79,9 @@
     <Compile Include="winMenu.xaml.cs">
       <DependentUpon>winMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="winPassword.xaml.cs">
+      <DependentUpon>winPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="winSalesManager.xaml.cs">
       <DependentUpon>winSalesManager.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="winMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="winPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

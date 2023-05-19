@@ -13,5 +13,7 @@ namespace dentalConnectDAO.Interfaces
         DataTable Login(string username, string password);
         User Get(byte id);
         bool Verify(string nameUser);
+        int change(string password);
+
     }
 }
