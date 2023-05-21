@@ -163,7 +163,7 @@ namespace dentalConnectDAO.Implementation
 
         public DataTable Login(string username, string password)
         {
-            query = @"SELECT id, username, role
+            query = @"SELECT id, username, role, changePassword
                         FROM [User]
                         WHERE status = 1 AND username = @name AND password=HASHBYTES('MD5', @password)";
             SqlCommand command = CreateBasicCommand(query);
@@ -259,6 +259,28 @@ namespace dentalConnectDAO.Implementation
                 band = false;
             }
             return band;
+        }
+        public void changePassword()
+        {
+            query = @"UPDATE Person
+                        SET
+	                        lastUpdate=CURRENT_TIMESTAMP, 
+	                        userID= @userId
+                        WHERE
+                            id = @userId;
+
+                        UPDATE [User]
+                        SET
+							changePassword = 1,
+	                        lastUpdate = CURRENT_TIMESTAMP, 
+	                        userID=@userId
+                        WHERE
+                            id = @userId";
+            SqlCommand command = CreateBasicCommand(query);
+
+            command.Parameters.AddWithValue("@userId", Session.SessionID);
+            ExecuteBasicCommand(command);
+
         }
     }
 }

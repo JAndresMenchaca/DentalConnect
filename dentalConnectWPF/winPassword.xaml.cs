@@ -30,6 +30,7 @@ namespace dentalConnectWPF
         }
         private void sendMessages(int opt, string message)
         {
+            txtError.FontSize = 18;
             if (opt == 1)
                 txtError.Foreground = Brushes.Red;
 
@@ -53,7 +54,7 @@ namespace dentalConnectWPF
                 if (table.Rows.Count > 0)
                 {
                     
-                    if (Regex.IsMatch(pbNew.Password, @"^(?=.*[A-Z])(?=.*\d).{8,}$"))
+                    if (Regex.IsMatch(pbNew.Password, @"^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$"))
                     {
                         if (pbNew.Password == pbNew2.Password)
                         {
@@ -62,6 +63,7 @@ namespace dentalConnectWPF
                             sendMessages(2, "Se actualizo la contraseña");
                             //MessageBox.Show(Session.SessionID + "");
                             //Session.SessionRole = "";
+                            userImpl.changePassword();
                         }
                         else
                         {
@@ -74,7 +76,9 @@ namespace dentalConnectWPF
                     }
                     else
                     {
-                        sendMessages(1, "Ponga una contraseña mas segura");
+                        
+                        sendMessages(1, "Contraseña inválida. Debe tener al menos 8 caracteres\nUna letra mayúscula, un número y un carácter especial.");
+                        txtError.FontSize = 14;
                     }
 
                 }

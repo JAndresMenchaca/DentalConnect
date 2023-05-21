@@ -49,25 +49,36 @@ namespace dentalConnectWPF
                     Session.SessionID = int.Parse(table.Rows[0][0].ToString());
                     Session.SessionUserName = table.Rows[0][1].ToString();
                     Session.SessionRole = table.Rows[0][2].ToString();
+                    Session.SessionChangePassword = int.Parse(table.Rows[0][3].ToString());
 
-                    switch (Session.SessionRole)
+                    if(Session.SessionChangePassword == 0)
                     {
-                        case "Administrador":
-                            winMenu winMenu = new winMenu();
-                            winMenu.Show();
-                            this.Close();
-                            break;
-                        case "Gerente de ventas":
-                            winSalesManager winSalesManager = new winSalesManager();
-                            winSalesManager.Show();
-                            this.Close();
-                            break;
-                        case "Gerente de inventario":
-                            winInventoryManager winInventoryManager = new winInventoryManager();
-                            winInventoryManager.Show();
-                            this.Close();
-                            break;
+                        winPassword pass = new winPassword();
+                        pass.ShowDialog();
+
                     }
+                    else if(Session.SessionChangePassword == 1) {
+                        switch (Session.SessionRole)
+                        {
+                            case "Administrador":
+                                winMenu winMenu = new winMenu();
+                                winMenu.Show();
+                                this.Close();
+                                break;
+                            case "Gerente de ventas":
+                                winSalesManager winSalesManager = new winSalesManager();
+                                winSalesManager.Show();
+                                this.Close();
+                                break;
+                            case "Gerente de inventario":
+                                winInventoryManager winInventoryManager = new winInventoryManager();
+                                winInventoryManager.Show();
+                                this.Close();
+                                break;
+                        }
+                    }
+
+                    
 
                 }
                 else

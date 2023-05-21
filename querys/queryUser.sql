@@ -25,7 +25,7 @@ SELECT
     u.username AS 'Nombre de Usuario',
     u.role AS Rol,
     p.email AS Email,
-    p.numberPhone AS Teléfono,
+    p.numberPhone AS Telï¿½fono,
     p.birthDate AS 'Fecha de Nacimiento',
     p.gender AS Sexo,
     u.registerDate AS 'Usuario creado el:'
@@ -156,3 +156,18 @@ SELECT id, username, role
 
 UPDATE [User] SET password = HASHBYTES('MD5', 'm8bWVrAj') , lastUpdate=CURRENT_TIMESTAMP, userID=5
 WHERE id = 28
+
+UPDATE Person
+                        SET
+	                        lastUpdate=CURRENT_TIMESTAMP, 
+	                        userID= @userId
+                        WHERE
+                            id = @userId;
+
+                        UPDATE [User]
+                        SET
+							changePassword = 1,
+	                        lastUpdate = CURRENT_TIMESTAMP, 
+	                        userID=@userId
+                        WHERE
+                            id = @userId

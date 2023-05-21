@@ -19,6 +19,9 @@ using System.Xml.Linq;
 using dentalConnectDAO;
 using dentalConnectDAO.Implementation;
 using dentalConnectDAO.Model;
+using System.Net;
+using System.Net.Mail;
+
 
 
 namespace dentalConnectWPF
@@ -183,7 +186,9 @@ namespace dentalConnectWPF
             username = GenerarNombreUnico(name, lastName, secondLastName);
 
             password = GenerarContrasenaAleatoria();
-            MessageBox.Show(password);
+
+            sendEmail(email, username, password, name, lastName, role);
+
             try
             {
                 User user = new User(ci, name, lastName, secondLastName, date, gender, phone, email, username, password, role);
@@ -486,6 +491,40 @@ namespace dentalConnectWPF
             }
 
             return new string(contrasenaArray);
+        }
+
+        public void sendEmail(string email, string username, string password, string nombre, string apellido, string rol)
+        {
+            try
+            {
+                // Configurar los detalles del correo electrónico
+                string remitente = "contacto.codensa@gmail.com";
+                string destinatario = email;
+                string asunto = "ENVIO DE CREDENCIALES A: "+nombre+" "+apellido;
+                string cuerpoMensaje = "Estas son sus credenciales para ingresar al sistema tenga mucho cuidado, y no las comparte con nadie.\n" +
+                                        "\nUsted esta registrado como un: "+rol +
+                                        "\n\nNombre de usuario: "+username+"\n" +
+                                        "\nContraseña: "+password+"\n" +
+                                        "\nRecuerde que debera cambiar su contraseña al ingresar al sistema la primera vez" +
+                                        "\n\nCualquier duda por favor ponganse en contacto con el administrador";
+
+                // Crear el objeto MailMessage
+                MailMessage correo = new MailMessage(remitente, destinatario, asunto, cuerpoMensaje);
+
+                // Configurar el cliente SMTP
+                SmtpClient clienteSmtp = new SmtpClient("smtp.gmail.com", 587);
+                clienteSmtp.EnableSsl = true;
+                clienteSmtp.UseDefaultCredentials = false;
+                clienteSmtp.Credentials = new NetworkCredential("contacto.codensa@gmail.com", "wiabflozvurvzhhp");
+
+                // Enviar el correo electrónico
+                clienteSmtp.Send(correo);
+
+            }
+            catch (Exception ex)
+            {
+                sendMessages(1, "Error al enviar el correo electrónico: Verifique su correo o contacte al Administrador");
+            }
         }
 
     }

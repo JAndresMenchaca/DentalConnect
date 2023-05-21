@@ -11,6 +11,7 @@ namespace dentalConnectDAO.Model
         public static int SessionID;
         public static string SessionUserName;
         public static string SessionRole;
+        public static int SessionChangePassword;
 
     }
 }
