@@ -187,7 +187,12 @@ namespace dentalConnectWPF
 
             password = GenerarContrasenaAleatoria();
 
+
+            btnSave.IsEnabled= false;
+
             sendEmail(email, username, password, name, lastName, role);
+
+            btnSave.IsEnabled = true;
 
             try
             {
@@ -501,11 +506,11 @@ namespace dentalConnectWPF
                 string remitente = "contacto.codensa@gmail.com";
                 string destinatario = email;
                 string asunto = "ENVIO DE CREDENCIALES A: "+nombre+" "+apellido;
-                string cuerpoMensaje = "Estas son sus credenciales para ingresar al sistema tenga mucho cuidado, y no las comparte con nadie.\n" +
+                string cuerpoMensaje = "Estas son sus credenciales para ingresar al sistema, tenga mucho cuidado y no las comparta con nadie.\n" +
                                         "\nUsted esta registrado como un: "+rol +
                                         "\n\nNombre de usuario: "+username+"\n" +
                                         "\nContraseña: "+password+"\n" +
-                                        "\nRecuerde que debera cambiar su contraseña al ingresar al sistema la primera vez" +
+                                        "\nRecuerde que debera cambiar su contraseña al ingresar al sistema por primera vez" +
                                         "\n\nCualquier duda por favor ponganse en contacto con el administrador";
 
                 // Crear el objeto MailMessage

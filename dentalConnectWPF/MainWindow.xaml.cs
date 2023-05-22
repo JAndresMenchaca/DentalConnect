@@ -55,6 +55,8 @@ namespace dentalConnectWPF
                     {
                         winPassword pass = new winPassword();
                         pass.ShowDialog();
+                        txtPass.Password = "";
+                        txtPass.Focus();
 
                     }
                     else if(Session.SessionChangePassword == 1) {
