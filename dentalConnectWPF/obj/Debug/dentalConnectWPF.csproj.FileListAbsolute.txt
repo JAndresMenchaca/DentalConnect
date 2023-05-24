@@ -42,3 +42,47 @@ D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winUser.g
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winUser.baml
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winPassword.baml
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectWPF\obj\Debug\winPassword.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\dentalConnectWPF.exe.config
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\dentalConnectWPF.exe
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\dentalConnectWPF.pdb
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\dentalConnectDAO.dll
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\MaterialDesignColors.dll
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\dentalConnectDAO.pdb
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\MaterialDesignColors.pdb
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.csproj.SuggestedBindingRedirects.cache
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winCategory.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winDelete.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winInventoryManager.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winPassword.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winSalesManager.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winSupplier.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winUser.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winCategory.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winDelete.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winInventoryManager.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winPassword.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winSalesManager.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winSupplier.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winUser.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF_MarkupCompile.cache
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF_MarkupCompile.lref
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.g.resources
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.Properties.Resources.resources
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.csproj.GenerateResource.cache
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.csproj.CopyComplete
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.exe
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\dentalConnectWPF.pdb
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\App.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\App.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\MainWindow.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\MainWindow.g.cs
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winMenu.baml
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectWPF\obj\Debug\winMenu.g.cs

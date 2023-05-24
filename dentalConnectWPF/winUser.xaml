@@ -9,7 +9,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True" Loaded="Window_Loaded" Icon="/camion.png">
+        AllowsTransparency="True" Loaded="Window_Loaded" Icon="Logos/camion.png">
 
     <Border CornerRadius="12">
         <Border CornerRadius="10"                    
@@ -232,7 +232,7 @@
                     HorizontalAlignment="Left" Margin="50,287,0,397" Width="279" Grid.Row="1"/>
                 <ComboBox x:Name="cbGender" HorizontalAlignment="Left" Height="42" Margin="759,223,0,0" Grid.Row="1" VerticalAlignment="Top" Width="208" FontSize="24" Panel.ZIndex="5" Foreground="Black"/>
                 <DatePicker x:Name="dpBirthdate" HorizontalAlignment="Left" Height="33" Margin="348,287,0,0" Grid.Row="1" VerticalAlignment="Top" Width="193" FontSize="20" Foreground="Black"/>
-                <Image Source="/user.png" Margin="51,0,1177,661" Grid.Row="1"/>
+                <Image Source="Logos/user.png" Margin="51,0,1177,661" Grid.Row="1"/>
 
             </Grid>
 

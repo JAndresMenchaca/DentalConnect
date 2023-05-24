@@ -4,3 +4,9 @@ D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectDAO\obj\Debug\dentalCon
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectDAO\obj\Debug\dentalConnectDAO.csproj.CoreCompileInputs.cache
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectDAO\obj\Debug\dentalConnectDAO.dll
 D:\UNIVERSIDAD\3er Semestre\BdD2\miProyecto\dentalConnectDAO\obj\Debug\dentalConnectDAO.pdb
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectDAO\bin\Debug\dentalConnectDAO.dll
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectDAO\bin\Debug\dentalConnectDAO.pdb
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.dll
+C:\Users\USUARIO\Desktop\Proyecto\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.pdb

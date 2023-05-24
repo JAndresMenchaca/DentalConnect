@@ -70,7 +70,17 @@ namespace dentalConnectWPF
         {
             winPassword pass = new winPassword();
             pass.ShowDialog();
-            
+
         }
     }
 }
+
+
+
+
+
+
+
+
+
+

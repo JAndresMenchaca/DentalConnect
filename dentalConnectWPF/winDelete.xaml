@@ -9,7 +9,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True" Icon="/logo1.png">
+        AllowsTransparency="True" Icon="Logos/logo1.png">
 
 
 

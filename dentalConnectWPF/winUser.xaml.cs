@@ -45,6 +45,12 @@ namespace dentalConnectWPF
             diseable();
             cbGender.ItemsSource = gender;
             cbRole.ItemsSource = role;
+            Validations.TextIntputNumbers(txbCI);
+            Validations.TextIntputNumbers(txbPhone);
+            Validations.TextIntputText(txbName);
+            Validations.TextIntputText(txbLastName);
+            Validations.TextIntputText(txbSecLastName);
+            Validations.TextIntputEmail(txbEmail);
         }
         private void sendMessages(int opt, string message)
         {

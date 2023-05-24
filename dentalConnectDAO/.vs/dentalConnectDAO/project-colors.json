@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4748c1c1-07c6-4cb2-af3a-6454e8d0f1b8": {
+      "ProjectGuid": "4748c1c1-07c6-4cb2-af3a-6454e8d0f1b8",
+      "DisplayName": "dentalConnectDAO",
+      "ColorIndex": 0
+    },
+    "cd7a3966-3d51-47c7-bff7-a0a483ffecf6": {
+      "ProjectGuid": "cd7a3966-3d51-47c7-bff7-a0a483ffecf6",
+      "DisplayName": "dentalConnectWPF",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

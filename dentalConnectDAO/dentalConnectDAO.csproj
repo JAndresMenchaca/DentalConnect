@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +46,7 @@
     <Compile Include="Implementation\CategoryImpl.cs" />
     <Compile Include="Implementation\SupplierImpl.cs" />
     <Compile Include="Implementation\UserImpl.cs" />
+    <Compile Include="Implementation\Validations.cs" />
     <Compile Include="Interfaces\IBase.cs" />
     <Compile Include="Interfaces\ICategory.cs" />
     <Compile Include="Interfaces\ISupplier.cs" />

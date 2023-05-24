@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using dentalConnectDAO.Implementation;
 using dentalConnectDAO.Model;
+using System.Text.RegularExpressions;
+
 
 namespace dentalConnectWPF
 {
@@ -27,6 +29,7 @@ namespace dentalConnectWPF
         {
             InitializeComponent();
             txtUser.Focus();
+            Validations.ApplyTextInputValidation(txtUser);
         }
 
         
@@ -38,7 +41,7 @@ namespace dentalConnectWPF
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            
             try
             {
                 UserImpl userImpl = new UserImpl();
@@ -105,13 +108,14 @@ namespace dentalConnectWPF
 
                 throw;
             }
-
-
+         
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
+
+       
     }
 }

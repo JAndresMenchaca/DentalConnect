@@ -36,7 +36,7 @@ namespace dentalConnectWPF
         {
             InitializeComponent();
             diseable();
-
+            Validations.TextIntputText(txbName);
         }
 
         private void btnClose_Click_1(object sender, RoutedEventArgs e)
@@ -362,6 +362,11 @@ namespace dentalConnectWPF
             {
                 dgDatos.Columns.Remove(columna1);
             }
+        }
+
+        private void txbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+
         }
     }
 }

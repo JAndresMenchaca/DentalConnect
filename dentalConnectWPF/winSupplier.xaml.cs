@@ -43,6 +43,11 @@ namespace dentalConnectWPF
             InitializeComponent();
             diseable();
             cbCity.ItemsSource = ciudades;
+            Validations.TextIntputText(txbName);
+            Validations.TextIntputEmail(txbEmail);
+            Validations.TextIntputNumbers(txbPhone);
+            Validations.TextIntputStreet(txbMain);
+            Validations.TextIntputStreet(txbAd);
         }
         private void enable()
         {

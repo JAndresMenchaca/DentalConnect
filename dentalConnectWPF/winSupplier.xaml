@@ -9,7 +9,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True" Loaded="Window_Loaded" Icon="/camion.png">
+        AllowsTransparency="True" Loaded="Window_Loaded" Icon="Logos/camion.png">
 
     <Border CornerRadius="12">
         <Border CornerRadius="10"                    
@@ -121,7 +121,7 @@
                 </Grid>
 
 
-                <Image Source="/camion.png" Margin="51,0,0,665" Height="53" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="51" Grid.RowSpan="2"/>
+                <Image Source="Logos/camion.png" Margin="51,0,0,665" Height="53" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="51" Grid.RowSpan="2"/>
                 <TextBlock Text="PROVEEDORES"
                                Foreground="#32403B"
                                FontSize="36"

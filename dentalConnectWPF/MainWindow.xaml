@@ -9,7 +9,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True" Icon="/logo1.png">
+        AllowsTransparency="True" Icon="Logos/logo1.png">
 
     <Border CornerRadius="12">
         <Border CornerRadius="10"                    
@@ -126,7 +126,7 @@
                             Margin="0,35,0,0">
 
                     <Image 
-                           Width="130" Height="120" Source="/logo1.png"/>
+                           Width="130" Height="120" Source="Logos/logo1.png"/>
 
                     <TextBlock Text="CODENSA"
                                Foreground="White"
@@ -163,10 +163,10 @@
                              Height="28"
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
-                             Padding="20,0,0,0">
+                             Padding="20,0,0,0" >
 
                         <TextBox.Background>
-                            <ImageBrush ImageSource="/user1898.png"
+                            <ImageBrush ImageSource="Logos/user1898.png"
                                         Stretch="Uniform"
                                         AlignmentX="Left" />
                         </TextBox.Background>
@@ -191,7 +191,7 @@
                              Padding="20,0,0,0">
 
                         <PasswordBox.Background>
-                            <ImageBrush ImageSource="/cerrar.png" 
+                            <ImageBrush ImageSource="Logos/cerrar.png" 
                                         Stretch="Uniform"
                                         AlignmentX="Left"
                                          />
