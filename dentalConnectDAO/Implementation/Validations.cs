@@ -16,6 +16,9 @@ namespace dentalConnectDAO.Implementation
             private static readonly Regex regexText = new Regex("[^a-zA-Z]+");
             private static readonly Regex regexEmail = new Regex("[^a-zA-Z0-9.@ ]+");
             private static readonly Regex regexStreets = new Regex("[^a-zA-Z0-9., ]+");
+            private static readonly Regex regexNo = new Regex(".*");
+
+
 
         public static void ApplyTextInputValidation(TextBox textBox)
         {
@@ -40,6 +43,11 @@ namespace dentalConnectDAO.Implementation
         {
             textBoxN.TextChanged += TextAllowedStreet;
         }
+        public static void TextIntputDate(TextBox textBoxN)
+        {
+            textBoxN.TextChanged += TextAllowedDate;
+        }
+
 
         private static void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -108,6 +116,7 @@ namespace dentalConnectDAO.Implementation
             }
         }
 
+
         private static void TextAllowedStreet(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -126,6 +135,19 @@ namespace dentalConnectDAO.Implementation
                 {
                     textBox.CaretIndex = 0;
                 }
+            }
+        }
+
+        private static void TextAllowedDate(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string newText = textBox.Text;
+
+            if (regexNo.IsMatch(newText))
+            {
+                int caretIndex = textBox.CaretIndex;
+                textBox.Text = string.Empty;
+                textBox.CaretIndex = caretIndex - 1;
             }
         }
 

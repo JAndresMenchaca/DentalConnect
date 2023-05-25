@@ -67,31 +67,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="winCategory.xaml.cs">
+    <Compile Include="Functions\winCategory.xaml.cs">
       <DependentUpon>winCategory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="winDelete.xaml.cs">
+    <Compile Include="Tools\winDelete.xaml.cs">
       <DependentUpon>winDelete.xaml</DependentUpon>
     </Compile>
-    <Compile Include="winInventoryManager.xaml.cs">
+    <Compile Include="UserWindows\winInventoryManager.xaml.cs">
       <DependentUpon>winInventoryManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="winMenu.xaml.cs">
+    <Compile Include="UserWindows\winMenu.xaml.cs">
       <DependentUpon>winMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="winPassword.xaml.cs">
+    <Compile Include="Tools\winPassword.xaml.cs">
       <DependentUpon>winPassword.xaml</DependentUpon>
     </Compile>
-    <Compile Include="winSalesManager.xaml.cs">
+    <Compile Include="UserWindows\winSalesManager.xaml.cs">
       <DependentUpon>winSalesManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="winSupplier.xaml.cs">
+    <Compile Include="Functions\winSupplier.xaml.cs">
       <DependentUpon>winSupplier.xaml</DependentUpon>
     </Compile>
-    <Compile Include="winUser.xaml.cs">
+    <Compile Include="Functions\winUser.xaml.cs">
       <DependentUpon>winUser.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Login\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -99,39 +99,39 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Login\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="winCategory.xaml">
+    <Page Include="Functions\winCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="winDelete.xaml">
+    <Page Include="Tools\winDelete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="winInventoryManager.xaml">
+    <Page Include="UserWindows\winInventoryManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="winMenu.xaml">
+    <Page Include="UserWindows\winMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="winPassword.xaml">
+    <Page Include="Tools\winPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="winSalesManager.xaml">
+    <Page Include="UserWindows\winSalesManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="winSupplier.xaml">
+    <Page Include="Functions\winSupplier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="winUser.xaml">
+    <Page Include="Functions\winUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,9 +245,10 @@
     <Resource Include="Logos\user1898.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Functions\" />
-    <Folder Include="UserWindows\" />
     <Folder Include="Validation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logos\help.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
