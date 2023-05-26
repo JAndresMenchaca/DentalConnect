@@ -57,7 +57,7 @@ namespace dentalConnectWPF.Tools
                 if (table.Rows.Count > 0)
                 {
                     
-                    if (Regex.IsMatch(pbNew.Password, @"^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$"))
+                    if (Regex.IsMatch(pbNew.Password, @"^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%_*^&+=?-]).{8,}$"))
                     {
                         if (pbNew.Password == pbNew2.Password)
                         {
@@ -67,6 +67,7 @@ namespace dentalConnectWPF.Tools
                             //MessageBox.Show(Session.SessionID + "");
                             //Session.SessionRole = "";
                             userImpl.changePassword();
+                            this.Close();
                         }
                         else
                         {

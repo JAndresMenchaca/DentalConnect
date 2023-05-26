@@ -48,23 +48,23 @@ namespace dentalConnectWPF.Functions
             cbGender.ItemsSource = gender;
             cbRole.ItemsSource = role;
 
-            Validations.TextCiU(txbCI);
-            Validations.TextCiU1(txbCI);
+            ValidationsImpl.TextCiU(txbCI);
+            ValidationsImpl.TextCiU1(txbCI);
 
-            Validations.TextNameU(txbName);
-            Validations.TextNameU1(txbName);
+            ValidationsImpl.TextNameU(txbName);
+            ValidationsImpl.TextNameU1(txbName);
 
-            Validations.TextNameU(txbLastName);
-            Validations.TextNameU1(txbLastName);
+            ValidationsImpl.TextNameU(txbLastName);
+            ValidationsImpl.TextNameU1(txbLastName);
 
-            Validations.TextNameU(txbSecLastName);
-            Validations.TextNameU1(txbSecLastName);
+            ValidationsImpl.TextNameU(txbSecLastName);
+            ValidationsImpl.TextNameU1(txbSecLastName);
 
-            Validations.TextEmailS(txbEmail);
-            Validations.TextEmailS1(txbEmail);
+            ValidationsImpl.TextEmailS(txbEmail);
+            ValidationsImpl.TextEmailS1(txbEmail);
 
-            Validations.TextPhoneU(txbPhone);
-            Validations.TextPhoneU1(txbPhone);
+            ValidationsImpl.TextPhoneU(txbPhone);
+            ValidationsImpl.TextPhoneU1(txbPhone);
 
             _messageQueue = snackbar.MessageQueue;
             //Validations.TextIntputDate(dpBirthdate);

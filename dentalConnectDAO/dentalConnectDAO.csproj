@@ -47,7 +47,7 @@
     <Compile Include="Implementation\QuerysImpl.cs" />
     <Compile Include="Implementation\SupplierImpl.cs" />
     <Compile Include="Implementation\UserImpl.cs" />
-    <Compile Include="Implementation\Validations.cs" />
+    <Compile Include="Implementation\ValidationsImpl.cs" />
     <Compile Include="Interfaces\IBase.cs" />
     <Compile Include="Interfaces\ICategory.cs" />
     <Compile Include="Interfaces\ISupplier.cs" />

@@ -47,24 +47,24 @@ namespace dentalConnectWPF.Functions
             diseable();
             cbCity.ItemsSource = ciudades;
 
-            Validations.TextNameS(txbName);
-            Validations.TextNameS1(txbName);
+            ValidationsImpl.TextNameS(txbName);
+            ValidationsImpl.TextNameS1(txbName);
 
-            Validations.TextPhoneS(txbPhone);
-            Validations.TextPhoneS1(txbPhone);
+            ValidationsImpl.TextPhoneS(txbPhone);
+            ValidationsImpl.TextPhoneS1(txbPhone);
 
-            Validations.TextEmailS(txbEmail);
-            Validations.TextEmailS1(txbEmail);
+            ValidationsImpl.TextEmailS(txbEmail);
+            ValidationsImpl.TextEmailS1(txbEmail);
 
-            Validations.TextWebS(txbWeb);
-            Validations.TextWebS1(txbWeb);
+            ValidationsImpl.TextWebS(txbWeb);
+            ValidationsImpl.TextWebS1(txbWeb);
 
 
-            Validations.TextStreetS(txbMain);
-            Validations.TextStreetS1(txbMain);
+            ValidationsImpl.TextStreetS(txbMain);
+            ValidationsImpl.TextStreetS1(txbMain);
 
-            Validations.TextStreetS(txbAd);
-            Validations.TextStreetS1(txbAd);
+            ValidationsImpl.TextStreetS(txbAd);
+            ValidationsImpl.TextStreetS1(txbAd);
 
             _messageQueue = snackbar.MessageQueue;
         }
@@ -269,31 +269,35 @@ namespace dentalConnectWPF.Functions
                 return;
             }
 
-            if (Regex.IsMatch(phone, @"^[0-9+]+$") && email.Contains("@"))
+            if(txbEmail.Text.Contains("@") == false)
             {
-                try
-                {
-                    supplier = new Supplier(name, phone, email, website, main, adjacent, idCity);
-                    supplierImpl = new SupplierImpl();
-                    int test = supplierImpl.Insert(supplier);
+                dgDatos.SelectedItem = null;
+                supplier = null;
 
-                    if (test > 0)
-                    {
-                        sendMessages(2, "Se inserto el registro con exito");
-                        select();
-                        diseable();
-                    }
-                }
-                catch 
-                {
-                    sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                sendMessages(1, "La dirección EMAIL debe contener un @");
+                return;
 
+            }
+            
+            try
+            {
+                supplier = new Supplier(name, phone, email, website, main, adjacent, idCity);
+                supplierImpl = new SupplierImpl();
+                int test = supplierImpl.Insert(supplier);
+
+                if (test > 0)
+                {
+                    sendMessages(2, "Se inserto el registro con exito");
+                    select();
+                    diseable();
                 }
             }
-            else
+            catch 
             {
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+
             }
+            
 
           
             dgDatos.SelectedItem = null;
@@ -369,7 +373,7 @@ namespace dentalConnectWPF.Functions
             switch (cbCity.Text)
             {
                 case "":
-                    sendMessages(1, "Verifique los datos");
+                    sendMessages(1, "Verifique que los campos contengan datos");
                     diseable();
                     return 0;
                     break;

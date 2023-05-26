@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace dentalConnectDAO.Implementation
 {
-    public static class Validations
+    public static class ValidationsImpl
     {
         #region "Category"
 
