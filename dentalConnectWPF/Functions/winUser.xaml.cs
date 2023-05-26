@@ -47,12 +47,25 @@ namespace dentalConnectWPF.Functions
             diseable();
             cbGender.ItemsSource = gender;
             cbRole.ItemsSource = role;
-            Validations.TextIntputNumbers(txbCI);
-            Validations.TextIntputNumbers(txbPhone);
-            Validations.TextIntputText(txbName);
-            Validations.TextIntputText(txbLastName);
-            Validations.TextIntputText(txbSecLastName);
-            Validations.TextIntputEmail(txbEmail);
+
+            Validations.TextCiU(txbCI);
+            Validations.TextCiU1(txbCI);
+
+            Validations.TextNameU(txbName);
+            Validations.TextNameU1(txbName);
+
+            Validations.TextNameU(txbLastName);
+            Validations.TextNameU1(txbLastName);
+
+            Validations.TextNameU(txbSecLastName);
+            Validations.TextNameU1(txbSecLastName);
+
+            Validations.TextEmailS(txbEmail);
+            Validations.TextEmailS1(txbEmail);
+
+            Validations.TextPhoneU(txbPhone);
+            Validations.TextPhoneU1(txbPhone);
+
             _messageQueue = snackbar.MessageQueue;
             //Validations.TextIntputDate(dpBirthdate);
         }

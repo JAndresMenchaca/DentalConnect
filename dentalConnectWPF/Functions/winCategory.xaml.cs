@@ -38,7 +38,15 @@ namespace dentalConnectWPF.Functions
         {
             InitializeComponent();
             diseable();
+
+
+            Validations.TextForNameCategory(txbName);
             Validations.TextIntputText(txbName);
+
+            Validations.TextForDescription(txbDescrip);
+            Validations.TextForCaracter(txbDescrip);
+
+
             _messageQueue = snackbar.MessageQueue;
         }
 

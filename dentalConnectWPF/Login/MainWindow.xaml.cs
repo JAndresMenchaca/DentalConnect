@@ -29,7 +29,6 @@ namespace dentalConnectWPF.Login
         {
             InitializeComponent();
             txtUser.Focus();
-            Validations.ApplyTextInputValidation(txtUser);
         }
 
         

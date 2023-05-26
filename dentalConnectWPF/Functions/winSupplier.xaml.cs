@@ -46,11 +46,26 @@ namespace dentalConnectWPF.Functions
             InitializeComponent();
             diseable();
             cbCity.ItemsSource = ciudades;
-            Validations.TextIntputText(txbName);
-            Validations.TextIntputEmail(txbEmail);
-            Validations.TextIntputNumbers(txbPhone);
-            Validations.TextIntputStreet(txbMain);
-            Validations.TextIntputStreet(txbAd);
+
+            Validations.TextNameS(txbName);
+            Validations.TextNameS1(txbName);
+
+            Validations.TextPhoneS(txbPhone);
+            Validations.TextPhoneS1(txbPhone);
+
+            Validations.TextEmailS(txbEmail);
+            Validations.TextEmailS1(txbEmail);
+
+            Validations.TextWebS(txbWeb);
+            Validations.TextWebS1(txbWeb);
+
+
+            Validations.TextStreetS(txbMain);
+            Validations.TextStreetS1(txbMain);
+
+            Validations.TextStreetS(txbAd);
+            Validations.TextStreetS1(txbAd);
+
             _messageQueue = snackbar.MessageQueue;
         }
         private void enable()
