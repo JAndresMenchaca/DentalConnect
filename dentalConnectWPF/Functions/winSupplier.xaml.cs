@@ -541,7 +541,7 @@ namespace dentalConnectWPF.Functions
 
         private void btn_help_name_Click(object sender, RoutedEventArgs e)
         {
-            _messageQueue.Enqueue("Solo se pueden colocar números y letras mayúsculas");
+            _messageQueue.Enqueue("Solo se pueden colocar números y letras");
         }
 
         private void btn_help_phone_Click(object sender, RoutedEventArgs e)

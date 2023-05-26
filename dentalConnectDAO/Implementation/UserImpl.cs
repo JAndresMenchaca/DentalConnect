@@ -282,5 +282,17 @@ namespace dentalConnectDAO.Implementation
             ExecuteBasicCommand(command);
 
         }
+
+        public int verifyEmail(string email)
+        {
+            query = "SELECT COUNT(*) FROM Person WHERE email = @email";
+            int count;
+
+            SqlCommand command = CreateBasicCommand(query);
+            command.Parameters.AddWithValue("@email", email);
+            count = (int)command.ExecuteScalar();
+            ExecuteBasicCommand(command); 
+            return count;
+        }
     }
 }

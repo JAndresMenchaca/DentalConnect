@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Implementation\BaseImpl.cs" />
     <Compile Include="Implementation\CategoryImpl.cs" />
+    <Compile Include="Implementation\QuerysImpl.cs" />
     <Compile Include="Implementation\SupplierImpl.cs" />
     <Compile Include="Implementation\UserImpl.cs" />
     <Compile Include="Implementation\Validations.cs" />

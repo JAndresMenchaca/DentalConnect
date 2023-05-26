@@ -176,30 +176,78 @@ namespace dentalConnectWPF.Functions
                         break;
                 }
 
+                if(txbPhone.Text.Length != 8)
+                {
+                    sendMessages(1, "Debe ingresar un número de teléfono valido (8 números)");
+                    return;
+                }
+
+                if(txbEmail.Text.Contains("@") == false)
+                {
+                    sendMessages(1, "La dirección EMAIL dede contener un @");
+                    return;
+                }
+
+
+                if (verifyDate(dateTime))
+                {
+                    switch (opt)
+                    {
+                        case 1:
+                            insertData(name, ci, lastName, secondLastName, dateTime, phone, email, role, gender, username, password);
+                            break;
+                        case 2:
+                            updateData(name, ci, lastName, secondLastName, dateTime, phone, email, role, gender);
+                            break;
+                    }
+                }
+             
+
+
                 dgDatos.IsEnabled = true;
                 diseable();
-                switch (opt)
-                {
-                    case 1:
-                        insertData(name, ci, lastName, secondLastName, dateTime, phone, email, role, gender, username, password);
-                        break;
-                    case 2:
-                        updateData(name, ci, lastName, secondLastName, dateTime, phone, email, role, gender);
-                        break;
-                }
             }
             catch
             {
-
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
             }
         }
+
+        private bool verifyDate(DateTime dateTime)
+        {
+            DateTime currentDate = DateTime.Now;
+
+            TimeSpan duracion = currentDate.Subtract(dateTime);
+            int diferenciaEnAnios = (int)(duracion.TotalDays / 365);
+
+
+            if (diferenciaEnAnios >= 18 && diferenciaEnAnios <= 85)
+            {
+
+                return true;
+            }
+            else if (currentDate < dateTime)
+            {
+                sendMessages(1, "Debe ingresar una fecha valida");
+            }
+            else if (diferenciaEnAnios < 18)
+            {
+                sendMessages(1, "Debe ser mayor a 18 años");
+            }
+            else if (diferenciaEnAnios > 85)
+            {
+                sendMessages(1, "Debe ser menor a 85 años");
+            }
+            return false;
+        }
+
+
         private void insertData(string name, string ci, string lastName, string secondLastName, DateTime date, string phone, string email, string role, char gender, string username, string password)
         {
             
             if (name == "" || ci == "" || lastName == "" || date == DateTime.MinValue || phone == "" || email == "" || role == "" || gender == ' ')
             {
-                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique que los campos no esten vacios");
                 return;
             }
             userImpl = new UserImpl();
@@ -209,9 +257,35 @@ namespace dentalConnectWPF.Functions
             password = GenerarContrasenaAleatoria();
 
 
+           QuerysImpl query = new QuerysImpl();
+
+            int count = query.verifyEmail(email);
+            if(count > 0)
+            {
+                sendMessages(1, "El EMAIL que ingreso ya existe en la Base de Datos");
+                dgDatos.SelectedItem = null;
+                user = null;
+                return;
+            }
+            int count1 = query.verifyNumber(phone);
+            if (count1 > 0)
+            {
+                sendMessages(1, "El NUMERO que ingreso ya existe en la Base de Datos");
+                dgDatos.SelectedItem = null;
+                user = null;
+                return;
+            }
+
+
             btnSave.IsEnabled= false;
 
-            sendEmail(email, username, password, name, lastName, role);
+            int band = sendEmail(email, username, password, name, lastName, role);
+
+            if (band == 0)
+            {
+                sendMessages(1, "Error al enviar el correo electrónico: Verifique su correo o contacte al Administrador");
+                return;
+            }
 
             btnSave.IsEnabled = true;
 
@@ -221,6 +295,8 @@ namespace dentalConnectWPF.Functions
 
                 userImpl = new UserImpl();
                 int test = userImpl.Insert(user);
+
+
                 if (test > 0)
                 {
                     sendMessages(2, "Se inserto el registro con exito");
@@ -236,12 +312,14 @@ namespace dentalConnectWPF.Functions
             dgDatos.SelectedItem = null;
             user = null;
         }
+
+   
         private void updateData(string name, string ci, string lastName, string secondLastName, DateTime date, string phone, string email, string role, char gender)
         {
             txtMessage.Text = "";
             try
             {
-                if (name == "" || ci == "" || secondLastName == "" || date == DateTime.MinValue || phone == "" || email == "" || role == ""|| gender == ' ')
+                if (name == "" || ci == "" || lastName == "" || date == DateTime.MinValue || phone == "" || email == "" || role == ""|| gender == ' ')
                 {
                     sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
                     return;
@@ -257,8 +335,32 @@ namespace dentalConnectWPF.Functions
                 user.Role= role;
                 user.Gender=gender;
 
+
+                QuerysImpl query = new QuerysImpl();
+
+                int count = query.verifyEmailUpdate(email, user.Id);
+                if (count > 0)
+                {
+                    MessageBox.Show(Session.SessionID + "");
+                    sendMessages(1, "El EMAIL que ingreso ya existe en la Base de Datos");
+                    dgDatos.SelectedItem = null;
+                    user = null;
+                    return;
+                }
+                int count1 = query.verifyNumberUpdate(phone, user.Id);
+                if (count1 > 0)
+                {
+                    sendMessages(1, "El NÚMERO que ingreso ya existe en la Base de Datos");
+                    dgDatos.SelectedItem = null;
+                    user = null;
+                    return;
+                }
+
+
+
                 userImpl = new UserImpl();
                 int test = userImpl.Update(user);
+
 
                 if (test > 0)
                 {
@@ -519,7 +621,7 @@ namespace dentalConnectWPF.Functions
             return new string(contrasenaArray);
         }
 
-        public void sendEmail(string email, string username, string password, string nombre, string apellido, string rol)
+        public int sendEmail(string email, string username, string password, string nombre, string apellido, string rol)
         {
             try
             {
@@ -545,11 +647,11 @@ namespace dentalConnectWPF.Functions
 
                 // Enviar el correo electrónico
                 clienteSmtp.Send(correo);
-
+                return 1;
             }
-            catch (Exception ex)
+            catch 
             {
-                sendMessages(1, "Error al enviar el correo electrónico: Verifique su correo o contacte al Administrador");
+                return 0;
             }
         }
 
@@ -575,7 +677,7 @@ namespace dentalConnectWPF.Functions
 
         private void btn_help_date_Click(object sender, RoutedEventArgs e)
         {
-            _messageQueue.Enqueue("Solo se puede ingresar su edad (mayor a 18)");
+            _messageQueue.Enqueue("Solo se puede ingresar una edad entre 18-85 años");
         }
 
         private void btn_help_email_Click(object sender, RoutedEventArgs e)

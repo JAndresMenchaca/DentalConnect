@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
+using System.Collections;
+using System.Data.SqlClient;
 
 namespace dentalConnectDAO.Implementation
 {
@@ -15,11 +17,11 @@ namespace dentalConnectDAO.Implementation
         //Name
 
         private static readonly Regex regexText = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜ ]+");
-        private static readonly Regex regexNameCategory = new Regex("^(?!.*  )[a-zA-Záéíóúü ]{0,50}$");
+        private static readonly Regex regexNameCategory = new Regex("^(?!.*  )[a-zA-ZáéíóúüÉÁÚÍÓÜ ]{0,50}$");
 
         //Description
-        private static readonly Regex regexCaracter = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜ.,!¡/?¿()$%:; ]+");
-        private static readonly Regex regexDescription = new Regex("^(?!.*  )[a-zA-Z0-9.,!¡/?¿()$%áéíóúü ]{0,80}$");
+        private static readonly Regex regexCaracter = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜ.,!¡/?¿()$%:;0-9 ]+");
+        private static readonly Regex regexDescription = new Regex("^(?!.*  )[a-zA-Z0-9.,!¡/?¿()$%áéíóúü0-9 ]{0,80}$");
 
         #endregion
 
@@ -550,5 +552,7 @@ namespace dentalConnectDAO.Implementation
         {
             return text.Replace("  ", " ");
         }
+
+
     }
 }

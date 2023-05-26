@@ -14,6 +14,7 @@ namespace dentalConnectDAO.Interfaces
         User Get(byte id);
         bool Verify(string nameUser);
         int change(string password);
+        int verifyEmail(string email);
 
     }
 }

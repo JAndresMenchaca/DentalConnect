@@ -171,3 +171,6 @@ UPDATE Person
 	                        userID=@userId
                         WHERE
                             id = @userId
+
+
+SELECT COUNT(*) FROM Person p INNER JOIN [User] u ON u.id = p.id WHERE p.email = 'joseandres190503@gmail.com' AND u.id != 33 AND u.status = 1

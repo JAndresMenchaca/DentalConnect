@@ -148,8 +148,8 @@
                 <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="688,86,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44"/>
                 <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="688,150,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44"/>
                 <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="688,212,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24"/>
-                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="116,275,169,68" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
-                <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="265,84,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" Height="50" FontSize="22"/>
+                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="51,301,162,68" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
+                <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="51,232,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="580" Height="50" FontSize="22"/>
                 <Button x:Name="btnMenu"                          
                     BorderThickness="0"
                     Content="&lt;-"
