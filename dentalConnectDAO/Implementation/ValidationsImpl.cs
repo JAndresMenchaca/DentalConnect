@@ -49,8 +49,8 @@ namespace dentalConnectDAO.Implementation
         #region"User"
 
         //Ci
-        private static readonly Regex regexCiUser = new Regex("[^A-Z0-9]+");
-        private static readonly Regex regexCiUser1 = new Regex("^(?!.*  )[A-Z0-9]{0,15}$");
+        private static readonly Regex regexCiUser = new Regex("[^A-Z0-9-]+");
+        private static readonly Regex regexCiUser1 = new Regex("^(?!.*  )[A-Z0-9-]{0,15}$");
         //Nombre y Primer y Segundo Apellido
         private static readonly Regex regexNameUser = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]+");
         private static readonly Regex regexNameUser1 = new Regex("^(?!.*  )[a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]{0,60}$");

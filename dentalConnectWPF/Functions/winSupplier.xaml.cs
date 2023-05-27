@@ -68,6 +68,16 @@ namespace dentalConnectWPF.Functions
 
             _messageQueue = snackbar.MessageQueue;
         }
+        private string DeleteSpace(string texto)
+        {
+            if (!string.IsNullOrEmpty(texto) && texto[0] == ' ')
+            {
+                // Eliminar el primer carácter (espacio)
+                texto = texto.Substring(1);
+            }
+
+            return texto;
+        }
         private void enable()
         {
             btnInsert.IsEnabled = false;
@@ -111,12 +121,14 @@ namespace dentalConnectWPF.Functions
             txbWeb.IsEnabled   = false;
             cbCity.IsEnabled   = false;
             txbMain.IsEnabled  = false;
-            txbAd.IsEnabled    = false;
-
-
-            
+            txbAd.IsEnabled    = false;          
         }
-        private void clean()
+        private void diseable2()
+        {
+            dgDatos.IsEnabled = false;
+            enable();
+        }
+            private void clean()
         {
             txbName.Text = "";
             txbPhone.Text = "";
@@ -184,6 +196,11 @@ namespace dentalConnectWPF.Functions
             string main = txbMain.Text;
             string adja = txbAd.Text;
 
+            name = DeleteSpace(name);
+            txbName.Text = name;
+            phone = DeleteSpace(phone);
+            txbPhone.Text = phone;
+
            
             switch (opt)
             {
@@ -194,7 +211,6 @@ namespace dentalConnectWPF.Functions
                     updateData(name, phone, email, web, main, adja, city);
                     break;
             }
-            diseable();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -231,20 +247,20 @@ namespace dentalConnectWPF.Functions
                     catch
                     {
                         sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
-                        diseable();
+                        diseable2();
                     }
                 }
                 else
                 {
                     sendMessages(2, "Se cancelo la accion de ELIMINAR el registro");
                     select();
-                    diseable();
+                    diseable2();
                 }
             }
             else
             {
                 sendMessages(1, "Debe seleccionar un registro");
-                diseable();
+                diseable2();
             }
 
             dgDatos.SelectedItem = null;
@@ -266,6 +282,7 @@ namespace dentalConnectWPF.Functions
             if (name == "" || phone == "" || email == "" || main == "")
             {
                 sendMessages(1, "Verifique que los campos contengan datos");
+                diseable2();
                 return;
             }
 
@@ -275,6 +292,7 @@ namespace dentalConnectWPF.Functions
                 supplier = null;
 
                 sendMessages(1, "La dirección EMAIL debe contener un @");
+                diseable2();
                 return;
 
             }
@@ -284,6 +302,7 @@ namespace dentalConnectWPF.Functions
                 supplier = null;
 
                 sendMessages(1, "El número de contacto debe contener minimo 8 números");
+                diseable2();
                 return;
 
             }
@@ -304,7 +323,7 @@ namespace dentalConnectWPF.Functions
             catch 
             {
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
-
+                diseable2();
             }
             
 
@@ -397,7 +416,7 @@ namespace dentalConnectWPF.Functions
             {
                 case "":
                     sendMessages(1, "Verifique que los campos contengan datos");
-                    diseable();
+                    diseable2();
                     return 0;
                     break;
                 case "Cochabamba":

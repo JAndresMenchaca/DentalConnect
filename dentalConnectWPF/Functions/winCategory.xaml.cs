@@ -90,6 +90,12 @@ namespace dentalConnectWPF.Functions
             txbName.Text = "";
             txbDescrip.Text = "";
         }
+        private void diseable2()
+        {
+            dgDatos.IsEnabled = false;
+            enable();
+        }
+
         private void sendMessages(int opt, string message)
         {
             if (opt == 1)
@@ -119,6 +125,16 @@ namespace dentalConnectWPF.Functions
             clean();
             opt = 1;
         }
+        private string DeleteSpace(string texto)
+        {
+            if (!string.IsNullOrEmpty(texto) && texto[0] == ' ')
+            {
+                // Eliminar el primer carácter (espacio)
+                texto = texto.Substring(1);
+            }
+
+            return texto;
+        }
 
 
         private void insertData(string name, string descrip)
@@ -127,6 +143,7 @@ namespace dentalConnectWPF.Functions
             if (name == "")
             {
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                diseable2();
                 return;
             }
 
@@ -145,6 +162,7 @@ namespace dentalConnectWPF.Functions
             catch
             {
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                diseable2();
             }
             dgDatos.SelectedItem = null;
             category = null;
@@ -157,6 +175,7 @@ namespace dentalConnectWPF.Functions
                 if (name == "")
                 {
                     sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                    diseable2();
                     return;
                 }
 
@@ -176,6 +195,7 @@ namespace dentalConnectWPF.Functions
             catch
             {
                 sendMessages(1, "Hubo un error al MODIFICAR el registro, contacte al administrador");
+                diseable2();
             }
             dgDatos.SelectedItem = null;
             category = null;
@@ -184,6 +204,12 @@ namespace dentalConnectWPF.Functions
         {
             string name = txbName.Text;
             string descrip = txbDescrip.Text;
+
+            name = DeleteSpace(name);
+            txbName.Text = name;
+            descrip = DeleteSpace(descrip);
+            txbDescrip.Text = descrip;
+
             dgDatos.IsEnabled = true;
             diseable();
             switch (opt)

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Andre\OneDrive\Escritorio\DentalConnect\dentalConnectWPF\obj\Debug\
+C:\Users\USUARIO\Desktop\proyect\DentalConnect\dentalConnectWPF\obj\Debug\
 dentalConnectWPF
 none
 false
 DEBUG;TRACE
-C:\Users\Andre\OneDrive\Escritorio\DentalConnect\dentalConnectWPF\App.xaml
+C:\Users\USUARIO\Desktop\proyect\DentalConnect\dentalConnectWPF\App.xaml
 91368265373
 
-14-1831114521
-18-674193265
+13250974097
+181153300693
 Login\MainWindow.xaml;Functions\winCategory.xaml;Tools\winDelete.xaml;UserWindows\winInventoryManager.xaml;UserWindows\winMenu.xaml;Tools\winPassword.xaml;UserWindows\winSalesManager.xaml;Functions\winSupplier.xaml;Functions\winUser.xaml;
 
-True
+False
 
