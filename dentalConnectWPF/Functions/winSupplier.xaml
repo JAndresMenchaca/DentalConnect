@@ -128,13 +128,13 @@
                                FontSize="36"
                                FontWeight="Bold"
                                FontFamily="Montserrat"
-                               HorizontalAlignment="Left" Margin="114,8,0,665" Width="272" Grid.Row="1"/>
+                               HorizontalAlignment="Left" Margin="114,8,0,665" Width="318" Grid.Row="1"/>
                 <TextBlock Text="Nombre:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="51,118,0,566" Width="121" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="45,118,0,566" Width="132" Grid.Row="1"/>
                 <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="51,381,68,27" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
                 <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="51,334,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="818" Height="28" FontSize="20"/>
                 <Button x:Name="btnMenu"                          
@@ -180,31 +180,31 @@
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="51,170,0,514" Width="121" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="45,170,0,514" Width="136" Grid.Row="1"/>
                 <TextBlock Text="Email:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="51,223,0,461" Width="121" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="45,223,0,461" Width="121" Grid.Row="1"/>
                 <TextBlock Text="Sitio Web:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="51,276,0,408" Width="129" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="45,276,0,408" Width="148" Grid.Row="1"/>
                 <TextBlock Text="Calle Adyacente:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="468,226,0,458" Width="216" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="468,226,0,458" Width="239" Grid.Row="1"/>
                 <TextBlock Text="Calle Principal:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="470,170,0,514" Width="188" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="470,170,0,514" Width="212" Grid.Row="1"/>
                 <TextBlock Text="Ciudad:"
                     Foreground="#32403B"
                     FontSize="28"
@@ -214,12 +214,12 @@
                 <TextBox x:Name="txbPhone" HorizontalAlignment="Left" Margin="193,154,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
                 <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Margin="193,209,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="3" FontWeight="Medium"/>
                 <TextBox x:Name="txbWeb" HorizontalAlignment="Left" Margin="193,267,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="4" FontWeight="Medium"/>
-                <TextBox x:Name="txbMain" HorizontalAlignment="Left" Margin="691,154,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="241" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="6" FontWeight="Medium"/>
-                <TextBox x:Name="txbAd" HorizontalAlignment="Left" Margin="690,214,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="242" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="7" FontWeight="Medium"/>
-                <ComboBox x:Name="cbCity" HorizontalAlignment="Left" Margin="691,103,0,0" Grid.Row="1" VerticalAlignment="Top" Width="241" FontSize="24" Panel.ZIndex="5" Height="43"/>
-                <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="1018,112,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44"/>
-                <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="1018,176,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44"/>
-                <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="1018,238,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24"/>
+                <TextBox x:Name="txbMain" HorizontalAlignment="Left" Margin="712,154,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="241" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="6" FontWeight="Medium"/>
+                <TextBox x:Name="txbAd" HorizontalAlignment="Left" Margin="712,214,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="242" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="7" FontWeight="Medium"/>
+                <ComboBox x:Name="cbCity" HorizontalAlignment="Left" Margin="712,103,0,0" Grid.Row="1" VerticalAlignment="Top" Width="241" FontSize="24" Panel.ZIndex="5" Height="43"/>
+                <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="1041,112,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44"/>
+                <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="1041,176,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44"/>
+                <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="1041,238,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24"/>
                 <Button x:Name="btn_help_name" Content="" HorizontalAlignment="Left" Margin="429,121,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_name_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
@@ -240,18 +240,18 @@
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_main" Content="" HorizontalAlignment="Left" Margin="949,172,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_main_Click">
+                <Button x:Name="btn_help_main" Content="" HorizontalAlignment="Left" Margin="970,172,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_main_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_ad" Content="" HorizontalAlignment="Left" Margin="949,232,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_ad_Click">
+                <Button x:Name="btn_help_ad" Content="" HorizontalAlignment="Left" Margin="971,232,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_ad_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
 
-                <materialDesign:Snackbar x:Name="snackbar" MessageQueue="{materialDesign:MessageQueue}" Height="90" VerticalAlignment="Top" Width="590" Margin="436,10,0,0" HorizontalAlignment="Left" FontSize="18" FontWeight="Normal" Grid.RowSpan="2" />
+                <materialDesign:Snackbar x:Name="snackbar" MessageQueue="{materialDesign:MessageQueue}" Height="90" VerticalAlignment="Top" Width="590" Margin="460,10,0,0" HorizontalAlignment="Left" FontSize="18" FontWeight="Normal" Grid.RowSpan="2" />
                 <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="193,108,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="216" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
 
             </Grid>

@@ -207,9 +207,10 @@ namespace dentalConnectWPF.Functions
                 dgDatos.IsEnabled = true;
                 diseable();
             }
-            catch
+            catch (Exception ex)
             {
-                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos 3434");
+                MessageBox.Show(ex+"");
             }
         }
 
@@ -228,7 +229,7 @@ namespace dentalConnectWPF.Functions
             }
             else if (currentDate < dateTime)
             {
-                sendMessages(1, "Debe ingresar una fecha valida");
+                sendMessages(1, "Debe ingresar una fecha anterior a la actual");
             }
             else if (diferenciaEnAnios < 18)
             {

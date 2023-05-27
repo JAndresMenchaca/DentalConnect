@@ -130,21 +130,21 @@
                                FontSize="36"
                                FontWeight="Bold"
                                FontFamily="Montserrat"
-                               HorizontalAlignment="Left" Margin="107,7,0,673" Width="240" Grid.Row="1"/>
+                               HorizontalAlignment="Left" Margin="107,7,0,673" Width="262" Grid.Row="1"/>
                 <TextBlock Text="Nombre:"
                     Foreground="#32403B"
                     FontSize="36"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="51,91,0,582" Width="172" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="44,90,0,583" Width="172" Grid.Row="1"/>
                 <TextBlock Text="Descripción:"
                     Foreground="#32403B"
                     FontSize="36"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="51,161,0,498" Width="210" Grid.Row="1"/>
-                <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="275,93,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" Height="38" FontSize="24" Foreground="White" PreviewTextInput="txbName_PreviewTextInput"/>
-                <TextBox x:Name="txbDescrip" HorizontalAlignment="Left" Margin="275,161,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" Height="38" FontSize="24" Foreground="White"/>
+                    HorizontalAlignment="Left" Margin="44,161,0,498" Width="226" Grid.Row="1"/>
+                <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="281,93,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" Height="38" FontSize="24" Foreground="White" PreviewTextInput="txbName_PreviewTextInput"/>
+                <TextBox x:Name="txbDescrip" HorizontalAlignment="Left" Margin="281,161,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" Height="38" FontSize="24" Foreground="White"/>
                 <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="688,86,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44"/>
                 <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="688,150,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44"/>
                 <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="688,212,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24"/>
@@ -181,7 +181,7 @@
                     </Button.Template>
                 </Button>
 
-                <materialDesign:Snackbar x:Name="snackbar" MessageQueue="{materialDesign:MessageQueue}" Height="67" VerticalAlignment="Top" Width="607" Margin="347,22,0,0" HorizontalAlignment="Left" FontSize="18" FontWeight="Normal" Grid.RowSpan="2" />
+                <materialDesign:Snackbar x:Name="snackbar" MessageQueue="{materialDesign:MessageQueue}" Height="67" VerticalAlignment="Top" Width="607" Margin="369,24,0,0" HorizontalAlignment="Left" FontSize="18" FontWeight="Normal" Grid.RowSpan="2" />
                 <Button x:Name="btn_help_name" Content="" HorizontalAlignment="Left" Margin="533,102,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_name_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>

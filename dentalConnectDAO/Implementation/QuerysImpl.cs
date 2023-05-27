@@ -13,7 +13,8 @@ namespace dentalConnectDAO.Implementation
         public int verifyEmail(string email)
         {
             // Establecer la conexión a la base de datos
-            string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+            //string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+            string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";
             using (var conexion = new SqlConnection(connectionString))
             {
                 // Abrir la conexión
@@ -41,7 +42,8 @@ namespace dentalConnectDAO.Implementation
         public int verifyEmailUpdate(string email, byte id)
         {
             // Establecer la conexión a la base de datos
-            string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+            //string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+            string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";
             using (var conexion = new SqlConnection(connectionString))
             {
                 // Abrir la conexión
@@ -70,7 +72,8 @@ namespace dentalConnectDAO.Implementation
         public int verifyNumber(string phone)
         {
             // Establecer la conexión a la base de datos
-            string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+            //string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+            string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";
             using (var conexion = new SqlConnection(connectionString))
             {
                 // Abrir la conexión
@@ -98,7 +101,8 @@ namespace dentalConnectDAO.Implementation
         public int verifyNumberUpdate(string phone, byte id)
         {
             // Establecer la conexión a la base de datos
-            string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+            //string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+            string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";
             using (var conexion = new SqlConnection(connectionString))
             {
                 // Abrir la conexión

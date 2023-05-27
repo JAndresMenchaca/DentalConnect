@@ -265,7 +265,7 @@ namespace dentalConnectWPF.Functions
         {
             if (name == "" || phone == "" || email == "" || main == "")
             {
-                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
+                sendMessages(1, "Verifique que los campos contengan datos");
                 return;
             }
 
@@ -278,7 +278,16 @@ namespace dentalConnectWPF.Functions
                 return;
 
             }
-            
+            if (txbPhone.Text.Length < 8)
+            {
+                dgDatos.SelectedItem = null;
+                supplier = null;
+
+                sendMessages(1, "El número de contacto debe contener minimo 8 números");
+                return;
+
+            }
+
             try
             {
                 supplier = new Supplier(name, phone, email, website, main, adjacent, idCity);
@@ -305,9 +314,7 @@ namespace dentalConnectWPF.Functions
         }
         private void updateData(string name, string phone, string email, string website, string main, string adjacent, int idCity)
         {
-            if (Regex.IsMatch(phone, @"^[0-9+]+$") && email.Contains("@"))
-            {
-                try
+              try
                 {
                     if (name == "" || phone == "" || email == "" || main == "")
                     {
@@ -315,7 +322,27 @@ namespace dentalConnectWPF.Functions
                         return;
                     }
 
-                    supplier.Name = name;
+                if (txbEmail.Text.Contains("@") == false)
+                {
+                    dgDatos.SelectedItem = null;
+                    supplier = null;
+
+                    sendMessages(1, "La dirección EMAIL debe contener un @");
+                    return;
+
+                }
+                if (txbPhone.Text.Length < 8)
+                {
+                    dgDatos.SelectedItem = null;
+                    supplier = null;
+
+                    sendMessages(1, "El número de contacto debe contener minimo 8 números");
+                    return;
+
+                }
+
+
+                supplier.Name = name;
                     supplier.Phone = phone;
                     supplier.Email = email;
                     supplier.Website = website;
@@ -338,11 +365,7 @@ namespace dentalConnectWPF.Functions
                 {
                     sendMessages(1, "Hubo un error al MODIFICAR el registro, contacte al administrador");
                 }
-            }
-            else
-            {
-                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
-            }
+            
 
             dgDatos.SelectedItem = null;
             supplier = null;

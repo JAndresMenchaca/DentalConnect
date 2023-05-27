@@ -250,6 +250,9 @@
   <ItemGroup>
     <Resource Include="Logos\help.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Functions\user1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -16,19 +16,19 @@ namespace dentalConnectDAO.Implementation
 
         //Name
 
-        private static readonly Regex regexText = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜ ]+");
-        private static readonly Regex regexNameCategory = new Regex("^(?!.*  )[a-zA-ZáéíóúüÉÁÚÍÓÜ ]{0,50}$");
+        private static readonly Regex regexText = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]+");
+        private static readonly Regex regexNameCategory = new Regex("^(?!.*  )[a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]{0,50}$");
 
         //Description
-        private static readonly Regex regexCaracter = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜ.,!¡/?¿()$%:;0-9 ]+");
-        private static readonly Regex regexDescription = new Regex("^(?!.*  )[a-zA-Z0-9.,!¡/?¿()$%áéíóúü0-9 ]{0,80}$");
+        private static readonly Regex regexCaracter = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜñÑ.,!¡/?¿()$%:;0-9 ]+");
+        private static readonly Regex regexDescription = new Regex("^(?!.*  )[a-zA-Z0-9.,!¡/?¿()$%áéíóúüñÑ0-9 ]{0,80}$");
 
         #endregion
 
         #region "Supplier"
         //Nombre
-        private static readonly Regex regexNameSupplier = new Regex("[^a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜ ]+");
-        private static readonly Regex regexNameSupplier1 = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜ ]{0,50}$");
+        private static readonly Regex regexNameSupplier = new Regex("[^a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ ]+");
+        private static readonly Regex regexNameSupplier1 = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ ]{0,50}$");
         //Telefono
         private static readonly Regex regexPhoneSupplier = new Regex("[^0-9+ -]+");
         private static readonly Regex regexPhoneSupplier1 = new Regex("^(?!.*  )[^0-9+ -]{0,20}$");
@@ -41,8 +41,8 @@ namespace dentalConnectDAO.Implementation
         private static readonly Regex regexWebSupplier1 = new Regex("^(?!.*  )[^a-zA-Z0-9.-]{0,60}$");
         //Calle Principal y Calle Adyacente
 
-        private static readonly Regex regexStreetSupplier = new Regex("[^a-zA-Z0-9 .#/-]+");
-        private static readonly Regex regexStreetSupplier1 = new Regex("^(?!.*  )[^a-zA-Z0-9 .#/-]{0,30}$");
+        private static readonly Regex regexStreetSupplier = new Regex("[^a-zA-Z0-9ñÑ .#/-]+");
+        private static readonly Regex regexStreetSupplier1 = new Regex("^(?!.*  )[^a-zA-Z0-9ñÑ .#/-]{0,30}$");
 
         #endregion
 
@@ -52,8 +52,8 @@ namespace dentalConnectDAO.Implementation
         private static readonly Regex regexCiUser = new Regex("[^A-Z0-9]+");
         private static readonly Regex regexCiUser1 = new Regex("^(?!.*  )[A-Z0-9]{0,15}$");
         //Nombre y Primer y Segundo Apellido
-        private static readonly Regex regexNameUser = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜ ]+");
-        private static readonly Regex regexNameUser1 = new Regex("^(?!.*  )[a-zA-ZáéíóúüÉÁÚÍÓÜ ]{0,60}$");
+        private static readonly Regex regexNameUser = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]+");
+        private static readonly Regex regexNameUser1 = new Regex("^(?!.*  )[a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]{0,60}$");
         //Email
         //usamos la misma que en Supplier
         //Telefono
