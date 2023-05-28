@@ -63,6 +63,17 @@ namespace dentalConnectDAO.Implementation
 
         #endregion
 
+        #region Products
+        //Nombre
+
+        //Descrip
+
+        //Precio
+
+        //Stock
+
+        #endregion
+
         #region "methodsUser"
         public static void TextPhoneU1(TextBox textBox)
         {

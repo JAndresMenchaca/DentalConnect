@@ -5,14 +5,15 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace dentalConnectDAO.Implementation
 {
     public class QuerysImpl
     {
-        //public string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+        public string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
         //public string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";   
-        public string connectionString = @"Server=DESKTOP-8LUHPUR;Database=dbDentalConnect;User Id=sa;Password=Mzhyde;";
+        //public string connectionString = @"Server=DESKTOP-8LUHPUR;Database=dbDentalConnect;User Id=sa;Password=Mzhyde;";
         public int verifyEmail(string email)
         {
             // Establecer la conexión a la base de datos
@@ -120,6 +121,75 @@ namespace dentalConnectDAO.Implementation
                 return count;
             }
 
+
+        }
+        public List<ComboBoxItem> comboCateg()
+        {
+            List<ComboBoxItem> items = new List<ComboBoxItem>();
+
+            string consulta = @"SELECT name, id
+                                FROM Category
+                                WHERE status = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string nombre = reader.GetString(0);
+                        byte id = reader.GetByte(1);
+
+                        ComboBoxItem item = new ComboBoxItem
+                        {
+                            Content = nombre,
+                            Tag = id
+                        };
+
+                        items.Add(item);
+                        //comboBox.Items.Add(item);
+                    }
+                }
+            }
+            return items;
+
+        }
+
+        public List<ComboBoxItem> comboSuppl()
+        {
+            List<ComboBoxItem> items = new List<ComboBoxItem>();
+
+            string consulta = @"SELECT name, id
+                                FROM Supplier
+                                WHERE status = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string nombre = reader.GetString(0);
+                        byte id = reader.GetByte(1);
+
+                        ComboBoxItem item = new ComboBoxItem
+                        {
+                            Content = nombre,
+                            Tag = id
+                        };
+
+                        items.Add(item);
+                        //comboBox.Items.Add(item);
+                    }
+                }
+            }
+            return items;
 
         }
     }

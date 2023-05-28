@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\59162\Desktop\BdD3\DentalConnect\dentalConnectWPF\App.xaml
-91368265373
+101415966233
 
-14-1831114521
+141913281037
 182101078837
-Login\MainWindow.xaml;Functions\winCategory.xaml;Tools\winDelete.xaml;UserWindows\winInventoryManager.xaml;UserWindows\winMenu.xaml;Tools\winPassword.xaml;UserWindows\winSalesManager.xaml;Functions\winSupplier.xaml;Functions\winUser.xaml;
+Functions\winProduct.xaml;Login\MainWindow.xaml;Functions\winCategory.xaml;Tools\winDelete.xaml;UserWindows\winInventoryManager.xaml;UserWindows\winMenu.xaml;Tools\winPassword.xaml;UserWindows\winSalesManager.xaml;Functions\winSupplier.xaml;Functions\winUser.xaml;
 
-True
+False
 

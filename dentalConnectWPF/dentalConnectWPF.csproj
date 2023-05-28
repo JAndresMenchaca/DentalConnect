@@ -70,6 +70,9 @@
     <Compile Include="Functions\winCategory.xaml.cs">
       <DependentUpon>winCategory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Functions\winProduct.xaml.cs">
+      <DependentUpon>winProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\winDelete.xaml.cs">
       <DependentUpon>winDelete.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,10 @@
     <Compile Include="Functions\winUser.xaml.cs">
       <DependentUpon>winUser.xaml</DependentUpon>
     </Compile>
+    <Page Include="Functions\winProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -252,6 +259,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Functions\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logos\producto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\dentalConnectDAO\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

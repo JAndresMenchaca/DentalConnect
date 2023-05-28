@@ -72,6 +72,13 @@ namespace dentalConnectWPF.UserWindows
             pass.ShowDialog();
 
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Functions.winProduct product = new Functions.winProduct();
+            product.Show();
+            this.Close();
+        }
     }
 }
 
