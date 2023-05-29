@@ -167,6 +167,7 @@ namespace dentalConnectWPF.Functions
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
+
             cbCateg.SelectedItem = null;
             cbSupplier.SelectedItem = null;
             enable();
@@ -223,13 +224,13 @@ namespace dentalConnectWPF.Functions
 
            
 
-            if (idCateg == 0)
+            if (cbCateg.SelectedItem == null)
             {
                 sendMessages(1, "Debe elegir una Categoria");
                 diseable2();
                 return;
             }
-            if (idSuppl == 0)
+            if (cbSupplier.SelectedItem == null)
             {
                 sendMessages(1, "Debe elegir un Proveedor");
                 diseable2();
@@ -371,7 +372,7 @@ namespace dentalConnectWPF.Functions
 
         private void btn_help_desc_Click(object sender, RoutedEventArgs e)
         {
-            _messageQueue.Enqueue("Se pueden colocar letras, numeros y algunos caracteres especiales");
+            _messageQueue.Enqueue("Se pueden colocar letras, numeros.");
         }
 
         private void btn_help_price_Click(object sender, RoutedEventArgs e)

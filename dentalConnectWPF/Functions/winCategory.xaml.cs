@@ -440,7 +440,7 @@ namespace dentalConnectWPF.Functions
 
         private void btn_help_Descr_Click(object sender, RoutedEventArgs e)
         {
-            _messageQueue.Enqueue("Se pueden colocar letras, numeros y algunos caracteres especiales");
+            _messageQueue.Enqueue("Se pueden colocar letras, numeros");
         }
     }
 }
