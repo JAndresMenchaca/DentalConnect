@@ -201,13 +201,38 @@ namespace dentalConnectWPF.Functions
             string phone = txbPhone.Text;
             string email = txbEmail.Text;
             string web = txbWeb.Text;
-
-            int city = selectCity();
-            if (city == 0)
-                return;
-
             string main = txbMain.Text;
             string adja = txbAd.Text;
+
+            int city = selectCity();
+
+            var campos = new List<(string, string)>
+            {
+                ("NOMBRE", name),
+                ("TELEFONO", phone),
+                ("EMAIL", email),
+                ("SITIO WEB", web),
+                ("CIUDAD", cbCity.SelectedItem?.ToString()), // Obtiene el valor seleccionado del ComboBox
+                ("CALLE PRINCIPAL", main)
+            };
+
+            foreach (var campo in campos)
+            {
+                if (string.IsNullOrEmpty(campo.Item2))
+                {
+                    sendMessages(1, $"Verifique los datos de entrada en el campo {campo.Item1}");
+                    diseable2();
+                    return;
+                }
+            }
+
+            if (string.IsNullOrEmpty(campos.Find(c => c.Item1 == "CIUDAD").Item2))
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo CIUDAD");
+                diseable2();
+                return;
+            }
+
 
             name = DeleteSpace(name);
             txbName.Text = name;

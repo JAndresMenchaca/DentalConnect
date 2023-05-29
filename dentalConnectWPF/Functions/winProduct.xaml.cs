@@ -184,6 +184,21 @@ namespace dentalConnectWPF.Functions
             string name = txbName.Text;
             string descrip = txbDesc.Text;
             double price;
+            int stock;
+
+            if(name == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo NOMBRE");
+                diseable2();
+                return;
+            }
+            if (descrip == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo DESCRIPCIÓN");
+                diseable2();
+                return;
+            }
+
             try
             {
                 price = double.Parse(txbPrice.Text);
@@ -195,7 +210,18 @@ namespace dentalConnectWPF.Functions
                 return;
             }
 
-            int stock = int.Parse(txbStock.Text);
+            try
+            {
+                stock = int.Parse(txbStock.Text);
+            }
+            catch
+            {
+                sendMessages(1, "Verifique que los datos de entrada en el campo STOCK sean numeros enteros");
+                diseable2();
+                return;
+            }
+
+           
 
             if (idCateg == 0)
             {

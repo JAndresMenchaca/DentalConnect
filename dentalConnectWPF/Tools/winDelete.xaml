@@ -67,7 +67,7 @@
                              Height="28"
                              VerticalContentAlignment="Center"
                              TextAlignment="Center"
-                             Padding="20,0,0,0" Grid.Row="1" HorizontalAlignment="Center" Width="277" VerticalAlignment="Center" />
+                             Padding="20,0,0,0" Grid.Row="1" HorizontalAlignment="Center" Width="277" VerticalAlignment="Center" KeyDown="txtConfirm_KeyDown" />
                 <TextBlock HorizontalAlignment="Center" Height="70" Margin="0,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Escriba &quot;seguro&quot; para confirmar:" VerticalAlignment="Top" Width="298" Foreground="White" FontSize="30" FontFamily="Montserrat" TextAlignment="Center" />
                 <Button x:Name="btnConfirm" Content="Aceptar" HorizontalAlignment="Left" Height="40" Margin="71,168,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Click="btnConfirm_Click" RenderTransformOrigin="0.5,0.5" FontSize="24" Background="#FF2896C7" BorderBrush="#FF2896C7">
                     <Button.RenderTransform>

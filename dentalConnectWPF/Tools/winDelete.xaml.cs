@@ -58,5 +58,13 @@ namespace dentalConnectWPF.Tools
             DialogResult = false;
             this.Close();
         }
+
+        private void txtConfirm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnConfirm_Click (sender, e);
+            }
+        }
     }
 }

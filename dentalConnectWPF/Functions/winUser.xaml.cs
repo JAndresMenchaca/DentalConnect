@@ -83,7 +83,14 @@ namespace dentalConnectWPF.Functions
         {
             if (!string.IsNullOrEmpty(texto) && texto[0] == ' ')
             {
+                // Eliminar el primer carácter (espacio)
                 texto = texto.Substring(1);
+            }
+
+            if (!string.IsNullOrEmpty(texto) && texto[texto.Length - 1] == ' ')
+            {
+                // Eliminar el último carácter (espacio)
+                texto = texto.Substring(0, texto.Length - 1);
             }
 
             return texto;
@@ -171,13 +178,12 @@ namespace dentalConnectWPF.Functions
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+
                 string name = txbName.Text;
                 string ci = txbCI.Text;
                 string lastName = txbLastName.Text;
                 string secondLastName = txbSecLastName.Text;
-                DateTime dateTime = (DateTime)dpBirthdate.SelectedDate;
+      
                 string phone = txbPhone.Text;
                 string email = txbEmail.Text;
                 string role = cbRole.Text;
@@ -204,7 +210,16 @@ namespace dentalConnectWPF.Functions
                         break;
                 }
 
-                if(txbPhone.Text.Length != 8)
+
+             bool error = comprobando(name, ci, lastName, phone, email);
+
+            
+
+            if (error == true)
+                return;
+            DateTime dateTime = (DateTime)dpBirthdate.SelectedDate;
+
+            if (txbPhone.Text.Length != 8)
                 {
                     sendMessages(1, "Debe ingresar un número de teléfono valido (8 números)");
                     diseable2();
@@ -238,12 +253,7 @@ namespace dentalConnectWPF.Functions
                 }
              
 
-            }
-            catch (Exception ex)
-            {
-                sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
-                diseable2();
-            }
+           
         }
 
         private bool verifyDate(DateTime dateTime)
@@ -256,7 +266,6 @@ namespace dentalConnectWPF.Functions
 
             if (diferenciaEnAnios >= 18 && diferenciaEnAnios <= 85)
             {
-
                 return true;
             }
             else if (currentDate < dateTime)
@@ -267,7 +276,6 @@ namespace dentalConnectWPF.Functions
             else if (diferenciaEnAnios < 18)
             {
                 sendMessages(1, "Debe ser mayor a 18 años");
-                diseable2();
                 diseable2();
             }
             else if (diferenciaEnAnios > 85)
@@ -750,6 +758,58 @@ namespace dentalConnectWPF.Functions
             _messageQueue.Enqueue("Solo pueden colocar números, - ,  y un signo +");
         }
 
+        private bool comprobando(string name, string ci, string lastName, string phone, string email)
+        {
+            if (ci == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo CI");
+                diseable2();
+                return true;
+            }
+            else if (name == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo NOMBRE");
+                diseable2();
+                return true;
+            }
+            else if (lastName == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo PRIMER APELLIDO");
+                diseable2();
+                return true;
+            }
+            else if (dpBirthdate.SelectedDate == null)
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo FECHA DE NACIMIENTO");
+                diseable2();
+                return true;
+            }
+            else if (cbRole.Text == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo ROL");
+                diseable2();
+                return true;
+            }
+            else if (email == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo EMAIL");
+                diseable2();
+                return true;
+            }
+            else if (phone == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo TELEFONO");
+                diseable2();
+                return true;
+            }
+            else if (cbGender.Text == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo SEXO");
+                diseable2();
+                return true;
+            }
+            return false;
+        }
     
     }
 }

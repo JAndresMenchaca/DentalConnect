@@ -108,5 +108,13 @@ namespace dentalConnectWPF.Tools
         {
             _messageQueue.Enqueue("Debe tener: +8 caracteres, mayúscula(s), número(s) y un carácter especial.");
         }
+
+        private void pbNew2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnConfirm_Click(sender, e);
+            }
+        }
     }
 }

@@ -27,8 +27,8 @@ namespace dentalConnectDAO.Implementation
 
         #region "Supplier"
         //Nombre
-        private static readonly Regex regexNameSupplier = new Regex("[^a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ ]+");
-        private static readonly Regex regexNameSupplier1 = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ ]{0,50}$");
+        private static readonly Regex regexNameSupplier = new Regex("[^a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]+");
+        private static readonly Regex regexNameSupplier1 = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,50}$");
         //Telefono
         private static readonly Regex regexPhoneSupplier = new Regex("[^0-9+ -]+");
         private static readonly Regex regexPhoneSupplier1 = new Regex("^(?!.*  )[^0-9+ -]{0,20}$");

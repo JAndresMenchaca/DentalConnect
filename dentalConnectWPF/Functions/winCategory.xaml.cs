@@ -133,6 +133,12 @@ namespace dentalConnectWPF.Functions
                 texto = texto.Substring(1);
             }
 
+            if (!string.IsNullOrEmpty(texto) && texto[texto.Length - 1] == ' ')
+            {
+                // Eliminar el último carácter (espacio)
+                texto = texto.Substring(0, texto.Length - 1);
+            }
+
             return texto;
         }
 
@@ -209,6 +215,14 @@ namespace dentalConnectWPF.Functions
             txbName.Text = name;
             descrip = DeleteSpace(descrip);
             txbDescrip.Text = descrip;
+
+            if (name == "")
+            {
+                sendMessages(1, "Verifique los datos de entrada en el campo NOMBRE");
+                diseable2();
+                return;
+            }
+
 
             dgDatos.IsEnabled = true;
             diseable();
