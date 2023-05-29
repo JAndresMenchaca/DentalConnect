@@ -433,8 +433,21 @@ namespace dentalConnectWPF.Functions
 
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
-            UserWindows.winMenu menu = new UserWindows.winMenu();
-            menu.Show();
+            switch (Session.SessionRole)
+            {
+                case "Administrador":
+                    UserWindows.winMenu menu = new UserWindows.winMenu();
+                    menu.Show();
+                    break;
+                case "Gerente de ventas":
+                    UserWindows.winSalesManager manager = new UserWindows.winSalesManager();
+                    manager.Show();
+                    break;
+                case "Gerente de inventario":
+                    UserWindows.winInventoryManager win = new UserWindows.winInventoryManager();
+                    win.Show();
+                    break;
+            }
             this.Close();
         }
 

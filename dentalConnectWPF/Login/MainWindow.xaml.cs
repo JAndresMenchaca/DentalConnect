@@ -113,6 +113,12 @@ namespace dentalConnectWPF.Login
             this.WindowState = WindowState.Minimized;
         }
 
-       
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
     }
 }

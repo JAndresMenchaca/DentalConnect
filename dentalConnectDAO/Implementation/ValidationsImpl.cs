@@ -27,8 +27,8 @@ namespace dentalConnectDAO.Implementation
 
         #region "Supplier"
         //Nombre
-        private static readonly Regex regexNameSupplier = new Regex("[^a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ ]+");
-        private static readonly Regex regexNameSupplier1 = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ ]{0,50}$");
+        private static readonly Regex regexNameSupplier = new Regex("[^a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ ]+");
+        private static readonly Regex regexNameSupplier1 = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ ]{0,50}$");
         //Telefono
         private static readonly Regex regexPhoneSupplier = new Regex("[^0-9+ -]+");
         private static readonly Regex regexPhoneSupplier1 = new Regex("^(?!.*  )[^0-9+ -]{0,20}$");
@@ -65,12 +65,16 @@ namespace dentalConnectDAO.Implementation
 
         #region Products
         //Nombre
-
+        private static readonly Regex regexNameProduct = new Regex("[^a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]+");
+        private static readonly Regex regexNameProduct1 = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,40}$");
         //Descrip
-
+        // usamos la misma que en Category
         //Precio
-
+        private static readonly Regex regexPriceProduct = new Regex("[^0-9,]+");
+        private static readonly Regex regexPriceProduct1 = new Regex("^(?!.*  )[^0-9,]{0,7}$"); 
         //Stock
+        private static readonly Regex regexStockProduct = new Regex("[^0-9]+");
+        private static readonly Regex regexStockProduct1 = new Regex("^(?!.*  )[^0-9]{0,7}$");
 
         #endregion
 
@@ -546,6 +550,147 @@ namespace dentalConnectDAO.Implementation
                 textBox.CaretIndex = caretIndex;
             }
         }
+
+        #endregion
+
+        #region methodProduct
+        public static void TextNameP1(TextBox textBox)
+        {
+            textBox.TextChanged += TextNameProduct1;
+        }
+        public static void TextNameP(TextBox textBoxN)
+        {
+            textBoxN.TextChanged += TextNameProduct;
+        }
+        private static void TextNameProduct(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string newText = textBox.Text;
+
+            if (regexNameProduct.IsMatch(newText))
+            {
+                int caretIndex = textBox.CaretIndex;
+                textBox.Text = regexNameProduct.Replace(newText, string.Empty);
+                textBox.CaretIndex = caretIndex - 1;
+            }
+        }
+        private static void TextNameProduct1(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string newText = textBox.Text;
+
+            if (newText.Length > 40 || StartsOrEndsWithSpace(newText) || regexNameProduct1.IsMatch(newText) || ContainsConsecutiveSpaces(newText))
+            {
+                int caretIndex = textBox.CaretIndex;
+                string filteredText = newText;
+
+                // Eliminar espacios consecutivos
+                filteredText = RemoveConsecutiveSpaces(filteredText);
+
+                if (filteredText.Length > 40)
+                {
+                    filteredText = filteredText.Substring(0, 40);
+                    caretIndex = Math.Min(caretIndex, 40);
+                }
+
+                textBox.Text = filteredText;
+                textBox.CaretIndex = caretIndex;
+            }
+        }
+
+
+        public static void TextPriceP1(TextBox textBox)
+        {
+            textBox.TextChanged += TextPriceProduct1;
+        }
+        public static void TextPriceP(TextBox textBoxN)
+        {
+            textBoxN.TextChanged += TextPriceProduct;
+        }
+        private static void TextPriceProduct(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string newText = textBox.Text;
+
+            if (regexPriceProduct.IsMatch(newText))
+            {
+                int caretIndex = textBox.CaretIndex;
+                textBox.Text = regexPriceProduct.Replace(newText, string.Empty);
+                textBox.CaretIndex = caretIndex - 1;
+            }
+        }
+        private static void TextPriceProduct1(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string newText = textBox.Text;
+
+            if (newText.Length > 7 || StartsOrEndsWithSpace(newText) || regexPriceProduct1.IsMatch(newText) || ContainsConsecutiveSpaces(newText))
+            {
+                int caretIndex = textBox.CaretIndex;
+                string filteredText = newText;
+
+                // Eliminar espacios consecutivos
+                filteredText = RemoveConsecutiveSpaces(filteredText);
+
+                if (filteredText.Length > 7)
+                {
+                    filteredText = filteredText.Substring(0, 7);
+                    caretIndex = Math.Min(caretIndex, 7);
+                }
+
+                textBox.Text = filteredText;
+                textBox.CaretIndex = caretIndex;
+            }
+        }
+
+
+        public static void TextStockP1(TextBox textBox)
+        {
+            textBox.TextChanged += TextStockProduct1;
+        }
+        public static void TextStockP(TextBox textBoxN)
+        {
+            textBoxN.TextChanged += TextStockProduct;
+        }
+        private static void TextStockProduct(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string newText = textBox.Text;
+
+            if (regexStockProduct.IsMatch(newText))
+            {
+                int caretIndex = textBox.CaretIndex;
+                textBox.Text = regexStockProduct.Replace(newText, string.Empty);
+                textBox.CaretIndex = caretIndex - 1;
+            }
+        }
+        private static void TextStockProduct1(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string newText = textBox.Text;
+
+            if (newText.Length > 7 || StartsOrEndsWithSpace(newText) || regexStockProduct1.IsMatch(newText) || ContainsConsecutiveSpaces(newText))
+            {
+                int caretIndex = textBox.CaretIndex;
+                string filteredText = newText;
+
+                // Eliminar espacios consecutivos
+                filteredText = RemoveConsecutiveSpaces(filteredText);
+
+                if (filteredText.Length > 7)
+                {
+                    filteredText = filteredText.Substring(0, 7);
+                    caretIndex = Math.Min(caretIndex, 7);
+                }
+
+                textBox.Text = filteredText;
+                textBox.CaretIndex = caretIndex;
+            }
+        }
+
+
+
+
 
         #endregion
 

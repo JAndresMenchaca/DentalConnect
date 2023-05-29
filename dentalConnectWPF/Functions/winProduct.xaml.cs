@@ -39,6 +39,18 @@ namespace dentalConnectWPF.Functions
             _messageQueue = snackbar.MessageQueue;
             cbCateg.ItemsSource = query.comboCateg();
             cbSupplier.ItemsSource = query.comboSuppl();
+
+            ValidationsImpl.TextNameP(txbName);
+            ValidationsImpl.TextNameP1(txbName);
+
+            ValidationsImpl.TextForDescription(txbDesc);
+            ValidationsImpl.TextForCaracter(txbDesc);
+
+            ValidationsImpl.TextPriceP(txbPrice);
+            ValidationsImpl.TextPriceP1(txbPrice);
+
+            ValidationsImpl.TextStockP(txbStock);
+            ValidationsImpl.TextStockP1(txbStock);
         }
         private void sendMessages(int opt, string message)
         {
@@ -125,8 +137,21 @@ namespace dentalConnectWPF.Functions
 
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
-            UserWindows.winMenu menu = new UserWindows.winMenu();
-            menu.Show();
+            switch (Session.SessionRole)
+            {
+                case "Administrador":
+                    UserWindows.winMenu menu = new UserWindows.winMenu();
+                    menu.Show();
+                    break;
+                case "Gerente de ventas":
+                    UserWindows.winSalesManager manager = new UserWindows.winSalesManager();
+                    manager.Show();
+                    break;
+                case "Gerente de inventario":
+                    UserWindows.winInventoryManager win = new UserWindows.winInventoryManager();
+                    win.Show();
+                    break;
+            }
             this.Close();
         }
 
@@ -158,7 +183,18 @@ namespace dentalConnectWPF.Functions
             dgDatos.IsEnabled = true;
             string name = txbName.Text;
             string descrip = txbDesc.Text;
-            double price = double.Parse(txbPrice.Text);
+            double price;
+            try
+            {
+                price = double.Parse(txbPrice.Text);
+            }
+            catch
+            {
+                sendMessages(1, "Verifique que los datos de entrada en el campo PRECIO sean numeros enteros o decimales");
+                diseable2();
+                return;
+            }
+
             int stock = int.Parse(txbStock.Text);
 
             if (idCateg == 0)
@@ -170,6 +206,12 @@ namespace dentalConnectWPF.Functions
             if (idSuppl == 0)
             {
                 sendMessages(1, "Debe elegir un Proveedor");
+                diseable2();
+                return;
+            }
+            if (price == 0)
+            {
+                sendMessages(1, "El precio debe ser mayor a 0");
                 diseable2();
                 return;
             }
@@ -308,7 +350,7 @@ namespace dentalConnectWPF.Functions
 
         private void btn_help_price_Click(object sender, RoutedEventArgs e)
         {
-            _messageQueue.Enqueue("Solo se pueden colocar números decimales");
+            _messageQueue.Enqueue("Solo se pueden colocar números y ','");
         }
 
         private void btn_help_stock_Click(object sender, RoutedEventArgs e)

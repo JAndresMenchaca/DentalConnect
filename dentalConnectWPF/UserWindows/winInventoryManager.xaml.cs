@@ -1,4 +1,5 @@
 ﻿using dentalConnectDAO.Model;
+using dentalConnectWPF.Functions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,13 @@ namespace dentalConnectWPF.UserWindows
         {
             Tools.winPassword pass = new Tools.winPassword();
             pass.ShowDialog();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Functions.winProduct product = new Functions.winProduct();
+            product.Show();
+            this.Close();
         }
     }
 }

@@ -188,7 +188,7 @@
                              BorderThickness="0,0,0,2"
                              Height="28"
                              VerticalContentAlignment="Center"
-                             Padding="20,0,0,0">
+                             Padding="20,0,0,0" KeyDown="txtPass_KeyDown">
 
                         <PasswordBox.Background>
                             <ImageBrush ImageSource="/Logos/cerrar.png" 

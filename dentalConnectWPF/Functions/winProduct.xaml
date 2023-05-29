@@ -134,8 +134,8 @@
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="27,118,0,566" Width="132" Grid.Row="1"/>
-                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="51,381,68,27" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
+                    HorizontalAlignment="Left" Margin="51,120,0,564" Width="132" Grid.Row="1"/>
+                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="51,381,109,27" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
                 <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="51,339,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="818" Height="42" FontSize="20"/>
                 <Button x:Name="btnMenu"                          
                     BorderThickness="0"
@@ -180,62 +180,62 @@
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="27,170,0,514" Width="209" Grid.Row="1"/>
-                <TextBlock Text="Precio:"
+                    HorizontalAlignment="Left" Margin="51,172,0,512" Width="209" Grid.Row="1"/>
+                <TextBlock Text="Precio (Bs.):"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="27,223,0,461" Width="121" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="51,224,0,460" Width="158" Grid.Row="1"/>
                 <TextBlock Text="Stock:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="27,276,0,408" Width="148" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="51,278,0,406" Width="148" Grid.Row="1"/>
                 <TextBlock Text="Proveedor:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="478,167,0,517" Width="212" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="510,167,0,517" Width="212" Grid.Row="1"/>
                 <TextBlock Text="Categoría:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="478,115,0,569" Width="138" Grid.Row="1"/>
-                <TextBox x:Name="txbDesc" HorizontalAlignment="Left" Margin="193,154,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
-                <TextBox x:Name="txbPrice" HorizontalAlignment="Left" Margin="193,209,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="3" FontWeight="Medium"/>
-                <TextBox x:Name="txbStock" HorizontalAlignment="Left" Margin="193,267,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="4" FontWeight="Medium"/>
-                <ComboBox x:Name="cbCateg" HorizontalAlignment="Left" Margin="648,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322" FontSize="24" Panel.ZIndex="5" Height="43" SelectionChanged="cbCateg_SelectionChanged"/>
+                    HorizontalAlignment="Left" Margin="510,115,0,569" Width="138" Grid.Row="1"/>
+                <TextBox x:Name="txbDesc" HorizontalAlignment="Left" Margin="217,156,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
+                <TextBox x:Name="txbPrice" HorizontalAlignment="Left" Margin="217,210,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="3" FontWeight="Medium"/>
+                <TextBox x:Name="txbStock" HorizontalAlignment="Left" Margin="217,268,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="4" FontWeight="Medium"/>
+                <ComboBox x:Name="cbCateg" HorizontalAlignment="Left" Margin="680,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322" FontSize="24" Panel.ZIndex="5" Height="43" SelectionChanged="cbCateg_SelectionChanged"/>
                 <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="1041,112,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44"/>
                 <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="1041,176,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44"/>
                 <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="1041,238,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24"/>
-                <Button x:Name="btn_help_name" Content="" HorizontalAlignment="Left" Margin="414,121,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_name_Click">
+                <Button x:Name="btn_help_name" Content="" HorizontalAlignment="Left" Margin="438,122,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_name_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_desc" Content="" HorizontalAlignment="Left" Margin="414,170,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_desc_Click">
+                <Button x:Name="btn_help_desc" Content="" HorizontalAlignment="Left" Margin="438,172,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_desc_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_price" Content="" HorizontalAlignment="Left" Margin="414,223,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_price_Click">
+                <Button x:Name="btn_help_price" Content="" HorizontalAlignment="Left" Margin="438,224,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_price_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_stock" Content="" HorizontalAlignment="Left" Margin="414,282,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_stock_Click">
+                <Button x:Name="btn_help_stock" Content="" HorizontalAlignment="Left" Margin="438,284,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_stock_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
 
                 <materialDesign:Snackbar x:Name="snackbar" MessageQueue="{materialDesign:MessageQueue}" Height="90" VerticalAlignment="Top" Width="590" Margin="460,10,0,0" HorizontalAlignment="Left" FontSize="18" FontWeight="Normal" Grid.RowSpan="2" />
-                <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="193,108,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="216" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
-                <ComboBox x:Name="cbSupplier" HorizontalAlignment="Left" Margin="648,158,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322" FontSize="24" Panel.ZIndex="5" Height="43" SelectionChanged="cbSupplier_SelectionChanged"/>
+                <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="217,110,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="216" Height="42" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
+                <ComboBox x:Name="cbSupplier" HorizontalAlignment="Left" Margin="680,158,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322" FontSize="24" Panel.ZIndex="5" Height="43" SelectionChanged="cbSupplier_SelectionChanged"/>
 
             </Grid>
 
