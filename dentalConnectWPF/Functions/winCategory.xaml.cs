@@ -63,10 +63,12 @@ namespace dentalConnectWPF.Functions
         private void enable()
         {
             btnInsert.IsEnabled = false;
-
+            btnInsert.Visibility = Visibility.Hidden;
 
             btnCancel.IsEnabled = true;
             btnSave.IsEnabled = true;
+            btnCancel.Visibility = Visibility.Visible;
+            btnSave.Visibility = Visibility.Visible;
 
             txbDescrip.IsEnabled = true;
             txbName.IsEnabled = true;
@@ -78,9 +80,13 @@ namespace dentalConnectWPF.Functions
             txbDescrip.Text = "";
 
             btnInsert.IsEnabled = true;
+            btnInsert.Visibility = Visibility.Visible;
 
             btnCancel.IsEnabled = false;
             btnSave.IsEnabled = false;
+            btnCancel.Visibility = Visibility.Hidden;
+            btnSave.Visibility = Visibility.Hidden;
+
 
             txbDescrip.IsEnabled = false;
             txbName.IsEnabled = false;
