@@ -230,13 +230,20 @@ namespace dentalConnectWPF.Functions
             DateTime dateTime = (DateTime)dpBirthdate.SelectedDate;
 
             if (txbPhone.Text.Length != 8)
-                {
-                    sendMessages(1, "Debe ingresar un número de teléfono valido (8 números)");
-                    diseable2();
-                    return;
-                }
+            {
+               sendMessages(1, "Debe ingresar un número de teléfono valido (8 números)");
+               diseable2();
+               return;
+            }
 
-                if(txbEmail.Text.Contains("@") == false)
+            if (txbCI.Text.Length < 8)
+            {
+                sendMessages(1, "Debe ingresar un CI valido (mínimo 8 caracteres)");
+                diseable2();
+                return;
+            }
+
+            if (txbEmail.Text.Contains("@") == false)
                 {
                     sendMessages(1, "La dirección EMAIL dede contener un @");
                     diseable2();
@@ -244,7 +251,7 @@ namespace dentalConnectWPF.Functions
                 }
 
 
-                if (verifyDate(dateTime))
+            if (verifyDate(dateTime))
                 {
                     switch (opt)
                     {
@@ -308,7 +315,20 @@ namespace dentalConnectWPF.Functions
             }
             userImpl = new UserImpl();
 
-            username = GenerarNombreUnico(name, lastName, secondLastName);
+            
+            bool band2 = false;
+            int count2;
+            QuerysImpl query2 = new QuerysImpl();
+            do
+            {
+                username = GenerarNombreUnico(name, lastName, secondLastName);
+                count2 = query2.verifyUsername(username);
+                if (count2 == 0)
+                {
+                    band2 = true;
+                }
+
+            } while (band2 == false);
 
             password = GenerarContrasenaAleatoria();
 
@@ -330,6 +350,17 @@ namespace dentalConnectWPF.Functions
             {
                 sendMessages(1, "El NUMERO que ingreso ya existe en la Base de Datos");
             
+                dgDatos.SelectedItem = null;
+                user = null;
+                diseable2();
+                return;
+            }
+
+            int count3 = query.verifyCiUser(ci);
+            if (count3 > 0)
+            {
+                sendMessages(1, "El CI que ingreso ya existe en la Base de Datos");
+
                 dgDatos.SelectedItem = null;
                 user = null;
                 diseable2();
@@ -365,7 +396,7 @@ namespace dentalConnectWPF.Functions
                     diseable();
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 
                 sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
@@ -420,6 +451,16 @@ namespace dentalConnectWPF.Functions
                     return;
                 }
 
+                int count3 = query.verifyCiUserUpdate(ci, user.Id);
+                if (count3 > 0)
+                {
+                    sendMessages(1, "El CI que ingreso ya existe en la Base de Datos");
+                    dgDatos.SelectedItem = null;
+                    //user = null;
+                    diseable2();
+                    return;
+                }
+
 
 
                 userImpl = new UserImpl();
@@ -443,6 +484,7 @@ namespace dentalConnectWPF.Functions
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            txtMessage.Text = "";
             diseable();
             dgDatos.IsEnabled = true;
 
@@ -504,7 +546,7 @@ namespace dentalConnectWPF.Functions
                             diseable();
                         }
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
                         diseable();

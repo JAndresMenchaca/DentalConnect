@@ -249,7 +249,7 @@
                 </Button>
 
                 <materialDesign:Snackbar x:Name="snackbar" MessageQueue="{materialDesign:MessageQueue}" Height="90" VerticalAlignment="Top" Width="590" Margin="460,10,0,0" HorizontalAlignment="Left" FontSize="18" FontWeight="Normal" Grid.RowSpan="2" />
-                <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="193,108,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="216" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
+                <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="193,108,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="216" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="1" FontWeight="Medium"/>
                 <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="1045,151,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44" Background="#FF386591" BorderBrush="#FF386591"/>
                 <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="1045,120,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44" Background="#FF3C7861" BorderBrush="#FF2A5746"/>
                 <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="1045,182,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24" Background="#FF3C6162" BorderBrush="#FF314E4F"/>

@@ -7,6 +7,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace dentalConnectDAO.Implementation
 {
@@ -214,6 +215,128 @@ namespace dentalConnectDAO.Implementation
                 {
                     comando.Parameters.AddWithValue("@id", id);
                     comando.Parameters.AddWithValue("@name", name);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
+        public int verifyUsername(string username)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = @"SELECT COUNT(*) FROM [User] WHERE username = @name AND status = 1";
+                int count = 0;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@name", username);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
+        public int verifyNameProduct(string name)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = @"SELECT COUNT(*) FROM Product WHERE name = @name AND status = 1";
+                int count = 0;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@name", name);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
+        public int verifyNameProductUpdate(string name, byte id)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = "SELECT COUNT(*) FROM Product WHERE name = @name AND id != @id AND status = 1";
+                int count = -1;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@id", id);
+                    comando.Parameters.AddWithValue("@name", name);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
+        public int verifyCiUser(string ci)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = @"SELECT COUNT(*) FROM [User] u INNER JOIN Person p ON p.id = u.id WHERE p.ci = @ci AND u.status = 1";
+                int count = 0;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@ci", ci);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
+        public int verifyCiUserUpdate(string ci, byte id)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = "SELECT COUNT(*) FROM [User] u INNER JOIN Person p ON p.id = u.id WHERE p.ci = @ci AND u.status = 1 AND u.id != @id";
+                int count = -1;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@id", id);
+                    comando.Parameters.AddWithValue("@ci", ci);
                     count = (int)comando.ExecuteScalar();
                 }
 

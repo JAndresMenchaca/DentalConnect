@@ -356,7 +356,7 @@ namespace dentalConnectWPF.Functions
             int count = query.verifyNameSupplier(name);
             if (count > 0)
             {
-                sendMessages(1, "El PROVEEDOR que ingreso ya existe en la Base de Datos");
+                sendMessages(1, "El NOMBRE DEL PROVEEDOR que ingreso ya existe en la Base de Datos");
 
                 dgDatos.SelectedItem = null;
                 supplier = null;
@@ -433,7 +433,7 @@ namespace dentalConnectWPF.Functions
                 int count = query.verifyNameSupplierUpdate(name, supplier.Id);
                 if (count > 0)
                 {
-                    sendMessages(1, "El PROVEEDOR que ingreso ya existe en la Base de Datos");
+                    sendMessages(1, "El NOMBRE DEL PROVEEDOR que ingreso ya existe en la Base de Datos");
                     dgDatos.SelectedItem = null;
                     //supplier = null;
                     diseable2();
@@ -643,7 +643,7 @@ namespace dentalConnectWPF.Functions
                             diseable();
                         }
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
                         diseable();

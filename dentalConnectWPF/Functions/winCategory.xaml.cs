@@ -379,7 +379,7 @@ namespace dentalConnectWPF.Functions
                             diseable();
                         }
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
                         diseable();

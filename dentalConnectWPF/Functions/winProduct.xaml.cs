@@ -289,6 +289,20 @@ namespace dentalConnectWPF.Functions
             }
 
 
+            QuerysImpl query = new QuerysImpl();
+
+            int count = query.verifyNameProduct(name);
+            if (count > 0)
+            {
+                sendMessages(1, "El NOMBRE DEL PRODUCTO que ingreso ya existe en la Base de Datos");
+                dgDatos.SelectedItem = null;
+                product = null;
+                diseable2();
+                return;
+            }
+
+
+
             try
             {
                 product = new Product(name, description, price, stock, categoryId, supplierId);
@@ -339,6 +353,18 @@ namespace dentalConnectWPF.Functions
                 product.CategoryId= categoryId;
                 product.SupplierId= supplierId;
 
+
+                QuerysImpl query = new QuerysImpl();
+
+                int count = query.verifyNameProductUpdate(name, product.Id);
+                if (count > 0)
+                {
+                    sendMessages(1, "El NOMBRE DEL PRODUCTO que ingreso ya existe en la Base de Datos");
+                    dgDatos.SelectedItem = null;
+                    //supplier = null;
+                    diseable2();
+                    return;
+                }
 
 
                 productImpl = new ProductImpl();
@@ -552,7 +578,7 @@ namespace dentalConnectWPF.Functions
                             diseable();
                         }
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         sendMessages(1, "Hubo un error al ELIMINAR el registro, comuniquese con el Administrador");
                         diseable();
