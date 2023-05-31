@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -123,6 +124,106 @@ namespace dentalConnectDAO.Implementation
 
 
         }
+
+
+        public int verifyNameCategory(string name)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = @"SELECT COUNT(*) FROM Category WHERE name = @name AND status = 1";
+                int count = 0;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@name", name);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
+        public int verifyNameCategoryUpdate(string name, byte id)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = "SELECT COUNT(*) FROM Category WHERE name = @name AND id != @id AND status = 1";
+                int count = -1;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@id", id);
+                    comando.Parameters.AddWithValue("@name", name);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
+        public int verifyNameSupplier(string name)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = @"SELECT COUNT(*) FROM Supplier WHERE name = @name AND status = 1";
+                int count = 0;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@name", name);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
+        public int verifyNameSupplierUpdate(string name, byte id)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = "SELECT COUNT(*) FROM Supplier WHERE name = @name AND id != @id AND status = 1";
+                int count = -1;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@id", id);
+                    comando.Parameters.AddWithValue("@name", name);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
+
         public List<ComboBoxItem> comboCateg()
         {
             List<ComboBoxItem> items = new List<ComboBoxItem>();

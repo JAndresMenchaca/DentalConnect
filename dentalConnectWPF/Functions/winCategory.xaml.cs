@@ -63,10 +63,12 @@ namespace dentalConnectWPF.Functions
         private void enable()
         {
             btnInsert.IsEnabled = false;
-
+            btnInsert.Visibility = Visibility.Hidden;
 
             btnCancel.IsEnabled = true;
             btnSave.IsEnabled = true;
+            btnCancel.Visibility = Visibility.Visible;
+            btnSave.Visibility = Visibility.Visible;
 
             txbDescrip.IsEnabled = true;
             txbName.IsEnabled = true;
@@ -78,9 +80,13 @@ namespace dentalConnectWPF.Functions
             txbDescrip.Text = "";
 
             btnInsert.IsEnabled = true;
+            btnInsert.Visibility = Visibility.Visible;
 
             btnCancel.IsEnabled = false;
             btnSave.IsEnabled = false;
+            btnCancel.Visibility = Visibility.Hidden;
+            btnSave.Visibility = Visibility.Hidden;
+
 
             txbDescrip.IsEnabled = false;
             txbName.IsEnabled = false;
@@ -153,6 +159,20 @@ namespace dentalConnectWPF.Functions
                 return;
             }
 
+
+            QuerysImpl query = new QuerysImpl();
+
+            int count = query.verifyNameCategory(name);
+            if (count > 0)
+            {
+                sendMessages(1, "La CATEGORIA que ingreso ya existe en la Base de Datos");
+
+                dgDatos.SelectedItem = null;
+                category = null;
+                diseable2();
+                return;
+            }
+
             try
             {
                 category = new Category(name, descrip);
@@ -187,6 +207,20 @@ namespace dentalConnectWPF.Functions
 
                 category.Name = name;
                 category.Description = descrip;
+
+
+                QuerysImpl query = new QuerysImpl();
+
+                int count = query.verifyNameCategoryUpdate(name, category.Id);
+                if (count > 0)
+                {
+                    sendMessages(1, "La CATEGORIA que ingreso ya existe en la Base de Datos");
+                    dgDatos.SelectedItem = null;
+                    //category = null;
+                    diseable2();
+                    return;
+                }
+
 
                 categoryImpl = new CategoryImpl();
                 int test = categoryImpl.Update(category);
@@ -225,7 +259,7 @@ namespace dentalConnectWPF.Functions
 
 
             dgDatos.IsEnabled = true;
-            diseable();
+            
             switch (opt)
             {
                 case 1:
@@ -240,6 +274,7 @@ namespace dentalConnectWPF.Functions
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            txtMessage.Text = "";
             diseable();
             dgDatos.IsEnabled = true;
 
@@ -440,7 +475,7 @@ namespace dentalConnectWPF.Functions
 
         private void btn_help_Descr_Click(object sender, RoutedEventArgs e)
         {
-            _messageQueue.Enqueue("Se pueden colocar letras, numeros y algunos caracteres especiales");
+            _messageQueue.Enqueue("Se pueden colocar letras, numeros");
         }
     }
 }

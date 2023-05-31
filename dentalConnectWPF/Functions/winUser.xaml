@@ -125,7 +125,7 @@
                                FontSize="48"
                                FontWeight="Bold"
                                FontFamily="Montserrat"
-                               HorizontalAlignment="Left" Margin="124,5,0,660" Width="272" Grid.Row="1"/>
+                               HorizontalAlignment="Left" Margin="98,5,0,660" Width="272" Grid.Row="1"/>
                 <TextBlock Text="Nombre:"
                     Foreground="#32403B"
                     FontSize="28"
@@ -133,7 +133,7 @@
                     FontFamily="Montserrat"
                     HorizontalAlignment="Left" Margin="34,129,0,555" Width="121" Grid.Row="1"/>
                 <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="348,119,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="226" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="1" FontWeight="Medium"/>
-                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="50,396,69,46" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
+                <DataGrid x:Name="dgDatos" Grid.Row="1" Margin="34,396,69,46" Background="Transparent" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dgDatos_SelectionChanged" />
                 <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="50,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="818" Height="44" FontSize="20"/>
                 <Button x:Name="btnMenu"                          
                     BorderThickness="0"
@@ -196,36 +196,33 @@
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="648,178,0,506" Width="216" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="627,173,0,511" Width="216" Grid.Row="1"/>
                 <TextBlock Text="Email:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="648,126,0,558" Width="188" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="627,121,0,563" Width="188" Grid.Row="1"/>
                 <TextBlock Text="Rol:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="648,83,0,601" Width="122" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="627,78,0,606" Width="122" Grid.Row="1"/>
                 <TextBox x:Name="txbLastName" HorizontalAlignment="Left" Margin="346,167,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="226" Height="45" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium">
 
                 </TextBox>
                 <TextBox x:Name="txbSecLastName" HorizontalAlignment="Left" Margin="348,219,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="226" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="3"/>
                 <TextBox x:Name="txbCI" HorizontalAlignment="Left" Margin="348,74,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="226" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="4" Grid.Row="1" FontWeight="Medium"/>
-                <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Margin="792,114,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="229" Height="45" FontSize="24" Foreground="White" Panel.ZIndex="6" FontWeight="Medium"/>
-                <TextBox x:Name="txbPhone" HorizontalAlignment="Left" Margin="798,165,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="228" Height="41" FontSize="24" Foreground="White" Panel.ZIndex="7" FontWeight="Medium"/>
-                <ComboBox x:Name="cbRole" HorizontalAlignment="Left" Margin="797,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="229" FontSize="24" Panel.ZIndex="5" Foreground="Black"/>
-                <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="1091,93,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44"/>
-                <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="1091,157,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44" Cursor="Hand"/>
-                <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="1091,219,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24"/>
+                <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Margin="771,109,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="229" Height="45" FontSize="24" Foreground="White" Panel.ZIndex="6" FontWeight="Medium"/>
+                <TextBox x:Name="txbPhone" HorizontalAlignment="Left" Margin="777,160,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="228" Height="41" FontSize="24" Foreground="White" Panel.ZIndex="7" FontWeight="Medium"/>
+                <ComboBox x:Name="cbRole" HorizontalAlignment="Left" Margin="776,68,0,0" Grid.Row="1" VerticalAlignment="Top" Width="229" FontSize="24" Panel.ZIndex="5" Foreground="Black"/>
                 <TextBlock Text="Sexo:"
                     Foreground="#32403B"
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="647,232,0,452" Width="216" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="626,227,0,457" Width="216" Grid.Row="1"/>
 
                 <TextBlock Text="Fecha de Nacimiento:"
                     Foreground="#32403B"
@@ -233,46 +230,49 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     HorizontalAlignment="Left" Margin="33,287,0,397" Width="315" Grid.Row="1"/>
-                <ComboBox x:Name="cbGender" HorizontalAlignment="Left" Height="45" Margin="797,220,0,0" Grid.Row="1" VerticalAlignment="Top" Width="229" FontSize="24" Panel.ZIndex="5" Foreground="Black"/>
+                <ComboBox x:Name="cbGender" HorizontalAlignment="Left" Height="45" Margin="776,215,0,0" Grid.Row="1" VerticalAlignment="Top" Width="229" FontSize="24" Panel.ZIndex="5" Foreground="Black"/>
                 <DatePicker x:Name="dpBirthdate" HorizontalAlignment="Left"  Height="33" Margin="348,287,0,0" Grid.Row="1" VerticalAlignment="Top" Width="226" FontSize="20"  Foreground="Black" />
-                <Image Source="/Logos/user.png" Margin="51,0,1177,661" Grid.Row="1"/>
+                <Image Source="/Logos/user.png" Margin="26,0,1202,661" Grid.Row="1"/>
 
                 <materialDesign:Snackbar x:Name="snackbar" MessageQueue="{materialDesign:MessageQueue}" Height="75" VerticalAlignment="Top" Width="626" Grid.RowSpan="2" Margin="471,23,0,0" HorizontalAlignment="Left" FontSize="18" FontWeight="Normal" />
-                <Button x:Name="btn_help_name" Content="" HorizontalAlignment="Left" Margin="597,134,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_name_Click">
+                <Button x:Name="btn_help_name" Content="" HorizontalAlignment="Left" Margin="579,134,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="25" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_name_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_CI" Content="" HorizontalAlignment="Left" Margin="597,91,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="Button_Click" Cursor="Hand">
+                <Button x:Name="btn_help_CI" Content="" HorizontalAlignment="Left" Margin="579,91,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="25" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="Button_Click" Cursor="Hand">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_Lname" Content="" HorizontalAlignment="Left" Margin="597,182,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_Lname_Click" Cursor="Hand">
+                <Button x:Name="btn_help_Lname" Content="" HorizontalAlignment="Left" Margin="579,182,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="25" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_Lname_Click" Cursor="Hand">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_SLname" Content="" HorizontalAlignment="Left" Margin="597,237,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_SLname_Click">
+                <Button x:Name="btn_help_SLname" Content="" HorizontalAlignment="Left" Margin="579,237,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="25" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_SLname_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_email" Content="" HorizontalAlignment="Left" Margin="1043,130,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_email_Click">
+                <Button x:Name="btn_help_email" Content="" HorizontalAlignment="Left" Margin="1010,126,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_email_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_phone" Content="" HorizontalAlignment="Left" Margin="1043,178,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_phone_Click">
+                <Button x:Name="btn_help_phone" Content="" HorizontalAlignment="Left" Margin="1010,174,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_phone_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_date" Content="" HorizontalAlignment="Left" Margin="597,288,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_date_Click">
+                <Button x:Name="btn_help_date" Content="" HorizontalAlignment="Left" Margin="579,288,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="25" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Click="btn_help_date_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
+                <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="1081,157,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44" Background="#FF386591" BorderBrush="#FF386591"/>
+                <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="1081,126,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44" Background="#FF3C7861" BorderBrush="#FF2A5746"/>
+                <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="1081,188,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24" Background="#FF3C6162" BorderBrush="#FF314E4F"/>
 
             </Grid>
 

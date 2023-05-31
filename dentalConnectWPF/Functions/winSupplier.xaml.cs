@@ -81,11 +81,14 @@ namespace dentalConnectWPF.Functions
         private void enable()
         {
             btnInsert.IsEnabled = false;
+            btnInsert.Visibility = Visibility.Hidden;
             //btnDelete.IsEnabled = false;
             //btnModify.IsEnabled = false;
 
             btnCancel.IsEnabled = true;
             btnSave.IsEnabled   = true;
+            btnCancel.Visibility = Visibility.Visible;
+            btnSave.Visibility = Visibility.Visible;
 
             txbName.IsEnabled  = true;
             txbPhone.IsEnabled = true;
@@ -109,11 +112,14 @@ namespace dentalConnectWPF.Functions
             
 
             btnInsert.IsEnabled = true;
+            btnInsert.Visibility = Visibility.Visible;
             //btnDelete.IsEnabled = true;
             //btnModify.IsEnabled = true;
 
             btnCancel.IsEnabled = false;
             btnSave.IsEnabled = false;
+            btnCancel.Visibility = Visibility.Hidden;
+            btnSave.Visibility = Visibility.Hidden;
 
             txbName.IsEnabled  = false;
             txbPhone.IsEnabled = false;
@@ -345,6 +351,20 @@ namespace dentalConnectWPF.Functions
 
             }
 
+            QuerysImpl query = new QuerysImpl();
+
+            int count = query.verifyNameSupplier(name);
+            if (count > 0)
+            {
+                sendMessages(1, "El PROVEEDOR que ingreso ya existe en la Base de Datos");
+
+                dgDatos.SelectedItem = null;
+                supplier = null;
+                diseable2();
+                return;
+            }
+
+
             try
             {
                 supplier = new Supplier(name, phone, email, website, main, adjacent, idCity);
@@ -400,15 +420,30 @@ namespace dentalConnectWPF.Functions
 
 
                 supplier.Name = name;
-                    supplier.Phone = phone;
-                    supplier.Email = email;
-                    supplier.Website = website;
-                    supplier.Email = email;
-                    supplier.MainStreet = main;
-                    supplier.AdjacentStreet = adjacent;
-                    supplier.IdCity = idCity;
+                supplier.Phone = phone;
+                supplier.Email = email;
+                supplier.Website = website;
+                supplier.Email = email;
+                supplier.MainStreet = main;
+                supplier.AdjacentStreet = adjacent;
+                supplier.IdCity = idCity;
 
-                    supplierImpl = new SupplierImpl();
+                QuerysImpl query = new QuerysImpl();
+
+                int count = query.verifyNameSupplierUpdate(name, supplier.Id);
+                if (count > 0)
+                {
+                    sendMessages(1, "El PROVEEDOR que ingreso ya existe en la Base de Datos");
+                    dgDatos.SelectedItem = null;
+                    //supplier = null;
+                    diseable2();
+                    return;
+                }
+
+
+
+
+                supplierImpl = new SupplierImpl();
                     int test = supplierImpl.Update(supplier);
 
                     if (test > 0)

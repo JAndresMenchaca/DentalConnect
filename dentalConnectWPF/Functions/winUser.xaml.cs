@@ -98,8 +98,14 @@ namespace dentalConnectWPF.Functions
         private void enable()
         {
             btnInsert.IsEnabled = false;
+            btnInsert.Visibility = Visibility.Hidden;
+
+
             btnCancel.IsEnabled = true;
             btnSave.IsEnabled = true;
+
+            btnCancel.Visibility = Visibility.Visible;
+            btnSave.Visibility = Visibility.Visible;
 
             txbCI.IsEnabled = true;
             txbName.IsEnabled = true;
@@ -129,8 +135,12 @@ namespace dentalConnectWPF.Functions
 
 
             btnInsert.IsEnabled = true;
+            btnInsert.Visibility = Visibility.Visible;
+
             btnCancel.IsEnabled = false;
             btnSave.IsEnabled = false;
+            btnCancel.Visibility = Visibility.Hidden;
+            btnSave.Visibility = Visibility.Hidden;
 
 
             txbCI.IsEnabled = false;
@@ -393,10 +403,10 @@ namespace dentalConnectWPF.Functions
                 int count = query.verifyEmailUpdate(email, user.Id);
                 if (count > 0)
                 {
-                    MessageBox.Show(Session.SessionID + "");
+                    
                     sendMessages(1, "El EMAIL que ingreso ya existe en la Base de Datos");
                     dgDatos.SelectedItem = null;
-                    user = null;
+                    //user = null;
                     diseable2();
                     return;
                 }
@@ -405,7 +415,7 @@ namespace dentalConnectWPF.Functions
                 {
                     sendMessages(1, "El NÚMERO que ingreso ya existe en la Base de Datos");
                     dgDatos.SelectedItem = null;
-                    user = null;
+                    //user = null;
                     diseable2();    
                     return;
                 }

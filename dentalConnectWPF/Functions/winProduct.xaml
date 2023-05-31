@@ -122,13 +122,13 @@
                 </Grid>
 
 
-                <Image Source="/Logos/producto.png" Margin="65,0,0,660" Height="54" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="47" RenderTransformOrigin="0.02,0.651" Grid.Row="1"/>
+                <Image Source="/Logos/producto.png" Margin="54,0,0,661" Height="54" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="47" RenderTransformOrigin="0.02,0.651" Grid.Row="1"/>
                 <TextBlock Text="PRODUCTOS"
                                Foreground="#32403B"
                                FontSize="48"
                                FontWeight="Bold"
                                FontFamily="Montserrat"
-                               HorizontalAlignment="Left" Margin="118,6,0,662" Width="295" Grid.Row="1"/>
+                               HorizontalAlignment="Left" Margin="107,5,0,663" Width="295" Grid.Row="1"/>
                 <TextBlock Text="Nombre:"
                     Foreground="#32403B"
                     FontSize="28"
@@ -186,7 +186,7 @@
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="51,224,0,460" Width="158" Grid.Row="1"/>
+                    HorizontalAlignment="Left" Margin="51,224,0,460" Width="169" Grid.Row="1"/>
                 <TextBlock Text="Stock:"
                     Foreground="#32403B"
                     FontSize="28"
@@ -204,38 +204,38 @@
                     FontSize="28"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="510,115,0,569" Width="138" Grid.Row="1"/>
-                <TextBox x:Name="txbDesc" HorizontalAlignment="Left" Margin="217,156,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
-                <TextBox x:Name="txbPrice" HorizontalAlignment="Left" Margin="217,210,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="3" FontWeight="Medium"/>
-                <TextBox x:Name="txbStock" HorizontalAlignment="Left" Margin="217,268,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="4" FontWeight="Medium"/>
+                    HorizontalAlignment="Left" Margin="510,115,0,569" Width="150" Grid.Row="1"/>
+                <TextBox x:Name="txbDesc" HorizontalAlignment="Left" Margin="231,156,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
+                <TextBox x:Name="txbPrice" HorizontalAlignment="Left" Margin="231,210,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="3" FontWeight="Medium"/>
+                <TextBox x:Name="txbStock" HorizontalAlignment="Left" Margin="231,268,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="215" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="4" FontWeight="Medium"/>
                 <ComboBox x:Name="cbCateg" HorizontalAlignment="Left" Margin="680,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322" FontSize="24" Panel.ZIndex="5" Height="43" SelectionChanged="cbCateg_SelectionChanged"/>
-                <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="1041,112,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44"/>
-                <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="1041,176,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44"/>
-                <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="1041,238,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24"/>
-                <Button x:Name="btn_help_name" Content="" HorizontalAlignment="Left" Margin="438,122,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_name_Click">
+                <Button x:Name="btn_help_name" Content="" HorizontalAlignment="Left" Margin="452,122,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_name_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_desc" Content="" HorizontalAlignment="Left" Margin="438,172,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_desc_Click">
+                <Button x:Name="btn_help_desc" Content="" HorizontalAlignment="Left" Margin="452,172,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_desc_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_price" Content="" HorizontalAlignment="Left" Margin="438,224,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_price_Click">
+                <Button x:Name="btn_help_price" Content="" HorizontalAlignment="Left" Margin="452,224,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_price_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btn_help_stock" Content="" HorizontalAlignment="Left" Margin="438,284,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_stock_Click">
+                <Button x:Name="btn_help_stock" Content="" HorizontalAlignment="Left" Margin="452,284,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="-0.231,0.48" Cursor="Hand" Click="btn_help_stock_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Logos/help.png"/>
                     </Button.Background>
                 </Button>
 
                 <materialDesign:Snackbar x:Name="snackbar" MessageQueue="{materialDesign:MessageQueue}" Height="90" VerticalAlignment="Top" Width="590" Margin="460,10,0,0" HorizontalAlignment="Left" FontSize="18" FontWeight="Normal" Grid.RowSpan="2" />
-                <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="217,110,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="216" Height="42" FontSize="24" Foreground="White" Panel.ZIndex="2" FontWeight="Medium"/>
-                <ComboBox x:Name="cbSupplier" HorizontalAlignment="Left" Margin="680,158,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322" FontSize="24" Panel.ZIndex="5" Height="43" SelectionChanged="cbSupplier_SelectionChanged"/>
+                <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="231,110,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="216" Height="42" FontSize="24" Foreground="White" Panel.ZIndex="1" FontWeight="Medium"/>
+                <ComboBox x:Name="cbSupplier" HorizontalAlignment="Left" Margin="680,158,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322" FontSize="24" Panel.ZIndex="6" Height="43" SelectionChanged="cbSupplier_SelectionChanged"/>
+                <Button x:Name="btnInsert" Content="➕" HorizontalAlignment="Left" Margin="1041,147,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnInsert_Click" Height="44" Background="#FF386591" BorderBrush="#FF386591"/>
+                <Button x:Name="btnSave" Content="💾" HorizontalAlignment="Left" Margin="1041,116,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Click="btnSave_Click" Height="44" Background="#FF3C7861" BorderBrush="#FF2A5746"/>
+                <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="1041,178,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Click="btnCancel_Click" Height="44" FontSize="24" Background="#FF3C6162" BorderBrush="#FF314E4F"/>
 
             </Grid>
 

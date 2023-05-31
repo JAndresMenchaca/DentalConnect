@@ -20,8 +20,8 @@ namespace dentalConnectDAO.Implementation
         private static readonly Regex regexNameCategory = new Regex("^(?!.*  )[a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]{0,50}$");
 
         //Description
-        private static readonly Regex regexCaracter = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜñÑ.,!¡/?¿()$%:;0-9 ]+");
-        private static readonly Regex regexDescription = new Regex("^(?!.*  )[a-zA-Z0-9.,!¡/?¿()$%áéíóúüñÑ0-9 ]{0,80}$");
+        private static readonly Regex regexCaracter = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜñÑ.,!¡/?¿()$%:;0-9´& ]+");
+        private static readonly Regex regexDescription = new Regex("^(?!.*  )[a-zA-Z0-9.,!¡/?¿()$%áéíóúüñÑ0-9´& ]{0,80}$");
 
         #endregion
 
