@@ -706,7 +706,7 @@ namespace dentalConnectDAO.Implementation
 
         private static string RemoveConsecutiveSpaces(string text)
         {
-            return text.Replace("  ", " ");
+            return text.Replace("  ", "");
         }
 
 

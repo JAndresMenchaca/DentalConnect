@@ -52,7 +52,7 @@ namespace dentalConnectDAO.Implementation
             }
         }
 
-        public User Get(byte id)
+        public User Get(int id)
         {
             User user = null;
 
@@ -86,7 +86,7 @@ namespace dentalConnectDAO.Implementation
                 DataTable table = GetTable(command);
                 if (table.Rows.Count > 0)
                 {
-                    byte ID = byte.Parse(table.Rows[0][0].ToString());
+                    int ID = int.Parse(table.Rows[0][0].ToString());
                     string ci = table.Rows[0][1].ToString();
                     string name = table.Rows[0][2].ToString();
                     string lastName = table.Rows[0][3].ToString();
@@ -293,6 +293,11 @@ namespace dentalConnectDAO.Implementation
             count = (int)command.ExecuteScalar();
             ExecuteBasicCommand(command); 
             return count;
+        }
+
+        public User Get(byte id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

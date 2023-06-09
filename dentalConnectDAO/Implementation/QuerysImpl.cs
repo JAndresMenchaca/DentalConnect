@@ -13,8 +13,8 @@ namespace dentalConnectDAO.Implementation
 {
     public class QuerysImpl
     {
-        public string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
-        //public string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";   
+        //public string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+        public string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";   
         //public string connectionString = @"Server=DESKTOP-8LUHPUR;Database=dbDentalConnect;User Id=sa;Password=Mzhyde;";
         public int verifyEmail(string email)
         {
@@ -43,7 +43,7 @@ namespace dentalConnectDAO.Implementation
 
         }
 
-        public int verifyEmailUpdate(string email, byte id)
+        public int verifyEmailUpdate(string email, int id)
         {
             // Establecer la conexión a la base de datos                 
             using (var conexion = new SqlConnection(connectionString))
@@ -98,7 +98,7 @@ namespace dentalConnectDAO.Implementation
 
         }
 
-        public int verifyNumberUpdate(string phone, byte id)
+        public int verifyNumberUpdate(string phone, int id)
         {
             // Establecer la conexión a la base de datos
             using (var conexion = new SqlConnection(connectionString))
@@ -322,7 +322,7 @@ namespace dentalConnectDAO.Implementation
             }
         }
 
-        public int verifyCiUserUpdate(string ci, byte id)
+        public int verifyCiUserUpdate(string ci, int id)
         {
             using (var conexion = new SqlConnection(connectionString))
             {

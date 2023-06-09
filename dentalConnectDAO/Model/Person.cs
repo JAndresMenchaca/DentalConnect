@@ -9,7 +9,7 @@ namespace dentalConnectDAO.Model
     public class Person : BaseModel
     {
         #region Attributes
-        public byte Id { get; set; }
+        public int Id { get; set; }
         public string Ci { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -28,7 +28,7 @@ namespace dentalConnectDAO.Model
         }
 
         //GET
-        public Person(byte id, string ci, string name, string lastName, string secondLastName, DateTime birthdate,
+        public Person(int id, string ci, string name, string lastName, string secondLastName, DateTime birthdate,
                         char gender, string phone, string email, byte status, DateTime registerDate, DateTime lastUpdate, int idUser)
                         :base(status, registerDate, lastUpdate, idUser)
         {

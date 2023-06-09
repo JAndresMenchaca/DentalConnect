@@ -667,7 +667,7 @@ namespace dentalConnectWPF.Functions
             {
                 user = null;
                 DataRowView dataRow = (DataRowView)dgDatos.SelectedItem;
-                byte id = byte.Parse(dataRow.Row.ItemArray[0].ToString());
+                int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
                 try
                 {
                     userImpl = new UserImpl();

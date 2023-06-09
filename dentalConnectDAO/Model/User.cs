@@ -14,7 +14,7 @@ namespace dentalConnectDAO.Model
         public string Role { get; set; }
 
         // GET
-        public User(byte id, string ci, string name, string lastName, string secondLastName, DateTime birthdate,
+        public User(int id, string ci, string name, string lastName, string secondLastName, DateTime birthdate,
                         char gender, string phone, string email, string username, string role,
                         byte status, DateTime registerDate, DateTime lastUpdate, int idUser) 
                         : base(id, ci, name, lastName, secondLastName, birthdate, gender, phone, email, status,
