@@ -21,7 +21,7 @@ namespace dentalConnectDAO.Implementation
 
             command.Parameters.AddWithValue("@name", t.Name);
             command.Parameters.AddWithValue("@description", t.Description);
-            command.Parameters.AddWithValue("@idUser", Session.SessionID);
+            command.Parameters.AddWithValue("@idUser", 5/*Session.SessionID)*/); //OJO
             try
             {
                 return ExecuteBasicCommand(command);    

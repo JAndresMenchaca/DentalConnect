@@ -1,0 +1,137 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CRUD.master.cs" Inherits="dentalConnectWEB.CRUD" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title> <%:Page.Title %>  - CODENSA</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="images/logo1.png"/>
+</head>
+<body>
+    
+
+  <nav class="navbar navbar-expand-md navbar-light" style="background-color: #32403B;">
+    <a class="navbar-brand" style="font-size: 24px; color: #C9FFEB;">
+        <img src="images/logo1.png" alt="" width="70px" height="60px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="vistasDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    style="color: #C9FFEB; text-align: center;">
+                    Gestión empresarial
+                </a>
+                <div class="dropdown-menu" aria-labelledby="vistasDropdown">
+                    <a class="dropdown-item" href="categorias.html">Categorías</a>
+                    <a class="dropdown-item" href="proveedores.html">Proveedores</a>
+                    <a class="dropdown-item" href="usuarios.html">Usuarios</a>
+                    <a class="dropdown-item" href="informes.html">Informes</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="administrarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    style="color: #C9FFEB; text-align: center;">
+                    Gestión Comercial
+                </a>
+                <div class="dropdown-menu" aria-labelledby="administrarDropdown">
+                    <a class="dropdown-item" href="productos.html">Productos</a>
+                    <a class="dropdown-item" href="empresas.html">Empresas</a>
+                    <a class="dropdown-item" href="clientes.html">Clientes</a>
+                    <a class="dropdown-item" href="factura.html">Factura</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="detallesDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    style="color: #C9FFEB; text-align: center;">
+                    Gestión de Ventas y Logística
+                </a>
+                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="detallesDropdown">
+                    <a class="dropdown-item" href="pais-ciudad.html">País/Ciudad</a>
+                    <a class="dropdown-item" href="ventas.html">Ventas</a>
+                    <a class="dropdown-item" href="detalles-productos-vendidos.html">Detalles de productos
+                        vendidos</a>
+                    <a class="dropdown-item" href="pedidos.html">Pedidos</a>
+                </div>
+            </li>
+        </ul>
+        <h1 class="float-right" style="margin-left: 690px; color:#C9FFEB; font-weight:bold">CATEGORIAS</h1>
+    </div>
+</nav>
+
+    
+
+    <style>
+        .hidden-button {
+          display: none;
+        }
+        .grid-view-style {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .grid-view-style th, .grid-view-style td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        .grid-view-style th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .grid-view-style tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .grid-view-style tr:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+    
+
+    
+  
+  <div class="responsive">
+    <asp:ContentPlaceHolder ID="part1" runat="server">
+    </asp:ContentPlaceHolder>
+  </div>
+
+
+
+
+  <script>
+      function showHiddenButtons() {
+          document.getElementById("part1_Button1").style.display = "none";
+          document.getElementById("part1_Button2").style.display = "inline-block";
+          document.getElementById("part1_Button3").style.display = "inline-block";
+      }
+
+      function hideHiddenButtons(buttonId) {
+          document.getElementById("part1_Button2").style.display = "none";
+          document.getElementById("part1_Button3").style.display = "none";
+          document.getElementById("part1_Button1").style.display = "inline-block";
+      }
+  </script>
+  
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
