@@ -213,7 +213,7 @@
 
                 </TextBox>
                 <TextBox x:Name="txbSecLastName" HorizontalAlignment="Left" Margin="336,214,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="226" Height="44" FontSize="24" Foreground="White" Panel.ZIndex="3"/>
-                <TextBox x:Name="txbCI" HorizontalAlignment="Left" Margin="336,69,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="226" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="4" Grid.Row="1" FontWeight="Medium"/>
+                <TextBox x:Name="txbCI" HorizontalAlignment="Left" Margin="336,69,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="226" Height="43" FontSize="24" Foreground="White" Panel.ZIndex="4" Grid.Row="1" FontWeight="Medium" TextChanged="txbCI_TextChanged"/>
                 <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Margin="790,113,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="264" Height="45" FontSize="24" Foreground="White" Panel.ZIndex="6" FontWeight="Medium"/>
                 <TextBox x:Name="txbPhone" HorizontalAlignment="Left" Margin="796,164,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Top" Width="258" Height="41" FontSize="24" Foreground="White" Panel.ZIndex="7" FontWeight="Medium"/>
                 <ComboBox x:Name="cbRole" HorizontalAlignment="Left" Margin="795,72,0,0" Grid.Row="1" VerticalAlignment="Top" Width="260" FontSize="24" Panel.ZIndex="5" Foreground="Black"/>

@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 using MaterialDesignThemes.Wpf;
 
 namespace dentalConnectWPF.Functions
@@ -240,12 +241,16 @@ namespace dentalConnectWPF.Functions
             }
 
 
+            name = Regex.Replace(name, @"\s+", " ");
+            txbName.Text = name;
             name = DeleteSpace(name);
             txbName.Text = name;
+            phone = Regex.Replace(phone, @"\s+", " ");
+            txbPhone.Text = phone;
             phone = DeleteSpace(phone);
             txbPhone.Text = phone;
 
-           
+
             switch (opt)
             {
                 case 1:

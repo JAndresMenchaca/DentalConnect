@@ -26,6 +26,7 @@ using MaterialDesignThemes.Wpf;
 
 
 
+
 namespace dentalConnectWPF.Functions
 {
     /// <summary>
@@ -201,16 +202,24 @@ namespace dentalConnectWPF.Functions
                 string username = "";
                 string password = "";
 
-                ci = DeleteSpace(ci);
-                txbCI.Text = ci;
-                name = DeleteSpace(name);
-                txbName.Text = name;
-                lastName = DeleteSpace(lastName);
-                txbLastName.Text = lastName;
-                secondLastName = DeleteSpace(secondLastName);
-                txbSecLastName.Text = secondLastName;                  
+            ci = Regex.Replace(ci, @"\s+", " ");
+            txbCI.Text = ci;
+            ci = DeleteSpace(ci);
+            txbCI.Text = ci;
+            name = Regex.Replace(name, @"\s+", " ");
+            txbName.Text = name;
+            name = DeleteSpace(name);
+            txbName.Text = name;
+            lastName = Regex.Replace(lastName, @"\s+", " ");
+            txbLastName.Text = lastName;
+            lastName = DeleteSpace(lastName);
+            txbLastName.Text = lastName;
+            secondLastName = Regex.Replace(secondLastName, @"\s+", " ");
+            txbSecLastName.Text = secondLastName;
+            secondLastName = DeleteSpace(secondLastName);
+            txbSecLastName.Text = secondLastName;
 
-                switch (cbGender.Text)
+            switch (cbGender.Text)
                 {
                     case "Masculino":
                         gender = 'M';
@@ -862,6 +871,29 @@ namespace dentalConnectWPF.Functions
             }
             return false;
         }
-    
+
+        private void txbCI_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string inputText = textBox.Text;
+
+            if (inputText.Length >= 8)
+            {
+                // Verificar si hay caracteres no permitidos a partir del octavo carácter
+                string forbiddenCharacters = "0123456789"; // Solo se permiten letras y caracteres especiales
+
+                for (int i = 8; i < inputText.Length; i++)
+                {
+                    if (forbiddenCharacters.Contains(inputText[i]))
+                    {
+                        // Se encontró un carácter no permitido
+                        // Elimina el carácter no permitido
+                        textBox.Text = inputText.Remove(i, 1);
+                        textBox.CaretIndex = i; // Ubica el cursor al final del texto corregido
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

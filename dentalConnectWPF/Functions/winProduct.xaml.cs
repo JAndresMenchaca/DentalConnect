@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using dentalConnectDAO.Implementation;
 using dentalConnectDAO.Model;
+using System.Text.RegularExpressions;
 using MaterialDesignThemes.Wpf;
 
 namespace dentalConnectWPF.Functions
@@ -252,12 +253,15 @@ namespace dentalConnectWPF.Functions
 
 
 
-            name = DeleteSpace(name);
-
+            name = Regex.Replace(name, @"\s+", " ");
             txbName.Text = name;
-
+            name = DeleteSpace(name);
+            txbName.Text = name;
+            descrip = Regex.Replace(descrip, @"\s+", " ");
+            txbDesc.Text = descrip;
             descrip = DeleteSpace(descrip);
             txbDesc.Text = descrip;
+
 
 
 
