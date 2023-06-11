@@ -69,6 +69,23 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\functions\aplicacion.png" />
+    <Content Include="images\functions\camion.png" />
+    <Content Include="images\functions\casa.png" />
+    <Content Include="images\functions\cerrar.png" />
+    <Content Include="images\functions\coronavirus.png" />
+    <Content Include="images\functions\documento.png" />
+    <Content Include="images\functions\edificio.png" />
+    <Content Include="images\functions\factura.png" />
+    <Content Include="images\functions\i3.png" />
+    <Content Include="images\functions\logo1.png" />
+    <Content Include="images\functions\objetivo.png" />
+    <Content Include="images\functions\pedidos.png" />
+    <Content Include="images\functions\producto.png" />
+    <Content Include="images\functions\registro.png" />
+    <Content Include="images\functions\user1.png" />
+    <Content Include="images\functions\ventas.png" />
+    <Content Include="images\logo1.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

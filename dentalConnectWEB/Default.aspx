@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Categorias" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="dentalConnectWEB.Default" %>
+﻿<%@ Page Title="CATEGORIAS" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="dentalConnectWEB.Default" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -13,9 +13,9 @@
     <form ID="form1" runat="server">
         <div class="float-left">
         <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 650px; width: 1000px; margin-left: 15px;">
-           <asp:GridView ID="gridData" runat="server" CssClass="grid-view-style" OnRowCreated="gridData_RowCreated">
-                
-           </asp:GridView>
+           <asp:DataGrid ID="gridData" runat="server" CssClass="grid-view-style" OnItemDataBound="gridData_ItemDataBound" OnItemCreated="gridData_ItemCreated" >
+
+           </asp:DataGrid>    
         </div>
 </div>
 
@@ -35,13 +35,15 @@
                     
                         </div>
                         <div class="form-group text-center">
-                            <aspButton ID="Button1" runat="server" class="btn" onmousedown="showHiddenButtons()" style="font-size: 25px; width: 100px; background-color:#386591"  >➕</aspButton>
+                            
+                            <asp:Button ID="Button1" OnClick="Button1_Click" runat="server" CssClass="btn" Text="➕" Style="font-size: 25px; width: 100px; background-color: #386591; " />
+
                     
                             <div>
-                        
-                                <asp:Button ID="Button2" OnClick="Button2_Click" runat="server" CssClass="btn btn-secondary hidden-button" OnClientClick="hideHiddenButtons()" Text="💾" Style="font-size: 25px; width: 100px; background-color: #346955; display: none;" />
+                                
+                                <asp:Button ID="Button2" OnClick="Button2_Click" runat="server" CssClass="btn" Text="💾" Style="font-size: 25px; width: 100px; background-color: #346955; " />
 
-                                 <aspButton ID="Button3" runat="server" class="btn btn-secondary hidden-button" onmousedown="hideHiddenButtons()" style="font-size: 25px; width: 100px; background-color:#3C6162; display: none;">❌</aspButton>
+                                 <asp:Button ID="Button3" OnClick="Button3_Click" runat="server" CssClass="btn" Text="❌" Style="font-size: 25px; width: 100px; background-color: #346955; " />
 
                        
                             </div>
@@ -49,10 +51,28 @@
             
                 </div>
         </div>
+       
 
         <div class="float-right">
+                <asp:Label ID="idLabel" runat="server" style="font-size:5px"></asp:Label>
               <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 325px; width: 550px; margin-right: 15px;">
-                  <asp:Label ID="Label1" runat="server" style="color:red; font-size:30px">Error</asp:Label>
+                  <asp:Label ID="message" runat="server" style="font-size:20px"></asp:Label>
+
+                  <div class="d-flex align-items-center justify-content-center" style="height: 100%;" >
+                      <div class="text-center" runat="server" id="opt" >
+                    <h1><p>¿Desea borrar la categoría seleccionada?</p></h1>
+
+                    
+                    <asp:Button ID="yes" OnClick="yes_Click" runat="server" CssClass="btn btn-success" Text="SI" onmouseover="this.style.backgroundColor='#4CAF50'" onmouseout="this.style.backgroundColor='green'" style="width: 20%;" />
+
+                     <asp:Button ID="no" OnClick="no_Click" runat="server" CssClass="btn btn-danger" Text="NO" onmouseover="this.style.backgroundColor='#FF0000'" onmouseout="this.style.backgroundColor='red'" style="width: 20%;" />
+                    
+                  </div>
+                  </div>
+                  
+
+
+
               </div>
         </div>
     </form>
