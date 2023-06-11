@@ -18,7 +18,7 @@ namespace dentalConnectWEB
     {
         Category category;
         CategoryImpl categoryImpl;
-        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +27,10 @@ namespace dentalConnectWEB
             Button2.Visible = false;
             idLabel.Visible = false;
             opt.Visible = false;
+
+
+
+
 
         }
         protected void gridData_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -97,6 +101,7 @@ namespace dentalConnectWEB
 
         protected void EditarButton_Click(object sender, EventArgs e)
         {
+            message.Text = "";
             Button1.Visible = false;
             Button3.Visible = true;
             Button2.Visible = true;
@@ -108,10 +113,10 @@ namespace dentalConnectWEB
             string itemValue = row.Cells[columnIndex].Text;
 
             category = null;
-            
+
 
             // Obtener el valor del identificador de la fila seleccionada
-            
+
 
             byte id = byte.Parse(itemValue);
 
@@ -133,11 +138,12 @@ namespace dentalConnectWEB
             {
 
             }
-            
+
 
         }
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
+            message.Text = "";
             Button btnEditar = (Button)sender;
             DataGridItem row = (DataGridItem)btnEditar.NamingContainer;
             int columnIndex = 0; // Índice de la columna 0
@@ -145,10 +151,12 @@ namespace dentalConnectWEB
             string itemValue = row.Cells[columnIndex].Text;
 
             byte id = byte.Parse(itemValue);
-            idLabel.Text= id.ToString();
+            idLabel.Text = id.ToString();
 
-            
             opt.Visible = true;
+
+            // Bloquear el botón Button1
+            Button1.Enabled = false;
         }
 
         void select()
@@ -171,13 +179,62 @@ namespace dentalConnectWEB
         {
             try
             {
-                category = new Category(TextBox1.Text, TextBox2.Text);
+                message.Text = "";
+                string name = TextBox1.Text;
+                string description = TextBox2.Text;
+
+                if (string.IsNullOrEmpty(name))
+                {
+                    // El nombre está vacío, mostrar un mensaje de error
+                    message.Text = "El nombre no puede estar vacío";
+                    message.CssClass = "error-message";
+                    return;
+                }
+
+                // Validar el nombre utilizando la expresión regular
+                bool isNameValid = ValidationsImpl.ValidateName(name);
+                if (!isNameValid)
+                {
+                    // El nombre no cumple con el patrón de la expresión regular, mostrar un mensaje de error
+                    // y detener el proceso de inserción
+                    // Puedes utilizar un control de mensajes como un Label o mostrar una alerta en JavaScript
+                    // Aquí se muestra un ejemplo utilizando un Label llamado "errorLabel"
+                    message.Text = "El nombre no cumple con el formato válido, asegurese de que el nombre de la categoria NO tenga números, caracteres especiales ni espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de carcateres permitidos 0-50)";
+                    message.CssClass = "error-message";
+                    return;
+                }
+
+                QuerysImpl query = new QuerysImpl();
+
+                int count = query.verifyNameCategory(name);
+                if (count > 0)
+                {
+                    message.Text = "La CATEGORIA que ingreso ya existe en la Base de Datos";
+                    message.CssClass = "error-message";
+                    return;
+                }
+
+
+                // Validar la descripción utilizando la expresión regular
+                bool isDescriptionValid = ValidationsImpl.ValidateDescription(description);
+                if (!isDescriptionValid)
+                {
+                    // La descripción no cumple con el patrón de la expresión regular, mostrar un mensaje de error
+                    // y detener el proceso de inserción
+                    message.Text = "La descripción no cumple con el formato válido, asegurese de que no hayan espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de caracteres permitidos 0-80)";
+                    message.CssClass = "error-message";
+                    return;
+                }
+
+                // Si el nombre y la descripción son válidos, continuar con el proceso de inserción
+                category = new Category(name, description);
                 categoryImpl = new CategoryImpl();
                 int n = categoryImpl.Insert(category);
 
                 if (n > 0)
                 {
                     select();
+                    message.Text = "";
                 }
 
                 TextBox1.Text = "";
@@ -186,76 +243,113 @@ namespace dentalConnectWEB
             catch (Exception ex)
             {
 
-                throw;
             }
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            message.Text = "";
             Button1.Visible = true;
             Button3.Visible = false;
             Button2.Visible = false;
 
-            
             try
             {
-                //if (name == "")
-                //{
-                //    sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
-                //    diseable2();
-                //    return;
-                //}
-                
                 string name = TextBox1.Text;
-                string descrip = TextBox2.Text;
+                string description = TextBox2.Text;
 
-                Category category = new Category(name, descrip);
+                if (string.IsNullOrEmpty(name))
+                {
+                    // El nombre está vacío, mostrar un mensaje de error
+                    message.Text = "El nombre no puede estar vacío";
+                    message.CssClass = "error-message";
+                    Button1.Visible= false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
 
-                category.Name = name;
-                category.Description = descrip;
-                category.Id = byte.Parse(idLabel.Text);
+
+                     
+
+                // Validar el nombre utilizando la expresión regular
+                bool isNameValid = ValidationsImpl.ValidateName(name);
+                if (!isNameValid)
+                {
+                    // El nombre no cumple con el patrón de la expresión regular, mostrar un mensaje de error
+                    // y detener el proceso de modificación
+                    message.Text = "El nombre no cumple con el formato válido, asegurese de que el nombre de la categoria NO tenga números, caracteres especiales ni espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres(número de carcateres permitidos 0 - 50)";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+
+                // Validar la descripción utilizando la expresión regular
+                bool isDescriptionValid = ValidationsImpl.ValidateDescription(description);
+                if (!isDescriptionValid)
+                {
+                    // La descripción no cumple con el patrón de la expresión regular, mostrar un mensaje de error
+                    // y detener el proceso de modificación
+                    message.Text = "La descripción no cumple con el formato válido, asegurese de que no hayan espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de caracteres permitidos 0-80)";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+
+                // Obtener el ID de la categoría a modificar
+                byte id = byte.Parse(idLabel.Text);
 
 
-                //QuerysImpl query = new QuerysImpl();
+                // Crear un objeto Category con los nuevos valores
+                Category category = new Category(name, description);
+                category.Id = id;
 
-                //int count = query.verifyNameCategoryUpdate(name, category.Id);
-                //if (count > 0)
-                //{
-                //    sendMessages(1, "La CATEGORIA que ingreso ya existe en la Base de Datos");
-                //    dgDatos.SelectedItem = null;
-                //    //category = null;
-                //    diseable2();
-                //    return;
-                //}
 
-                //idLabel.Text = category.Id.ToString();
+                QuerysImpl query = new QuerysImpl();
+
+                int count = query.verifyNameCategoryUpdate(name, category.Id);
+                if (count > 0)
+                {
+                    message.Text = "La CATEGORIA que ingreso ya existe en la Base de Datos";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+
                 categoryImpl = new CategoryImpl();
                 int test = categoryImpl.Update(category);
 
                 if (test > 0)
                 {
-                //    sendMessages(2, "Se modifico el registro con exito");
                     select();
-                //    diseable();
+                    message.Text = "";
                 }
-            }
-            catch
-            {
-                //sendMessages(1, "Hubo un error al MODIFICAR el registro, contacte al administrador");
-                //diseable2();
-            }
-            //gridData.SelectedItem = null;
-            category = null;
 
+                TextBox1.Text = "";
+                TextBox2.Text = "";
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            category = null;
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
+            message.Text = "";
             Button1.Visible = true;
             Button3.Visible = false;
             Button2.Visible = false;
             TextBox1.Text = "";
-            TextBox2.Text = "";
+            TextBox2.Text = "";         
         }
 
         protected void yes_Click(object sender, EventArgs e)
@@ -268,9 +362,10 @@ namespace dentalConnectWEB
                 int test = categoryImpl.Delete(category);
                 if (test > 0)
                 {
-
                     select();
-
+                    Button1.Enabled = true;
+                    TextBox1.Text = "";
+                    TextBox2.Text = "";
                 }
             }
             catch
@@ -282,6 +377,10 @@ namespace dentalConnectWEB
         {
             idLabel.Visible = false;
             idLabel.Text = string.Empty;
+
+            // Desbloquear el botón Button1
+            Button1.Visible = true;
+            Button1.Enabled = true;
         }
         private void getData()
         {

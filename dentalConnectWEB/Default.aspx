@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="CATEGORIAS" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="dentalConnectWEB.Default" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <style>
+        .error-message {
+            color: #cc0000;
+        }
+    </style>
 </asp:Content>
 
 

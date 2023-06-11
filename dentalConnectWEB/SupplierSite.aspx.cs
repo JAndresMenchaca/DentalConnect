@@ -93,6 +93,7 @@ namespace dentalConnectWEB
 
         protected void EditarButton_Click(object sender, EventArgs e)
         {
+            message.Text = "";
             Button1.Visible = false;
             Button3.Visible = true;
             Button2.Visible = true;
@@ -141,6 +142,7 @@ namespace dentalConnectWEB
         }
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
+            message.Text = "";
             Button btnEditar = (Button)sender;
             DataGridItem row = (DataGridItem)btnEditar.NamingContainer;
             int columnIndex = 0; // Índice de la columna 0
@@ -166,6 +168,8 @@ namespace dentalConnectWEB
 
 
             opt.Visible = true;
+
+            Button1.Enabled = false;
         }
 
         void select()
@@ -189,6 +193,98 @@ namespace dentalConnectWEB
            
             try
             {
+                message.Text = "";
+                string nameS = name.Text; 
+                string phoneS = phone.Text; 
+                string mailS = mail.Text;   
+                string webS = sitio.Text;
+                string streetPS = calleP.Text;
+                string streetSS = calleS.Text;
+
+                if (string.IsNullOrEmpty(nameS))
+                {
+                    message.Text = "El nombre no puede estar vacío";
+                    message.CssClass = "error-message";
+                    return;
+                }
+                if (string.IsNullOrEmpty(phoneS))
+                {
+                    message.Text = "El teléfono no puede estar vacío";
+                    message.CssClass = "error-message";
+                    return;
+                }
+                if (string.IsNullOrEmpty(mailS))
+                {
+                    message.Text = "El Email no puede estar vacío";
+                    message.CssClass = "error-message";
+                    return;
+                }             
+                if (string.IsNullOrEmpty(streetPS))
+                {
+                    message.Text = "La calle principal no puede estar vacía";
+                    message.CssClass = "error-message";
+                    return;
+                }
+
+                QuerysImpl query = new QuerysImpl();
+
+                int count = query.verifyNameSupplier(nameS);
+                if (count > 0)
+                {
+                    message.Text = "El NOMBRE DEL PROVEEDOR que ingreso ya existe en la Base de Datos";
+                    message.CssClass = "error-message";
+                    return;
+                }
+
+                bool isNameValid = ValidationsImpl.ValidateNameS(nameS);
+                if (!isNameValid)
+                {                  
+                    message.Text = "El nombre no cumple con el formato válido, asegurese de que el nombre NO tenga números, caracteres especiales ni espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de caracteres permitidos 0-50)";
+                    message.CssClass = "error-message";
+                    return;
+                }
+                bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phoneS);
+                if (!isPhoneValid)
+                {
+                    message.Text = "El teléfono no cumple con el formato válido, asegurese de que solo lleve números y/o signos '+' o '-' (número de caracteres permitidos 0-20)";
+                    message.CssClass = "error-message";
+                    return;
+                }
+                bool isEmailValid = ValidationsImpl.ValidateEmailS(mail.Text);
+                if (!isEmailValid)
+                {
+                    message.Text = "El Email no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.' o '@' (número de caracteres permitidos 0-30)";
+                    message.CssClass = "error-message";
+                    return;
+                }
+                if (ciudad.SelectedValue == null) 
+                {
+                    message.Text = "Debe seleccionar una ciudad";
+                    message.CssClass = "error-message";
+                }
+                bool isWebValid = ValidationsImpl.ValidateWebS(webS);
+                if (!isWebValid)
+                {
+                    message.Text = "El sitio web no cumple con el formato válido, asegurese de que solo SOLO lleve letras, números y/o signos '.' o '-' (número de caracteres permitidos 0-60)";
+                    message.CssClass = "error-message";
+                    return;
+                }
+                bool isStreetPValid = ValidationsImpl.ValidateStreetS(streetPS);
+                if (!isStreetPValid)
+                {
+                    message.Text = "La calle principal no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
+                    message.CssClass = "error-message";
+                    return;
+                }
+                bool isStreetAValid = ValidationsImpl.ValidateStreetS(streetSS);
+                if (!isStreetAValid)
+                {
+                    message.Text = "La calle adyacente no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
+                    message.CssClass = "error-message";
+                    return;
+                }
+
+
                 supplier = new Supplier(name.Text, phone.Text, mail.Text, sitio.Text, calleP.Text, calleS.Text, int.Parse(ciudad.SelectedValue));
                 supplierImpl = new SupplierImpl();
                 int n = supplierImpl.Insert(supplier);
@@ -217,6 +313,7 @@ namespace dentalConnectWEB
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            message.Text = "";
             Button1.Visible = true;
             Button3.Visible = false;
             Button2.Visible = false;
@@ -224,13 +321,119 @@ namespace dentalConnectWEB
 
             try
             {
-                //if (name == "")
-                //{
-                //    sendMessages(1, "Hubo un error al INSERTAR el registro, verifique los datos");
-                //    diseable2();
-                //    return;
-                //}
 
+                string nameS = name.Text;
+                string phoneS = phone.Text;
+                string mailS = mail.Text;
+                string webS = sitio.Text;
+                string streetPS = calleP.Text;
+                string streetSS = calleS.Text;
+
+                if (string.IsNullOrEmpty(nameS))
+                {
+                    message.Text = "El nombre no puede estar vacío";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                if (string.IsNullOrEmpty(phoneS))
+                {
+                    message.Text = "El teléfono no puede estar vacío";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                if (string.IsNullOrEmpty(mailS))
+                {
+                    message.Text = "El Email no puede estar vacío";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                if (string.IsNullOrEmpty(streetPS))
+                {
+                    message.Text = "La calle principal no puede estar vacía";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+
+                bool isNameValid = ValidationsImpl.ValidateNameS(nameS);
+                if (!isNameValid)
+                {
+                    message.Text = "El nombre no cumple con el formato válido, asegurese de que el nombre NO tenga números, caracteres especiales ni espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de caracteres permitidos 0-50)";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phoneS);
+                if (!isPhoneValid)
+                {
+                    message.Text = "El teléfono no cumple con el formato válido, asegurese de que solo lleve números y/o signos '+' o '-' (número de caracteres permitidos 0-20)";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                bool isEmailValid = ValidationsImpl.ValidateEmailS(mailS);
+                if (!isEmailValid)
+                {
+                    message.Text = "El Email no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.' o '@' (número de caracteres permitidos 0-30)";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                if (ciudad.SelectedValue == null)
+                {
+                    message.Text = "Debe seleccionar una ciudad";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                }
+                bool isWebValid = ValidationsImpl.ValidateWebS(webS);
+                if (!isWebValid)
+                {
+                    message.Text = "El sitio web no cumple con el formato válido, asegurese de que solo SOLO lleve letras, números y/o signos '.' o '-' (número de caracteres permitidos 0-60)";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                bool isStreetPValid = ValidationsImpl.ValidateStreetS(streetPS);
+                if (!isStreetPValid)
+                {
+                    message.Text = "La calle principal no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                bool isStreetAValid = ValidationsImpl.ValidateStreetS(streetSS);
+                if (!isStreetAValid)
+                {
+                    message.Text = "La calle adyacente no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
 
                 Supplier supplier = new Supplier(name.Text, phone.Text, mail.Text, sitio.Text, calleP.Text, calleS.Text, int.Parse(ciudad.SelectedValue));
 
@@ -244,6 +447,18 @@ namespace dentalConnectWEB
 
                 supplier.Id = byte.Parse(idLabel.Text);
 
+                QuerysImpl query = new QuerysImpl();
+
+                int count = query.verifyNameSupplierUpdate(nameS, supplier.Id);
+                if (count > 0)
+                {
+                    message.Text = "El NOMBRE DEL PROVEEDOR que ingreso ya existe en la Base de Datos";
+                    message.CssClass = "error-message";
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
 
                 //QuerysImpl query = new QuerysImpl();
 
@@ -263,15 +478,22 @@ namespace dentalConnectWEB
 
                 if (test > 0)
                 {
-                    //    sendMessages(2, "Se modifico el registro con exito");
+                 
                     select();
-                    //    diseable();
+                    message.Text = "";
+                   
                 }
+                name.Text = "";
+                phone.Text = "";
+                mail.Text = "";
+                ciudad.SelectedValue = null;
+                sitio.Text = "";
+                calleP.Text = "";
+                calleS.Text = "";
             }
-            catch
+            catch (Exception ex)
             {
-                //sendMessages(1, "Hubo un error al MODIFICAR el registro, contacte al administrador");
-                //diseable2();
+                
             }
             //gridData.SelectedItem = null;
             supplier = null;
@@ -291,6 +513,7 @@ namespace dentalConnectWEB
             calleS.Text = "";
             ciudad.Text = "";
             ciudad.SelectedValue = null;
+            message.Text = "";
         }
 
         protected void yes_Click(object sender, EventArgs e)
@@ -305,7 +528,16 @@ namespace dentalConnectWEB
                 {
 
                     select();
-
+                    Button1.Enabled = true;
+                    name.Text = "";
+                    phone.Text = "";
+                    mail.Text = "";
+                    sitio.Text = "";
+                    calleP.Text = "";
+                    calleS.Text = "";
+                    ciudad.Text = "";
+                    ciudad.SelectedValue = null;
+                    
                 }
             }
             catch
@@ -317,6 +549,10 @@ namespace dentalConnectWEB
         {
             idLabel.Visible = false;
             idLabel.Text = string.Empty;
+        
+
+            Button1.Visible = true;
+            Button1.Enabled = true;
         }
         private void getData()
         {

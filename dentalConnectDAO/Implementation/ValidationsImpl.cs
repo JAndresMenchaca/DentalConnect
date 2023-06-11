@@ -19,9 +19,25 @@ namespace dentalConnectDAO.Implementation
         private static readonly Regex regexText = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]+");
         private static readonly Regex regexNameCategory = new Regex("^(?!.*  )[a-zA-ZáéíóúüÉÁÚÍÓÜñÑ ]{0,50}$");
 
+        public static bool ValidateName(string name)
+        {
+            // Verificar si el nombre cumple con el patrón de la expresión regular
+            bool isValid = regexNameCategory.IsMatch(name);
+
+            return isValid;
+        }
+
         //Description
         private static readonly Regex regexCaracter = new Regex("[^a-zA-ZáéíóúüÉÁÚÍÓÜñÑ.,!¡/?¿()$%:;0-9´& ]+");
         private static readonly Regex regexDescription = new Regex("^(?!.*  )[a-zA-Z0-9.,!¡/?¿()$%áéíóúüñÑ0-9´& ]{0,80}$");
+
+        public static bool ValidateDescription(string description)
+        {
+            // Verificar si la descripción cumple con el patrón de la expresión regular
+            bool isValid = regexDescription.IsMatch(description);
+
+            return isValid;
+        }
 
         #endregion
 
@@ -29,21 +45,59 @@ namespace dentalConnectDAO.Implementation
         //Nombre
         private static readonly Regex regexNameSupplier = new Regex("[^a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]+");
         private static readonly Regex regexNameSupplier1 = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,50}$");
+
+        public static bool ValidateNameS(string name)
+        {
+            // Verificar si el nombre cumple con el patrón de la expresión regular
+            bool isValid = regexNameSupplier1.IsMatch(name);
+
+            return isValid;
+        }
         //Telefono
         private static readonly Regex regexPhoneSupplier = new Regex("[^0-9+ -]+");
         private static readonly Regex regexPhoneSupplier1 = new Regex("^(?!.*  )[^0-9+ -]{0,20}$");
+        private static readonly Regex regexPhoneSupplier2 = new Regex(@"^[0-9+ -]{0,20}$");
+
+        public static bool ValidatePhoneS(string phone)
+        {
+            bool isValid = regexPhoneSupplier2.IsMatch(phone);
+
+            return isValid;
+        }
         //Email
         private static readonly Regex regexEmailSupplier = new Regex("[^a-zA-Z0-9.@]+");
         private static readonly Regex regexEmailSupplier1 = new Regex("^(?!.*  )[^a-zA-Z0-9.@]{0,30}$");
+        private static readonly Regex regexEmailSupplier2 = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{0,30}$");
 
+        public static bool ValidateEmailS(string email)
+        {
+            bool isValid = regexEmailSupplier2.IsMatch(email);
+
+            return isValid;
+        }
         //Sitio Web
         private static readonly Regex regexWebSupplier = new Regex("[^a-zA-Z0-9.-]+");
         private static readonly Regex regexWebSupplier1 = new Regex("^(?!.*  )[^a-zA-Z0-9.-]{0,60}$");
+        private static readonly Regex regexWebSupplier2 = new Regex(@"^[a-zA-Z0-9.-]{0,60}$");
+
+        public static bool ValidateWebS(string web)
+        {
+            bool isValid = regexWebSupplier2.IsMatch(web);
+
+            return isValid;
+        }
         //Calle Principal y Calle Adyacente
 
         private static readonly Regex regexStreetSupplier = new Regex("[^a-zA-Z0-9ñÑ .#/-]+");
         private static readonly Regex regexStreetSupplier1 = new Regex("^(?!.*  )[^a-zA-Z0-9ñÑ .#/-]{0,30}$");
+        private static readonly Regex regexStreetSupplier2 = new Regex(@"^[a-zA-Z0-9ñÑ .#/-]{0,30}$");
 
+        public static bool ValidateStreetS(string street)
+        {
+            bool isValid = regexStreetSupplier2.IsMatch(street);
+
+            return isValid;
+        }
         #endregion
 
         #region"User"

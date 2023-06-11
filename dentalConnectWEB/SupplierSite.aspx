@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="PROVEEDORES" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="SupplierSite.aspx.cs" Inherits="dentalConnectWEB.SupplierSite" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <style>
+        .error-message {
+            color: #cc0000;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="part1" runat="server">
