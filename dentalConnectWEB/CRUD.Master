@@ -39,7 +39,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="vistasDropdown">
                         <a class="dropdown-item" href="category.html"> <img src="images/functions/aplicacion.png" alt="" width="15px" height="15px"> Categorías</a>
-                        <a class="dropdown-item" href="supplier.html"> <img src="images/functions/camion.png" alt="" width="15px" height="15px"> Proveedores</a>
+                        <a class="dropdown-item" href="SupplierSite.aspx"> <img src="images/functions/camion.png" alt="" width="15px" height="15px"> Proveedores</a>
                         <a class="dropdown-item" href="usuarios.html"><img src="images/functions/user1.png" alt="" width="15px" height="15px"> Usuarios</a>
                         <a class="dropdown-item" href="informes.html"><img src="images/functions/documento.png" alt="" width="15px" height="15px"> Informes</a>
                     </div>
@@ -78,28 +78,60 @@
 
     <style>
         .grid-view-style {
-            font-family: Arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
+          font-family: Segoe UI Emoji, NotoColorEmoji, Arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
         }
 
-        .grid-view-style th, .grid-view-style td {
-            border: 1px solid #ccc;
-            padding: 8px;
+        .grid-view-style th,
+        .grid-view-style td {
+          border: 1px solid #ccc;
+          padding: 8px;
+          text-align: left;
         }
 
         .grid-view-style th {
-            background-color: #f2f2f2;
-            font-weight: bold;
+          background-color: #f2f2f2;
+          font-weight: bold;
         }
 
         .grid-view-style tr:nth-child(even) {
-            background-color: #f9f9f9;
+          background-color: #f9f9f9;
         }
 
         .grid-view-style tr:hover {
-            background-color: #e6e6e6;
+          background-color: #e6e6e6;
+          transition: background-color 0.3s ease;
         }
+
+        .grid-view-style .grid-header {
+          background-color: #f2f2f2;
+          color: #333;
+          padding: 12px;
+          font-weight: bold;
+          border-bottom: 2px solid #ccc;
+        }
+
+        .grid-view-style .grid-row {
+          background-color: #fff;
+          color: #333;
+          transition: background-color 0.3s ease;
+        }
+
+        .grid-view-style .grid-row:hover {
+          background-color: #f9f9f9;
+        }
+
+        .grid-view-style .grid-alternate-row {
+          background-color: #f9f9f9;
+          color: #333;
+          transition: background-color 0.3s ease;
+        }
+
+        .grid-view-style .grid-alternate-row:hover {
+          background-color: #e6e6e6;
+        }
+
     </style>
     
 
