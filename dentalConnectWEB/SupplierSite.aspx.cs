@@ -2,7 +2,9 @@
 using dentalConnectDAO.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -123,15 +125,15 @@ namespace dentalConnectWEB
             {
                 supplierImpl = new SupplierImpl();
                 supplier = supplierImpl.Get(id);
-                name.Text = supplier.Name;
-                phone.Text = supplier.Phone;
-                mail.Text = supplier.Email;
+                name.Text = supplier.Name.Trim();
+                phone.Text = supplier.Phone.Trim();
+                mail.Text = supplier.Email.Trim();
                 
                 
-                ciudad.SelectedIndex = supplier.IdCity-1;
-                sitio.Text = supplier.Website;
-                calleP.Text = supplier.MainStreet;
-                calleS.Text = supplier.AdjacentStreet;
+                ciudad.SelectedIndex = supplier.IdCity;
+                sitio.Text = supplier.Website.Trim();
+                calleP.Text = supplier.MainStreet.Trim();
+                calleS.Text = supplier.AdjacentStreet.Trim();
             }
             catch
             {
@@ -201,28 +203,43 @@ namespace dentalConnectWEB
                 string streetPS = calleP.Text;
                 string streetSS = calleS.Text;
 
+                name.BackColor = Color.White;
+                phone.BackColor = Color.White;
+                mail.BackColor = Color.White;
+                sitio.BackColor = Color.White;
+                calleP.BackColor = Color.White;
+                calleS.BackColor = Color.White;
+
                 if (string.IsNullOrEmpty(nameS))
                 {
-                    message.Text = "El nombre no puede estar vacío";
-                    message.CssClass = "error-message";
+                    
+                    sendMessages(2, "El campo de nombre no puede estar vacío");
+                    name.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
                 if (string.IsNullOrEmpty(phoneS))
                 {
-                    message.Text = "El teléfono no puede estar vacío";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "El campo de teléfono no puede estar vacío");
+                    phone.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
+
                 }
                 if (string.IsNullOrEmpty(mailS))
                 {
-                    message.Text = "El Email no puede estar vacío";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "El campo de Email no puede estar vacío");
+                    mail.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
-                }             
+                }
+                if (string.IsNullOrEmpty(ciudad.Text))
+                {
+                    sendMessages(2, "El campo ciudad no puede estar vacío");
+                    ciudad.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
                 if (string.IsNullOrEmpty(streetPS))
                 {
-                    message.Text = "La calle principal no puede estar vacía";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "El campo de la calle principal no puede estar vacía");
+                    calleP.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
 
@@ -231,56 +248,58 @@ namespace dentalConnectWEB
                 int count = query.verifyNameSupplier(nameS);
                 if (count > 0)
                 {
-                    message.Text = "El NOMBRE DEL PROVEEDOR que ingreso ya existe en la Base de Datos";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "El NOMBRE DEL PROVEEDOR que ingreso ya existe en la Base de Datos");
+                    name.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
 
                 bool isNameValid = ValidationsImpl.ValidateNameS(nameS);
                 if (!isNameValid)
-                {                  
-                    message.Text = "El nombre no cumple con el formato válido, asegurese de que el nombre NO tenga números, caracteres especiales ni espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de caracteres permitidos 0-50)";
-                    message.CssClass = "error-message";
+                {
+                    sendMessages(2, "El NOMBRE no cumple con el formato válido, asegurese de que el nombre NO tenga números, caracteres especiales ni espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de caracteres permitidos 0-50)");
+                    name.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
                 bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phoneS);
-                if (!isPhoneValid)
+                if (!isPhoneValid || !ValidarTelefono(phoneS) || phoneS.Length<=7)
                 {
-                    message.Text = "El teléfono no cumple con el formato válido, asegurese de que solo lleve números y/o signos '+' o '-' (número de caracteres permitidos 0-20)";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "El teléfono no cumple con el formato válido, asegurese de que solo lleve números y/o signos '+'(siempre debe estar al inicio) o '-', debe contener minimo 8 números (número de caracteres permitidos 0-20)");
+                    phone.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
+
                 bool isEmailValid = ValidationsImpl.ValidateEmailS(mail.Text);
                 if (!isEmailValid)
                 {
-                    message.Text = "El Email no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.' o '@' (número de caracteres permitidos 0-30)";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "El Email no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.' o '@' (número de caracteres permitidos 0-30)");
+                    mail.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
                 if (ciudad.SelectedValue == null) 
                 {
-                    message.Text = "Debe seleccionar una ciudad";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "Debe seleccionar una ciudad");
+                    ciudad.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
                 }
                 bool isWebValid = ValidationsImpl.ValidateWebS(webS);
                 if (!isWebValid)
                 {
-                    message.Text = "El sitio web no cumple con el formato válido, asegurese de que solo SOLO lleve letras, números y/o signos '.' o '-' (número de caracteres permitidos 0-60)";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "El sitio web no cumple con el formato válido, asegurese de que solo SOLO lleve letras, números y/o signos '.' o '-' (número de caracteres permitidos 0-60)");
+                    sitio.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
                 bool isStreetPValid = ValidationsImpl.ValidateStreetS(streetPS);
                 if (!isStreetPValid)
                 {
-                    message.Text = "La calle principal no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "La calle principal no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)");
+                    calleP.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
                 bool isStreetAValid = ValidationsImpl.ValidateStreetS(streetSS);
                 if (!isStreetAValid)
                 {
-                    message.Text = "La calle adyacente no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
-                    message.CssClass = "error-message";
+                    sendMessages(2, "La calle adyacente no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)");
+                    calleS.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
 
@@ -292,16 +311,15 @@ namespace dentalConnectWEB
                 if (n > 0)
                 {
                     select();
+                    sendMessages(1,"Registro insertado con exito");
+                    name.BackColor = Color.White;
+                    phone.BackColor = Color.White;
+                    mail.BackColor = Color.White;
+                    sitio.BackColor = Color.White;
+                    calleP.BackColor = Color.White;
+                    calleS.BackColor = Color.White;
                 }
 
-                name.Text = "";
-                phone.Text = "";
-                mail.Text = "";
-                sitio.Text = "";
-                calleP.Text = "";
-                calleS.Text = "";
-                ciudad.Text = "";
-                ciudad.SelectedValue = null;
 
             }
             catch (Exception ex)
@@ -314,25 +332,29 @@ namespace dentalConnectWEB
         protected void Button2_Click(object sender, EventArgs e)
         {
             message.Text = "";
-            Button1.Visible = true;
-            Button3.Visible = false;
-            Button2.Visible = false;
 
+            name.BackColor = Color.White;
+            phone.BackColor = Color.White;
+            mail.BackColor = Color.White;
+            sitio.BackColor = Color.White;
+            calleP.BackColor = Color.White;
+            calleS.BackColor = Color.White;
 
             try
             {
 
-                string nameS = name.Text;
-                string phoneS = phone.Text;
-                string mailS = mail.Text;
-                string webS = sitio.Text;
-                string streetPS = calleP.Text;
-                string streetSS = calleS.Text;
+                string nameS = name.Text.Trim();
+                string phoneS = phone.Text.Trim();
+                string mailS = mail.Text.Trim();
+                string webS = sitio.Text.Trim();
+                string streetPS = calleP.Text.Trim();
+                string streetSS = calleS.Text.Trim();
 
                 if (string.IsNullOrEmpty(nameS))
                 {
                     message.Text = "El nombre no puede estar vacío";
                     message.CssClass = "error-message";
+                    name.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -342,6 +364,7 @@ namespace dentalConnectWEB
                 {
                     message.Text = "El teléfono no puede estar vacío";
                     message.CssClass = "error-message";
+                    phone.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -351,6 +374,16 @@ namespace dentalConnectWEB
                 {
                     message.Text = "El Email no puede estar vacío";
                     message.CssClass = "error-message";
+                    mail.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                if (string.IsNullOrEmpty(ciudad.Text))
+                {
+                    sendMessages(2, "El campo ciudad no puede estar vacío");
+                    ciudad.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -360,6 +393,7 @@ namespace dentalConnectWEB
                 {
                     message.Text = "La calle principal no puede estar vacía";
                     message.CssClass = "error-message";
+                    calleP.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -371,26 +405,31 @@ namespace dentalConnectWEB
                 {
                     message.Text = "El nombre no cumple con el formato válido, asegurese de que el nombre NO tenga números, caracteres especiales ni espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de caracteres permitidos 0-50)";
                     message.CssClass = "error-message";
+                    name.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
                     return;
                 }
                 bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phoneS);
-                if (!isPhoneValid)
+                if (!isPhoneValid || !ValidarTelefono(phoneS) || phoneS.Length <= 7)
                 {
-                    message.Text = "El teléfono no cumple con el formato válido, asegurese de que solo lleve números y/o signos '+' o '-' (número de caracteres permitidos 0-20)";
+                    message.Text = "El teléfono no cumple con el formato válido, asegurese de que solo lleve números y/o signos '+'(siempre debe estar al inicio) o '-', debe contener minimo 8 números (número de caracteres permitidos 0-20)";
                     message.CssClass = "error-message";
+                    phone.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
                     return;
                 }
+
+
                 bool isEmailValid = ValidationsImpl.ValidateEmailS(mailS);
                 if (!isEmailValid)
                 {
                     message.Text = "El Email no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.' o '@' (número de caracteres permitidos 0-30)";
                     message.CssClass = "error-message";
+                    mail.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -400,6 +439,7 @@ namespace dentalConnectWEB
                 {
                     message.Text = "Debe seleccionar una ciudad";
                     message.CssClass = "error-message";
+                    ciudad.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -409,6 +449,7 @@ namespace dentalConnectWEB
                 {
                     message.Text = "El sitio web no cumple con el formato válido, asegurese de que solo SOLO lleve letras, números y/o signos '.' o '-' (número de caracteres permitidos 0-60)";
                     message.CssClass = "error-message";
+                    sitio.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -419,6 +460,7 @@ namespace dentalConnectWEB
                 {
                     message.Text = "La calle principal no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
                     message.CssClass = "error-message";
+                    calleP.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -429,6 +471,7 @@ namespace dentalConnectWEB
                 {
                     message.Text = "La calle adyacente no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
                     message.CssClass = "error-message";
+                    calleS.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -454,6 +497,7 @@ namespace dentalConnectWEB
                 {
                     message.Text = "El NOMBRE DEL PROVEEDOR que ingreso ya existe en la Base de Datos";
                     message.CssClass = "error-message";
+                    name.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
@@ -480,16 +524,22 @@ namespace dentalConnectWEB
                 {
                  
                     select();
+                    clean();
                     message.Text = "";
-                   
+                    sendMessages(1, "El registro se modifico con exito");
+                    Button1.Visible = true;
+                    Button3.Visible = false;
+                    Button2.Visible = false;
+
+                    name.BackColor = Color.White;
+                    phone.BackColor = Color.White;
+                    mail.BackColor = Color.White;
+                    sitio.BackColor = Color.White;
+                    calleP.BackColor = Color.White;
+                    calleS.BackColor = Color.White;
+
                 }
-                name.Text = "";
-                phone.Text = "";
-                mail.Text = "";
-                ciudad.SelectedValue = null;
-                sitio.Text = "";
-                calleP.Text = "";
-                calleS.Text = "";
+
             }
             catch (Exception ex)
             {
@@ -514,6 +564,13 @@ namespace dentalConnectWEB
             ciudad.Text = "";
             ciudad.SelectedValue = null;
             message.Text = "";
+
+            name.BackColor = Color.White;
+            phone.BackColor = Color.White;
+            mail.BackColor = Color.White;
+            sitio.BackColor = Color.White;
+            calleP.BackColor = Color.White;
+            calleS.BackColor = Color.White;
         }
 
         protected void yes_Click(object sender, EventArgs e)
@@ -583,5 +640,44 @@ namespace dentalConnectWEB
             }
 
         }
+
+        public void sendMessages(int opc, string mess)
+        {
+            switch (opc)
+            {
+                case 1:
+                    message.Text = mess;
+                    message.CssClass = "succes-message";
+                    break;
+                case 2:
+                    message.Text = mess;
+                    message.CssClass = "error-message";
+                    return;
+                    break;
+            }
+        }
+
+        private void clean()
+        {
+            name.Text = "";
+            phone.Text = "";
+            mail.Text = "";
+            sitio.Text = "";
+            calleP.Text = "";
+            calleS.Text = "";
+            ciudad.Text = "";
+            ciudad.SelectedValue = null;
+        }
+        private bool ValidarTelefono(string telefono)
+        {
+            // Expresión regular para validar el formato del número de teléfono
+            string patron = @"^(\+[0-9]{7,})?[\d-]+$";
+
+            // Verificar si el número de teléfono cumple con el formato
+            bool esValido = Regex.IsMatch(telefono, patron);
+
+            return esValido;
+        }
+
     }
 }

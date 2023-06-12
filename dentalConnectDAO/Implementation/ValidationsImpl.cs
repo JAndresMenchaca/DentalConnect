@@ -54,9 +54,9 @@ namespace dentalConnectDAO.Implementation
             return isValid;
         }
         //Telefono
-        private static readonly Regex regexPhoneSupplier = new Regex("[^0-9+ -]+");
-        private static readonly Regex regexPhoneSupplier1 = new Regex("^(?!.*  )[^0-9+ -]{0,20}$");
-        private static readonly Regex regexPhoneSupplier2 = new Regex(@"^[0-9+ -]{0,20}$");
+        private static readonly Regex regexPhoneSupplier = new Regex("[^0-9+-]+");
+        private static readonly Regex regexPhoneSupplier1 = new Regex("^(?!.*  )[^0-9+-]{0,20}$");
+        private static readonly Regex regexPhoneSupplier2 = new Regex(@"^[0-9+-]{0,20}$");
 
         public static bool ValidatePhoneS(string phone)
         {

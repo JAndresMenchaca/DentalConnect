@@ -67,7 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
+    <Content Include="CategorySite.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\functions\aplicacion.png" />
     <Content Include="images\functions\camion.png" />
@@ -88,6 +88,8 @@
     <Content Include="images\logo1.png" />
     <Content Include="SupplierSite.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Default.aspx" />
+    <Content Include="MenuSite.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRUD.Master.cs">
@@ -97,12 +99,12 @@
     <Compile Include="CRUD.Master.designer.cs">
       <DependentUpon>CRUD.Master</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="CategorySite.aspx.cs">
+      <DependentUpon>CategorySite.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="CategorySite.aspx.designer.cs">
+      <DependentUpon>CategorySite.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -114,6 +116,20 @@
     </Compile>
     <Compile Include="SupplierSite.aspx.designer.cs">
       <DependentUpon>SupplierSite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MenuSite.aspx.cs">
+      <DependentUpon>MenuSite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuSite.aspx.designer.cs">
+      <DependentUpon>MenuSite.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

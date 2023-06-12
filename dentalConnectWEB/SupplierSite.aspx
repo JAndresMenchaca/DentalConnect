@@ -1,21 +1,17 @@
 ﻿<%@ Page Title="PROVEEDORES" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="SupplierSite.aspx.cs" Inherits="dentalConnectWEB.SupplierSite" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <style>
-        .error-message {
-            color: #cc0000;
-        }
-    </style>
+   
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="part1" runat="server">
     <form ID="form1" runat="server">
         <div class="float-left">
-        <div class="container mt-4 float-left " style="background-color: #7C9C90; border-radius: 10px; height: 660px; width: 1100px; margin-left: 15px;">
-           <asp:DataGrid ID="gridData" runat="server" CssClass="table table-bordered table-hover dataTable dtr-inline grid-view-style" OnItemDataBound="gridData_ItemDataBound" OnItemCreated="gridData_ItemCreated" >
+            <div class="container mt-4 float-left " style="background-color: #7C9C90; border-radius: 10px; height: 700px; width: 1100px; margin-left: 15px;">
+               <asp:DataGrid ID="gridData" runat="server" CssClass="grid-view-style" OnItemDataBound="gridData_ItemDataBound" OnItemCreated="gridData_ItemCreated" >
 
-           </asp:DataGrid>    
+                </asp:DataGrid>    
+            </div>
         </div>
-</div>
 
         <div class="float-right">
                 <div class="container mt-4 float-left" style="background-color:#7C9C90; border-radius: 10px; height: 500px; width: 450px; margin-right: 15px;">
@@ -34,9 +30,11 @@
                         </div>
                         <div class="form-group">
                             <asp:DropDownList ID="ciudad" runat="server" class="form-control">
+                                <asp:ListItem Text="" Value=""></asp:ListItem>
                                 <asp:ListItem Text="Opción 1" value="1">Cochabamba</asp:ListItem>
                                 <asp:ListItem Text="Opción 2" value="2">Santa Cruz</asp:ListItem>
                                 <asp:ListItem Text="Opción 3" Value="3">La Paz</asp:ListItem>
+                                
                             </asp:DropDownList>
                         </div>
                         <div class="form-group">
@@ -74,7 +72,7 @@
 
         <div class="float-right" ID="idDiv" runat="server" >
                 <asp:Label ID="idLabel" runat="server" style="font-size:5px"></asp:Label>
-              <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 135px; width: 450px; margin-right: 15px;">
+              <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 175px; width: 450px; margin-right: 15px;">
                   <asp:Label ID="message" runat="server" style="font-size:20px"></asp:Label>
 
                   <div class="d-flex align-items-center justify-content-center" style="height: 100%;" >

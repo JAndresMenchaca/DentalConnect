@@ -1,90 +1,126 @@
-﻿<%@ Page Title="CATEGORIAS" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="dentalConnectWEB.Default" EnableEventValidation="false" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <style>
-        .error-message {
-            color: #cc0000;
-        }
-    </style>
-</asp:Content>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="dentalConnectWEB.WebForm1" %>
 
+<!DOCTYPE html>
+<html>
 
+<head>
+  <title>Iniciar Sesión - CODENSA</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="shortcut icon" type="image/png" href="images/logo1.png"/>
+  <style>
+    .button-style {
+              display: inline-block;
+              padding: 10px 20px;
+              background-color: #112c52;
+              color: white;
+              text-decoration: none;
+              border-radius: 4px;
+              border: none;
+              cursor: pointer;
+              font-size:25px;
+              width:140px;
+            }
 
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #C9FFEB;
+    }
 
+    .header {
+      background-color: #32403B;
+      color: #C9FFEB;
+      padding: 20px;
+      text-align: center;
+    }
 
+    .header h1 {
+      font-size: 60px;
+      line-height: 1.2;
+    }
 
+    .container {
+      margin-top: 100px;
+    }
 
+    .card {
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden; /* Agregamos esto para que los bordes suavizados sean visibles */
+    }
 
-<asp:Content ID="Content2" ContentPlaceHolderID="part1" runat="server">
-    <form ID="form1" runat="server">
-        <div class="float-left">
-        <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 650px; width: 1000px; margin-left: 15px;">
-           <asp:DataGrid ID="gridData" runat="server" CssClass="grid-view-style" OnItemDataBound="gridData_ItemDataBound" OnItemCreated="gridData_ItemCreated" >
+    .card-header {
+      background-color: #32403B;
+      color: #C9FFEB;
+      border-radius: 20px 20px 0 0;
+    }
 
-           </asp:DataGrid>    
-        </div>
-</div>
+    .btn-primary {
+      background-color: #52726C;
+      border-color: #52726C;
+    }
 
-        <div class="float-right">
-                <div class="container mt-4 float-left" style="background-color:#7C9C90; border-radius: 10px; height: 300px; width: 550px; margin-right: 15px;">
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #32403B;
+      border-color: #32403B;
+    }
 
-                  <h1 class="float-left" >Ingresar Datos</h1>
-            
-                        <div class="form-group">
-                            <asp:TextBox ID="TextBox1" runat="server" type="text" class="form-control" placeholder="Ingrese el nombre"></asp:TextBox>
-                        </div>
-                        <div class="form-group">
+    .transparent-cyan-text {
+      color: rgba(57, 136, 136, 0.7); /* Color cian semi transparente */
+    }
+    
 
-                            <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine" Rows="4" placeholder="Ingrese el descripcion" class="form-control" style="resize: none;"></asp:TextBox>
+  </style>
+</head>
 
-              
-                    
-                        </div>
-                        <div class="form-group text-center">
-                            
-                            <asp:Button ID="Button1" OnClick="Button1_Click" runat="server" CssClass="btn" Text="➕" Style="font-size: 25px; width: 100px; background-color: #386591; " />
+<body>
+  <div class="header">
+    <h1 class="display-1">CODENSA</h1>
+  </div>
 
-                    
-                            <div>
-                                
-                                <asp:Button ID="Button2" OnClick="Button2_Click" runat="server" CssClass="btn" Text="💾" Style="font-size: 25px; width: 100px; background-color: #346955; " />
-
-                                 <asp:Button ID="Button3" OnClick="Button3_Click" runat="server" CssClass="btn" Text="❌" Style="font-size: 25px; width: 100px; background-color: #346955; " />
-
-                       
-                            </div>
-                        </div>
-            
-                </div>
-        </div>
-       
-
-        <div class="float-right">
-                <asp:Label ID="idLabel" runat="server" style="font-size:5px"></asp:Label>
-              <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 325px; width: 550px; margin-right: 15px;">
-                  <asp:Label ID="message" runat="server" style="font-size:20px"></asp:Label>
-
-                  <div class="d-flex align-items-center justify-content-center" style="height: 100%;" >
-                      <div class="text-center" runat="server" id="opt" >
-                    <h1><p>¿Desea borrar la categoría seleccionada?</p></h1>
-
-                    
-                    <asp:Button ID="yes" OnClick="yes_Click" runat="server" CssClass="btn btn-success" Text="SI" onmouseover="this.style.backgroundColor='#4CAF50'" onmouseout="this.style.backgroundColor='green'" style="width: 20%;" />
-
-                     <asp:Button ID="no" OnClick="no_Click" runat="server" CssClass="btn btn-danger" Text="NO" onmouseover="this.style.backgroundColor='#FF0000'" onmouseout="this.style.backgroundColor='red'" style="width: 20%;" />
-                    
-                  </div>
-                  </div>
-                  
-
-
-
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Iniciar sesión</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="images/logo1.png" width="100%" height="auto">
               </div>
+              <div class="col-md-8">
+                <form action="index.html">
+                  <div class="form-group">
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" class="form-control" id="username" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" required>
+                  </div>
+                  <a class="dropdown-item button-style" href="MenuSite.aspx">Ingresar</a>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-    </form>
-</asp:Content>
+      </div>
+    </div>
+  </div>
 
+  <script>
+    // Lógica de autenticación
+  </script>
+  
+  <footer class="footer">
+    <div class="container" style="margin-top: 400px;">
+      <p class="text-center transparent-cyan-text">POWERED BY QUANTUMBYTE</p>
+    </div>
+  </footer>
+</body>
 
-
-
-
-
+</html>
