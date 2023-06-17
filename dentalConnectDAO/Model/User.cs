@@ -14,9 +14,16 @@ namespace dentalConnectDAO.Model
         public string Role { get; set; }
 
         // GET
+
+
+
+        #endregion
+
+        #region Constructors
+
         public User(int id, string ci, string name, string lastName, string secondLastName, DateTime birthdate,
                         char gender, string phone, string email, string username, string role,
-                        byte status, DateTime registerDate, DateTime lastUpdate, int idUser) 
+                        byte status, DateTime registerDate, DateTime lastUpdate, int idUser)
                         : base(id, ci, name, lastName, secondLastName, birthdate, gender, phone, email, status,
                         registerDate, lastUpdate, idUser)
         {
@@ -42,13 +49,6 @@ namespace dentalConnectDAO.Model
             Role = role;
         }
 
-
-        #endregion
-
-        #region Constructors
-
-
-        // GET
 
 
         #endregion

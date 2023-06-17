@@ -13,7 +13,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="part1" runat="server">
     <form ID="form1" runat="server">
         <div class="float-left">
-        <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 650px; width: 1000px; margin-left: 15px;">
+        <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 625px; width: 980px; margin-left: 15px;">
            <asp:DataGrid ID="gridData" runat="server" CssClass="grid-view-style" OnItemDataBound="gridData_ItemDataBound" OnItemCreated="gridData_ItemCreated" >
 
            </asp:DataGrid>    
@@ -21,7 +21,7 @@
 </div>
 
         <div class="float-right">
-                <div class="container mt-4 float-left" style="background-color:#7C9C90; border-radius: 10px; height: 300px; width: 550px; margin-right: 15px;">
+                <div class="container mt-4 float-left" style="background-color:#7C9C90; border-radius: 10px; height: 300px; width: 500px; margin-right: 15px;">
 
                   <h1 class="float-left" >Ingresar Datos</h1>
             
@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group text-center">
                             
-                            <asp:Button ID="Button1" OnClick="Button1_Click" runat="server" CssClass="btn" Text="➕" Style="font-size: 25px; width: 100px; background-color: #386591; " />
+                            <asp:Button ID="Button1" OnClick="Button1_Click" runat="server" CssClass="btn" Text="➕" Style="font-size: 25px; width: 100px; background-color: #4277AB; " />
 
                     
                             <div>
@@ -56,7 +56,7 @@
 
         <div class="float-right">
                 <asp:Label ID="idLabel" runat="server" style="font-size:5px"></asp:Label>
-              <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 325px; width: 550px; margin-right: 15px;">
+              <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 305px; width: 500px; margin-right: 15px;">
                   <asp:Label ID="message" runat="server" style="font-size:20px"></asp:Label>
 
                   <div class="d-flex align-items-center justify-content-center" style="height: 100%;" >

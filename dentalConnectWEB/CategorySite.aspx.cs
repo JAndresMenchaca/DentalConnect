@@ -109,6 +109,9 @@ namespace dentalConnectWEB
             Button3.Visible = true;
             Button2.Visible = true;
 
+            TextBox2.BackColor = Color.White;
+            TextBox1.BackColor = Color.White;
+
             Button btnEditar = (Button)sender;
             DataGridItem row = (DataGridItem)btnEditar.NamingContainer;
             int columnIndex = 0; // Índice de la columna 0
@@ -150,6 +153,9 @@ namespace dentalConnectWEB
             Button btnEditar = (Button)sender;
             DataGridItem row = (DataGridItem)btnEditar.NamingContainer;
             int columnIndex = 0; // Índice de la columna 0
+
+            TextBox2.BackColor = Color.White;
+            TextBox1.BackColor = Color.White;
 
             string itemValue = row.Cells[columnIndex].Text;
 
@@ -240,7 +246,7 @@ namespace dentalConnectWEB
                 {
                     select();
                     message.Text = "";
-
+                    sendMessages(1, "Registro insertado con exito");
                     TextBox2.BackColor = Color.White;
                     TextBox1.BackColor = Color.White;
                 }

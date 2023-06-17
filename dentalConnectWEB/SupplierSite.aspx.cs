@@ -100,6 +100,14 @@ namespace dentalConnectWEB
             Button3.Visible = true;
             Button2.Visible = true;
 
+            name.BackColor = Color.White;
+            phone.BackColor = Color.White;
+            mail.BackColor = Color.White;
+            sitio.BackColor = Color.White;
+            calleP.BackColor = Color.White;
+            calleS.BackColor = Color.White;
+            ciudad.BackColor = Color.White;
+
             Button btnEditar = (Button)sender;
             DataGridItem row = (DataGridItem)btnEditar.NamingContainer;
             int columnIndex = 0; // Índice de la columna 0
@@ -148,6 +156,14 @@ namespace dentalConnectWEB
             Button btnEditar = (Button)sender;
             DataGridItem row = (DataGridItem)btnEditar.NamingContainer;
             int columnIndex = 0; // Índice de la columna 0
+
+            name.BackColor = Color.White;
+            phone.BackColor = Color.White;
+            mail.BackColor = Color.White;
+            sitio.BackColor = Color.White;
+            calleP.BackColor = Color.White;
+            calleS.BackColor = Color.White;
+            ciudad.BackColor = Color.White;
 
 
 
@@ -209,6 +225,7 @@ namespace dentalConnectWEB
                 sitio.BackColor = Color.White;
                 calleP.BackColor = Color.White;
                 calleS.BackColor = Color.White;
+                ciudad.BackColor = Color.White;
 
                 if (string.IsNullOrEmpty(nameS))
                 {
@@ -318,6 +335,8 @@ namespace dentalConnectWEB
                     sitio.BackColor = Color.White;
                     calleP.BackColor = Color.White;
                     calleS.BackColor = Color.White;
+                    ciudad.BackColor = Color.White;
+                    clean();
                 }
 
 
@@ -339,6 +358,7 @@ namespace dentalConnectWEB
             sitio.BackColor = Color.White;
             calleP.BackColor = Color.White;
             calleS.BackColor = Color.White;
+            ciudad.BackColor = Color.White;
 
             try
             {
@@ -537,6 +557,7 @@ namespace dentalConnectWEB
                     sitio.BackColor = Color.White;
                     calleP.BackColor = Color.White;
                     calleS.BackColor = Color.White;
+                    ciudad.BackColor = Color.White;
 
                 }
 
@@ -571,6 +592,7 @@ namespace dentalConnectWEB
             sitio.BackColor = Color.White;
             calleP.BackColor = Color.White;
             calleS.BackColor = Color.White;
+            ciudad.BackColor = Color.White;
         }
 
         protected void yes_Click(object sender, EventArgs e)

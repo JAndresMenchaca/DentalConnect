@@ -88,31 +88,31 @@
             
         }
       
-  .asuntos-widget{
-    border: 5px solid rgb(31, 97, 96);
-  }
-  .comentarios-widget {
-    border: 5px solid #317c9e;
-  }
+          .asuntos-widget{
+            border: 5px solid rgb(31, 97, 96);
+          }
+          .comentarios-widget {
+            border: 5px solid #317c9e;
+          }
 
-  .tareas-widget{
-    border: 5px solid rgb(30, 84, 30);
-  }
+          .tareas-widget{
+            border: 5px solid rgb(30, 84, 30);
+          }
 
 
-  .noticias-widget{
-    border: 5px solid rgb(21, 122, 116);
-    border-radius: 40px;
-  }
-  .recordatorio-widget{
-    border: 5px solid rgb(145, 184, 145);
-  }
+          .noticias-widget{
+            border: 5px solid rgb(21, 122, 116);
+            border-radius: 40px;
+          }
+          .recordatorio-widget{
+            border: 5px solid rgb(145, 184, 145);
+          }
         
     </style>
 
     <div class="row justify-content-center">
         <div class="col-md-3 mt-4">
-            <div class="widget noticias-widget" style="height: 650px;">
+            <div class="widget noticias-widget" style="height: 618px;">
                 <h3 style="font-size: 40px;">Noticias 📰</h3>
                 <ul style="font-size:20px">
                     <li style="margin-bottom:20px" >¡Lanzamiento de nuestro nuevo kit de blanqueamiento dental!</li>
@@ -125,9 +125,9 @@
         </div>
         <div class="col-md-8 mt-4">
             <div class="widget saludo-widget">
-                <h2 style="font-size: 45px;"></h2>
-                <p style="font-size: 25px;"><b>Esperamos que tengas un productivo día de trabajo.</b></p>
-                <div class="widget recordatorio-widget" style="border-radius: 10px; padding: 20px; height: 65%; width: 98%;">
+                <h2 style="font-size: 35px;"></h2>
+                <p style="font-size: 20px;"><b>Esperamos que tengas un productivo día de trabajo.</b></p>
+                <div class="widget recordatorio-widget" style="border-radius: 10px; padding: 20px; height: 45%; width: 100%;">
                     <h3>Recordatorio 💡</h3>
                     <p style="font-size:20px" >No olvides asistir a la reunión de equipo mañana a las 10:00 a.m. en la sala de conferencias.</p>
                 </div>           
@@ -142,7 +142,7 @@
                   </ul>
                 </div>
                 <br>
-                <div class="widget asuntos-widget" style="background-color:#578B8D; border-radius: 50px; padding: 20px; height: 190px; width: 500px; margin-top : -32.00%; margin-left: 80%">
+                <div class="widget asuntos-widget" style="background-color:#578B8D; border-radius: 50px; padding: 20px; height: 190px; width: 500px; margin-top : -33.7%; margin-left: 80%">
                   <h3>Asuntos a Revisar 👁‍🗨</h3>
                   <ul style="font-size:20px">
                     <li>Verificar la calidad de los últimos lotes de productos recibidos.</li>
@@ -150,12 +150,11 @@
                   </ul>
                 </div>
                 <br>
-                <div class="widget comentarios-widget" style="background-color:#509ABB; border-radius: 50px; padding: 20px; height: 170px; width: 155%">
+                <div class="widget comentarios-widget" style="background-color:#509ABB; border-radius: 50px; padding: 20px; height: 155px; width: 158%">
                   <h3>Comentarios de empleados 💬</h3>
                   <ul style="font-size:20px">
-                    <li>Solicitud de aumento de salario. Usr1</li>
-                    <li>Petición de aumento del plazo de entrega del siguiente informe. Usr2</li>
-                    <li>Solicitud de vacaciones por cuestiones de salud. Usr3</li>
+                    <li>Solicitud de aumento de salario.</li>
+                    <li>Petición de aumento del plazo de entrega del siguiente informe.</li>
                     <br>                 
                   </ul>
                 </div>              
