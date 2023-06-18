@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="dentalConnectWEB.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="dentalConnectWEB.Default" %>
 
 <!DOCTYPE html>
 <html>
@@ -102,7 +102,51 @@
                     <label for="password">Contraseña:</label>
                     <input type="password" class="form-control" id="password" required>
                   </div>
-                  <a class="dropdown-item button-style" href="MenuSite.aspx">Ingresar</a>
+                  <a class="dropdown-item button-style" href="#" onclick="verificarDatos()">Ingresar</a>
+
+                <script>
+                    function verificarDatos() {
+                        var username = document.getElementById("username").value;
+                        var password = document.getElementById("password").value;
+
+                        // Envía los datos al servidor utilizando AJAX para realizar la verificación
+                        $.ajax({
+                            type: "POST",
+                            url: "Default.aspx/VerificarDatos",
+                            data: JSON.stringify({ username: username, password: password }),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (response) {
+                                if (response.d) {
+                                    // Los datos son válidos, determina la página de inicio según el tipo de usuario
+                                    switch (response.d) {
+                                        case "Administrador":
+                                            window.location.href = "MenuSite.aspx";
+                                            break;
+                                        case "Gerente de ventas":
+                                            window.location.href = "SalesManagerHome.aspx";
+                                            break;
+                                        case "Gerente de inventario":
+                                            window.location.href = "InventoryManagerHome.aspx";
+                                            break;
+                                        default:
+                                            // Tipo de usuario no válido, muestra un mensaje de error o realiza otra acción
+                                            alert("Tipo de usuario no válido");
+                                            break;
+                                    }
+                                } else {
+                                    // Los datos son inválidos, muestra un mensaje de error o realiza otra acción
+                                    alert("Los datos ingresados son incorrectos");
+                                }
+                            }
+
+                        });
+                    }
+                </script>
+
+
+
+
                 </form>
               </div>
             </div>
@@ -121,6 +165,8 @@
       <p class="text-center transparent-cyan-text">POWERED BY QUANTUMBYTE</p>
     </div>
   </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </body>
 
 </html>

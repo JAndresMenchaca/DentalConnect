@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CategorySite.aspx" />
+    <Content Include="CustomerSite.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\functions\aplicacion.png" />
     <Content Include="images\functions\camion.png" />
@@ -105,6 +106,13 @@
     </Compile>
     <Compile Include="CategorySite.aspx.designer.cs">
       <DependentUpon>CategorySite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSite.aspx.cs">
+      <DependentUpon>CustomerSite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerSite.aspx.designer.cs">
+      <DependentUpon>CustomerSite.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

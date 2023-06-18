@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Implementation\BaseImpl.cs" />
     <Compile Include="Implementation\CategoryImpl.cs" />
+    <Compile Include="Implementation\CustomerImpl.cs" />
     <Compile Include="Implementation\ProductImpl.cs" />
     <Compile Include="Implementation\QuerysImpl.cs" />
     <Compile Include="Implementation\SupplierImpl.cs" />
@@ -51,11 +52,13 @@
     <Compile Include="Implementation\ValidationsImpl.cs" />
     <Compile Include="Interfaces\IBase.cs" />
     <Compile Include="Interfaces\ICategory.cs" />
+    <Compile Include="Interfaces\ICustomer.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\ISupplier.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Session.cs" />
