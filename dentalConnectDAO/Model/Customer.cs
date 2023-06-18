@@ -9,7 +9,7 @@ namespace dentalConnectDAO.Model
 {
     public class Customer: Person
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Nit { get; set; }
         public string businessName { get; set; }
         public string businessReason { get; set; }
@@ -34,5 +34,7 @@ namespace dentalConnectDAO.Model
             this.businessReason = businessReason;
             this.shippingAddress = shippingAddress;
         }
+
+        
     }
 }

@@ -157,7 +157,7 @@ namespace dentalConnectWEB
                 person = new Person(ci, fName, lName, slName, birthDate, gender, phone, mailS);
                 customer = new Customer(nit, bn, br, shipping);
                 customerImpl = new CustomerImpl();
-                customerImpl.Insertar(person, customer);
+                customerImpl.Insertar(person, customer, (int)HttpContext.Current.Session["SessionID"]);
 
                 
                     select();
@@ -182,7 +182,250 @@ namespace dentalConnectWEB
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
+            message.Text = "";
 
+            //name.BackColor = Color.White;
+            //phone.BackColor = Color.White;
+            //mail.BackColor = Color.White;
+            //sitio.BackColor = Color.White;
+            //calleP.BackColor = Color.White;
+            //calleS.BackColor = Color.White;
+            //ciudad.BackColor = Color.White;
+
+            string fName = name.Text;
+            string ci = ci1.Text;
+            string lName = a1.Text;
+            string slName = a2.Text;
+            string fechaText = fecha.Text;
+            DateTime birthDate;
+            char gender = char.Parse(sex.Text);
+            string mailS = mail.Text;
+            string phone = phone1.Text;
+            string nit = nit1.Text;
+            string bn = bn1.Text;
+            string br = br1.Text;
+            string shipping = shipping1.Text;
+            int id = byte.Parse(idLabel.Text);
+
+            if (DateTime.TryParse(fechaText, out birthDate))
+            {
+                // La fecha se ha convertido correctamente a un objeto DateTime
+                // Ahora puedes usar la variable birthDate
+            }
+            else
+            {
+                // La cadena de fecha no tiene el formato correcto
+                // Maneja el escenario de error aquí
+            }
+
+            try
+            {
+                #region validaciones
+                //string nameS = name.Text.Trim();
+                //string phoneS = phone.Text.Trim();
+                //string mailS = mail.Text.Trim();
+                //string webS = sitio.Text.Trim();
+                //string streetPS = calleP.Text.Trim();
+                //string streetSS = calleS.Text.Trim();
+
+                //if (string.IsNullOrEmpty(nameS))
+                //{
+                //    message.Text = "El nombre no puede estar vacío";
+                //    message.CssClass = "error-message";
+                //    name.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                //if (string.IsNullOrEmpty(phoneS))
+                //{
+                //    message.Text = "El teléfono no puede estar vacío";
+                //    message.CssClass = "error-message";
+                //    phone.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                //if (string.IsNullOrEmpty(mailS))
+                //{
+                //    message.Text = "El Email no puede estar vacío";
+                //    message.CssClass = "error-message";
+                //    mail.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                //if (string.IsNullOrEmpty(ciudad.Text))
+                //{
+                //    sendMessages(2, "El campo ciudad no puede estar vacío");
+                //    ciudad.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                //if (string.IsNullOrEmpty(streetPS))
+                //{
+                //    message.Text = "La calle principal no puede estar vacía";
+                //    message.CssClass = "error-message";
+                //    calleP.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+
+                //bool isNameValid = ValidationsImpl.ValidateNameS(nameS);
+                //if (!isNameValid)
+                //{
+                //    message.Text = "El nombre no cumple con el formato válido, asegurese de que el nombre NO tenga números, caracteres especiales ni espacios al principio y final además de que solo puede haber un espacio entre 2 caracteres (número de caracteres permitidos 0-50)";
+                //    message.CssClass = "error-message";
+                //    name.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                //bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phoneS);
+                //if (!isPhoneValid || !ValidarTelefono(phoneS) || phoneS.Length <= 7)
+                //{
+                //    message.Text = "El teléfono no cumple con el formato válido, asegurese de que solo lleve números y/o signos '+'(siempre debe estar al inicio) o '-', debe contener minimo 8 números (número de caracteres permitidos 0-20)";
+                //    message.CssClass = "error-message";
+                //    phone.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+
+
+                //bool isEmailValid = ValidationsImpl.ValidateEmailS(mailS);
+                //if (!isEmailValid)
+                //{
+                //    message.Text = "El Email no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.' o '@' (número de caracteres permitidos 0-30)";
+                //    message.CssClass = "error-message";
+                //    mail.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                //if (ciudad.SelectedValue == null)
+                //{
+                //    message.Text = "Debe seleccionar una ciudad";
+                //    message.CssClass = "error-message";
+                //    ciudad.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //}
+                //bool isWebValid = ValidationsImpl.ValidateWebS(webS);
+                //if (!isWebValid)
+                //{
+                //    message.Text = "El sitio web no cumple con el formato válido, asegurese de que solo SOLO lleve letras, números y/o signos '.' o '-' (número de caracteres permitidos 0-60)";
+                //    message.CssClass = "error-message";
+                //    sitio.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                //bool isStreetPValid = ValidationsImpl.ValidateStreetS(streetPS);
+                //if (!isStreetPValid)
+                //{
+                //    message.Text = "La calle principal no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
+                //    message.CssClass = "error-message";
+                //    calleP.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                //bool isStreetAValid = ValidationsImpl.ValidateStreetS(streetSS);
+                //if (!isStreetAValid)
+                //{
+                //    message.Text = "La calle adyacente no cumple con el formato válido, asegurese de que SOLO lleve letras, números y/o signos '.', '#', '/', '-' (número de caracteres permitidos 0-30)";
+                //    message.CssClass = "error-message";
+                //    calleS.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+                #endregion
+                person = new Person(ci, fName, lName, slName, birthDate, gender, phone, mailS);
+                customer = new Customer(nit, bn, br, shipping);
+                person.Id = id;
+                person.Ci = ci;
+                person.Name = fName;
+                person.LastName = lName;
+                person.SecondLastName = slName;
+                person.Birthdate = birthDate;
+                person.Gender = gender;
+                person.Phone = phone;
+                person.Email = mailS;
+                customer.Nit = nit;
+                customer.businessName = bn;
+                customer.businessReason = br;
+                customer.shippingAddress = shipping;
+                sendMessages(2, person.Id+"...");
+                QuerysImpl query = new QuerysImpl();
+
+                //int count = query.verifyNameSupplierUpdate(nameS, supplier.Id);
+                //if (count > 0)
+                //{
+                //    message.Text = "El NOMBRE DEL PROVEEDOR que ingreso ya existe en la Base de Datos";
+                //    message.CssClass = "error-message";
+                //    name.BackColor = ColorTranslator.FromHtml("#f76262");
+                //    Button1.Visible = false;
+                //    Button2.Visible = true;
+                //    Button3.Visible = true;
+                //    return;
+                //}
+
+                //QuerysImpl query = new QuerysImpl();
+
+                //int count = query.verifyNameCategoryUpdate(name, category.Id);
+                //if (count > 0)
+                //{
+                //    sendMessages(1, "La CATEGORIA que ingreso ya existe en la Base de Datos");
+                //    dgDatos.SelectedItem = null;
+                //    //category = null;
+                //    diseable2();
+                //    return;
+                //}
+
+                //idLabel.Text = category.Id.ToString();
+                customerImpl = new CustomerImpl();
+                customerImpl.Update(customer, person ,(int)HttpContext.Current.Session["SessionID"]);
+                
+                select();
+                //clean();
+                message.Text = "";
+                sendMessages(1, "El registro se modifico con exito");
+                Button1.Visible = true;
+                Button3.Visible = false;
+                Button2.Visible = false;
+
+                //name.BackColor = Color.White;
+                //phone.BackColor = Color.White;
+                //mail.BackColor = Color.White;
+                //sitio.BackColor = Color.White;
+                //calleP.BackColor = Color.White;
+                //calleS.BackColor = Color.White;
+                //ciudad.BackColor = Color.White;
+
+           
+            }
+            catch (Exception ex)
+            {
+                sendMessages(2, ex + "");
+            }
+            //gridData.SelectedItem = null;
+            customer = null;
 
         }
         protected void Button3_Click(object sender, EventArgs e)
@@ -198,7 +441,7 @@ namespace dentalConnectWEB
             try
             {
                 customerImpl = new CustomerImpl();
-                int test = customerImpl.Delete(id);
+                int test = customerImpl.Delete(customer, (int)HttpContext.Current.Session["SessionID"]);
                 sendMessages(1, id + "");
                 if (test > 0)
                 {
@@ -355,16 +598,25 @@ namespace dentalConnectWEB
 
             idLabel.Text = id.ToString();
 
-
-
-
             try
             {
                 customerImpl = new CustomerImpl();
                 customer = customerImpl.Get(id);
                 name.Text = customer.Name.Trim();
-                
+                ci1.Text = customer.Ci.ToString();
+                a1.Text = customer.LastName.Trim();
+                a2.Text = customer.SecondLastName.Trim();
+                phone1.Text = customer.Phone.Trim();
+                br1.Text = customer.businessReason.Trim();
+                bn1.Text = customer.businessReason.ToString();
+
+                fecha.Text = customer.Birthdate.ToString("yyyy-MM-dd");
+
                 mail.Text = customer.Email.Trim();
+                sex.Text = customer.Gender.ToString();
+                shipping1.Text = customer.shippingAddress.Trim();
+                nit1.Text = customer.Nit.ToString();
+                
 
 
                 //ciudad.SelectedIndex = customer.IdCity;

@@ -62,7 +62,7 @@
                     <div class="dropdown-menu" aria-labelledby="administrarDropdown">
                         <a class="dropdown-item" href="productos.html"><img src="images/functions/producto.png" alt="" width="15px" height="15px"> Productos</a>
                         <a class="dropdown-item" href="empresas.html"><img src="images/functions/edificio.png" alt="" width="15px" height="15px"> Empresas</a>
-                        <a class="dropdown-item" href="clientes.html"><img src="images/functions/objetivo.png" alt="" width="15px" height="15px"> Clientes</a>
+                        <a class="dropdown-item" href="CustomerSite.aspx"><img src="images/functions/objetivo.png" alt="" width="15px" height="15px"> Clientes</a>
                         <a class="dropdown-item" href="factura.html"><img src="images/functions/factura.png" alt="" width="15px" height="15px"> Factura</a>
                     </div>
                 </li>
@@ -80,8 +80,19 @@
                         <a class="dropdown-item" href="pedidos.html"><img src="images/functions/pedidos.png" alt="" width="15px" height="15px"> Pedidos</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="detallesDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="color: #C9FFEB; text-align: center;">
+                        Funciones de Usuario
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="detallesDropdown">
+                        <a class="dropdown-item" href="CambioSite.aspx"><img src="images/functions/i3.png" alt="" width="25px" height="25px">Cambiar Contraseña</a>
+                    </div>
+                </li>
             </ul>
-            <h1 class="float-right" style="margin-left: 700px; color:#C9FFEB; font-weight:bold; font-size: 30px"><%:Page.Title %></h1>
+            <h1 class="float-right" style="margin-left: 600px; color:#C9FFEB; font-weight:bold; font-size: 30px"><%:Page.Title %></h1>
+         
         </div>
     </nav>
 

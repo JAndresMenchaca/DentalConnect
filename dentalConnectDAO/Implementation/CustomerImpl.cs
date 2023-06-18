@@ -12,7 +12,7 @@ namespace dentalConnectDAO.Implementation
 {
     public class CustomerImpl : BaseImpl, ICustomer
     {
-        public void Insertar(Person t, Customer customer)
+        public void Insertar(Person t, Customer customer, int sesssion)
         {
             string query = @"INSERT INTO Person (ci, firstName, lastName, secondLastName, birthDate, gender, email, numberPhone, userID)
                             VALUES (@ci, @name, @lastName, @secondLastName, @date, @gender, @email, @phone, @userID)";
@@ -32,7 +32,7 @@ namespace dentalConnectDAO.Implementation
             cmds[0].Parameters.AddWithValue("@gender", t.Gender);
             cmds[0].Parameters.AddWithValue("@email", t.Email);
             cmds[0].Parameters.AddWithValue("@phone", t.Phone);
-            cmds[0].Parameters.AddWithValue("@userID", 5); //OJO
+            cmds[0].Parameters.AddWithValue("@userID", sesssion); //OJO
 
             int id =  int.Parse(GetGenerateIDTable("Person"));
             
@@ -40,7 +40,7 @@ namespace dentalConnectDAO.Implementation
             cmds[1].Parameters.AddWithValue("@id", id);
             cmds[1].Parameters.AddWithValue("@bn", customer.businessName);
             cmds[1].Parameters.AddWithValue("@br", customer.businessReason);
-            cmds[1].Parameters.AddWithValue("@userID", 5); //OJO
+            cmds[1].Parameters.AddWithValue("@userID", sesssion); //OJO
             cmds[1].Parameters.AddWithValue("@shipping", customer.shippingAddress);
 
             try
@@ -55,15 +55,15 @@ namespace dentalConnectDAO.Implementation
 
         }
 
-        public int Delete(int id)
+        public int Delete(Customer c,  int sesssion)
         {
             query = @"UPDATE Customer SET status=0, lastUpdate=CURRENT_TIMESTAMP, userID=@userID
 	                  WHERE id = @id";
 
             SqlCommand command = CreateBasicCommand(query);
 
-            command.Parameters.AddWithValue("@userID", 5); //OJO
-            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@userID", sesssion); //OJO
+            command.Parameters.AddWithValue("@id", c.Id);
 
             try
             {
@@ -166,7 +166,6 @@ namespace dentalConnectDAO.Implementation
         }
 
 
-
         public DataTable Select()
         {
             query = @"SELECT *
@@ -183,7 +182,7 @@ namespace dentalConnectDAO.Implementation
             }
         }
 
-        public int Update(Customer t)
+        public void Update(Customer t, Person p ,int session)
         {
             query = @"UPDATE Person
                     SET
@@ -198,47 +197,56 @@ namespace dentalConnectDAO.Implementation
 	                    lastUpdate=CURRENT_TIMESTAMP, 
 	                    userID= @userID
                     WHERE
-                        id = @id;
+                        id = @id;";
 
-                    UPDATE Customer
-                    SET
-	                    lastUpdate=CURRENT_TIMESTAMP,
-		                businessName = @bn,
-		                nit = @nit,
-		                businessReason = @br,
-		                shippingAddress = @shipping,
-	                    userID= @userID
+            string query2 = @"UPDATE Customer
+                                SET
+	                                lastUpdate=CURRENT_TIMESTAMP,
+		                            businessName = @bn,
+		                            nit = @nit,
+		                            businessReason = @br,
+		                            shippingAddress = @shipping,
+	                                userID= @userID
         
-                    WHERE
-                        id = @id";
+                                WHERE
+                                    id = @id;";
+
+            List<SqlCommand> cmds = Create2BasicCommand(query, query2);
 
             SqlCommand command = CreateBasicCommand(query);
 
-            command.Parameters.AddWithValue("@ci", t.Ci);
-            command.Parameters.AddWithValue("@name", t.Name);
-            command.Parameters.AddWithValue("@lastName", t.LastName);
-            command.Parameters.AddWithValue("@SecondLastName", t.SecondLastName);
-            command.Parameters.AddWithValue("@email", t.Email);
-            command.Parameters.AddWithValue("@number", t.Phone);
-            command.Parameters.AddWithValue("@date", t.Birthdate);
-            command.Parameters.AddWithValue("@gender", t.Gender);
+            cmds[0].Parameters.AddWithValue("@ci", p.Ci);
+            cmds[0].Parameters.AddWithValue("@firstName", p.Name);
+            cmds[0].Parameters.AddWithValue("@lastName", p.LastName);
+            cmds[0].Parameters.AddWithValue("@secondLastName", p.SecondLastName);
+            cmds[0].Parameters.AddWithValue("@birthDate", p.Birthdate);
+            cmds[0].Parameters.AddWithValue("@gender", p.Gender);
+            cmds[0].Parameters.AddWithValue("@email", p.Email);
+            cmds[0].Parameters.AddWithValue("@numberPhone", p.Phone);
+            cmds[0].Parameters.AddWithValue("@userID", session); //OJO
+            cmds[0].Parameters.AddWithValue("@id", p.Id);
 
-            command.Parameters.AddWithValue("@bn", t.businessName);
-            command.Parameters.AddWithValue("@nit", t.Nit);
-            command.Parameters.AddWithValue("@br", t.businessReason);
-            command.Parameters.AddWithValue("@shipping", t.shippingAddress);
 
-            command.Parameters.AddWithValue("@userID", Session.SessionID);
-            command.Parameters.AddWithValue("@id", t.Id);
+            cmds[1].Parameters.AddWithValue("@nit", t.Nit);
+            cmds[1].Parameters.AddWithValue("@id", p.Id);
+            cmds[1].Parameters.AddWithValue("@bn", t.businessName);
+            cmds[1].Parameters.AddWithValue("@br", t.businessReason);
+            cmds[1].Parameters.AddWithValue("@userID", session); //OJO
+            cmds[1].Parameters.AddWithValue("@shipping", t.shippingAddress); ;
 
             try
             {
-                return ExecuteBasicCommand(command);
+                ExecuteNBasicCommand(cmds);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        public void Insertar(Person person, Customer customer)
+        {
+            throw new NotImplementedException();
         }
     }
 }

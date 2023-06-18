@@ -32,6 +32,25 @@ namespace dentalConnectDAO.Implementation
             }
         }
 
+        public int changeWEB(string password, int session)
+        {
+            query = @"UPDATE [User] SET password = HASHBYTES('MD5', @password) , lastUpdate=CURRENT_TIMESTAMP, userID=@userID
+                        WHERE id = @userID";
+
+            SqlCommand command = CreateBasicCommand(query);
+
+            command.Parameters.AddWithValue("@password", password).SqlDbType = SqlDbType.VarChar;
+            command.Parameters.AddWithValue("@userID", session);
+
+            try
+            {
+                return ExecuteBasicCommand(command);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public int Delete(User t)
         {
             query = @"UPDATE [User] SET status=0, lastUpdate=CURRENT_TIMESTAMP, userID=@userID

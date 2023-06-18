@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cambioSite.aspx" />
     <Content Include="CategorySite.aspx" />
     <Content Include="CustomerSite.aspx" />
     <Content Include="Global.asax" />
@@ -93,6 +94,13 @@
     <Content Include="MenuSite.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cambioSite.aspx.cs">
+      <DependentUpon>cambioSite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cambioSite.aspx.designer.cs">
+      <DependentUpon>cambioSite.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CRUD.Master.cs">
       <DependentUpon>CRUD.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
