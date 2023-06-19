@@ -102,6 +102,7 @@
                     <label for="password">Contraseña:</label>
                     <input type="password" class="form-control" id="password" required>
                   </div>
+                    <p id="message" style="color:red"> </p>
                   <a class="dropdown-item button-style" href="#" onclick="verificarDatos()">Ingresar</a>
 
                 <script>
@@ -124,19 +125,20 @@
                                             window.location.href = "MenuSite.aspx";
                                             break;
                                         case "Gerente de ventas":
-                                            window.location.href = "SalesManagerHome.aspx";
+                                            window.location.href = "MenuSales.aspx";
                                             break;
                                         case "Gerente de inventario":
-                                            window.location.href = "InventoryManagerHome.aspx";
+                                            window.location.href = "MenuInventory.aspx";
                                             break;
                                         default:
                                             // Tipo de usuario no válido, muestra un mensaje de error o realiza otra acción
-                                            alert("Tipo de usuario no válido");
+                                            document.getElementById("message").textContent = "Tipo de usuario no válido";
                                             break;
                                     }
                                 } else {
                                     // Los datos son inválidos, muestra un mensaje de error o realiza otra acción
-                                    alert("Los datos ingresados son incorrectos");
+                                    document.getElementById("message").textContent = "Los datos no son correctos";
+
                                 }
                             }
 

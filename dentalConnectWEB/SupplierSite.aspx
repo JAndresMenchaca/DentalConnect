@@ -1,4 +1,4 @@
-﻿<%@ Page Title="PROVEEDORES" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="SupplierSite.aspx.cs" Inherits="dentalConnectWEB.SupplierSite" EnableEventValidation="false" %>
+﻿<%@ Page Title="Proveedor" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="SupplierSite.aspx.cs" Inherits="dentalConnectWEB.SupplierSite" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
    
 </asp:Content>

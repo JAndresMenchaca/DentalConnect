@@ -17,7 +17,7 @@ namespace dentalConnectWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            sendMessages(2, HttpContext.Current.Session["SessionUserName"].ToString());
+           
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace dentalConnectWEB
                         {
                             userImpl.changeWEB(p1.Text, (int)HttpContext.Current.Session["SessionID"]);
                             //MessageBox.Show(""+pbNew.Password);
-                            sendMessages(2, "Se actualizo la contraseña");
+                            sendMessages(1, "Se actualizo la contraseña");
                             //MessageBox.Show(Session.SessionID + "");
                             //Session.SessionRole = "";
                             userImpl.changePassword();
@@ -49,29 +49,39 @@ namespace dentalConnectWEB
                             //pbNew.Password = "";
                             //pbNew2.Password = "";
                             //pbOriginal.Focus();
-                            sendMessages(1, "Las contraseñas no coinciden");
+                            sendMessages(2, "Las contraseñas no coinciden");
+                            p1.Text = "";
+                            p2.Text = "";
                         }
                     }
                     else
                     {
 
-                        sendMessages(1, "Contraseña inválida. Debe tener al menos 8 caracteres\nUna letra mayúscula, un número y un carácter especial.");
-                    //    //txtError.FontSize = 14;
+                        sendMessages(2, "Contraseña inválida. Debe tener al menos 8 caracteres\nUna letra mayúscula, un número y un carácter especial.");
+                        p1.Text = "";
+                        p2.Text = "";
                     }
 
                 }
                 else
                 {
-                    sendMessages(1, "Contraseña anterior incorrecta");
+                    sendMessages(2, "Contraseña anterior incorrecta");
+                    oldP.Text = "";
                 }
 
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
-                sendMessages(2, ex + "");
+               
 
             }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            oldP.Text = "";
+            p1.Text = "";
+            p2.Text = "";
         }
         public void sendMessages(int opc, string mess)
         {

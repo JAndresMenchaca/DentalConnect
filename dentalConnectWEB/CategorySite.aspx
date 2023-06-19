@@ -1,4 +1,4 @@
-﻿<%@ Page Title="CATEGORIAS" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="CategorySite.aspx.cs" Inherits="dentalConnectWEB.CategorySite" EnableEventValidation="false" %>
+﻿<%@ Page Title="Categoria" Language="C#" MasterPageFile="~/CRUD.Master" AutoEventWireup="true" CodeBehind="CategorySite.aspx.cs" Inherits="dentalConnectWEB.CategorySite" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 </asp:Content>

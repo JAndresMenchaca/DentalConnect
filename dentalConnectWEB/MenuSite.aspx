@@ -126,7 +126,7 @@
         <div class="col-md-8 mt-4">
             <div class="widget saludo-widget">
                 <h2 style="font-size: 35px;"></h2>
-                <p style="font-size: 20px;"><b>Esperamos que tengas un productivo día de trabajo.</b></p>
+                <p style="font-size: 20px;"><b>ROL: Administrador</b></p>
                 <div class="widget recordatorio-widget" style="border-radius: 10px; padding: 20px; height: 45%; width: 100%;">
                     <h3>Recordatorio 💡</h3>
                     <p style="font-size:20px" >No olvides asistir a la reunión de equipo mañana a las 10:00 a.m. en la sala de conferencias.</p>
