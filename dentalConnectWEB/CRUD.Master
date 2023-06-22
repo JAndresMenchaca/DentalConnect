@@ -99,7 +99,7 @@
                     </div>
                 </li>
             </ul>
-            <h1 class="float-right" style="margin-left: 580px; color:#C9FFEB; font-weight:bold; font-size: 30px"><%:Page.Title %></h1>
+            <h1 class="float-right" style="margin-left: 500px; color:#C9FFEB; font-weight:bold; font-size: 30px"><%:Page.Title %></h1>
          
         </div>
     </nav>

@@ -148,6 +148,20 @@ namespace dentalConnectWEB
                     ci1.BackColor = ColorTranslator.FromHtml("#f76262");
                     return;
                 }
+
+
+                QuerysImpl querysImpl = new QuerysImpl();
+
+                int cont5 = querysImpl.verifyCiUser2(ci);
+
+                if (cont5 > 0)
+                {
+                    sendMessages(2, "El CI que ingreso ya existe en la Base de Datos");
+                    ci1.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
+
+
                 bool isNameValid = ValidationsImpl.ValidateNameC(fName);
                 if (!isNameValid)
                 {
@@ -816,6 +830,20 @@ namespace dentalConnectWEB
             idLabel.Visible = false;
             idLabel.Text = string.Empty;
 
+            message.Text = "";
+            name.Text = "";
+            ci1.Text = "";
+            a1.Text = "";
+            a2.Text = "";
+            fecha.Text = "";
+            sex.SelectedValue = null;
+            mail.Text = "";
+            phone1.Text = "";
+            nit1.Text = "";
+            bn1.Text = "";
+            br1.Text = "";
+            shipping1.Text = "";
+            fecha.Text = string.Empty;
 
             Button1.Visible = true;
             Button1.Enabled = true;

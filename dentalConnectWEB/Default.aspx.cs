@@ -36,6 +36,7 @@ namespace dentalConnectWEB
                     HttpContext.Current.Session["SessionRole"] = table.Rows[0][2].ToString();
                     HttpContext.Current.Session["SessionChangePassword"] = int.Parse(table.Rows[0][3].ToString());
 
+
                     
                     return table.Rows[0][2].ToString();
                 }

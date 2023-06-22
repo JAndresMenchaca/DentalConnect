@@ -87,7 +87,7 @@
                     </div>
                 </li>
             </ul>
-            <h1 class="float-right" style="margin-left: 600px; color:#C9FFEB; font-weight:bold; font-size: 30px">MENU</h1>
+            <h1 class="float-right" style="margin-left: 500px; color:#C9FFEB; font-weight:bold; font-size: 30px">MENU</h1>
          
         </div>
     </nav>

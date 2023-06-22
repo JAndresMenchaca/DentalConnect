@@ -13,8 +13,8 @@ namespace dentalConnectDAO.Implementation
 {
     public class QuerysImpl
     {
-        public string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
-        //public string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";   
+        //public string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+        public string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";   
         //public string connectionString = @"Server=DESKTOP-8LUHPUR;Database=dbDentalConnect;User Id=sa;Password=Mzhyde;";
         public int verifyEmail(string email)
         {
@@ -322,6 +322,29 @@ namespace dentalConnectDAO.Implementation
             }
         }
 
+        public int verifyCiUser2(string ci)
+        {
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = @"SELECT COUNT(*) FROM Customer u INNER JOIN Person p ON p.id = u.id WHERE p.ci = @ci AND u.status = 1";
+                int count = 0;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@ci", ci);
+                    count = (int)comando.ExecuteScalar();
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+
+                return count;
+            }
+        }
         public int verifyCiUserUpdate(string ci, int id)
         {
             using (var conexion = new SqlConnection(connectionString))
@@ -346,6 +369,8 @@ namespace dentalConnectDAO.Implementation
                 return count;
             }
         }
+
+
 
         public List<ComboBoxItem> comboCateg()
         {

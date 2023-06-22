@@ -66,7 +66,7 @@
          <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-6">
-            <h2 class="text-center">Cambio de Contraseña</h2>
+            <h2 class="text-center">Cambio de Contraseña🔒</h2>
             <br>
             <form method="post" action="#">
                 <div class="form-group">
@@ -74,11 +74,11 @@
                     <asp:TextBox ID="oldP" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="form-group">
-                    <label for="newPassword">Contraseña Nueva</label>
+                    <label for="newPassword">Contraseña Nueva🔑</label>
                     <asp:TextBox ID="p1" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="form-group">
-                    <label for="confirmPassword">Confirmar Contraseña</label>
+                    <label for="confirmPassword">Confirmar Contraseña🔑</label>
                     <asp:TextBox ID="p2" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                     <asp:Label ID="message" runat="server" style="font-size:20px"></asp:Label>
                 </div>
