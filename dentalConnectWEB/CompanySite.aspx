@@ -31,8 +31,11 @@
                             <asp:TextBox ID="phoneC" runat="server" type="text" class="form-control" placeholder="Ingrese el telefono"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:DropDownList ID="person" runat="server" class="form-control">
-                            </asp:DropDownList>  
+                            <asp:TextBox ID="searchInput" runat="server" type="text" class="form-control" placeholder="Ingrese el CI del contacto"></asp:TextBox>
+                           
+                            <br />
+                            <asp:DropDownList ID="person" runat="server" class="form-control" style="display: none;"></asp:DropDownList>
+ 
                         </div>
                         <div id="map" style="width: 100%; height: 400px;"></div>                    
                        
@@ -58,6 +61,7 @@
 
         <div class="float-right" ID="idDiv" runat="server" >
                 <asp:Label ID="idLabel" runat="server" style="font-size:5px"></asp:Label>
+                <asp:Label ID="idContact" runat="server" style="font-size:20px"></asp:Label>
               <div class="container mt-4 float-left" style="background-color: #7C9C90; border-radius: 10px; height: 210px; width: 350px; margin-right: 15px;">
                   <asp:Label ID="message" runat="server" style="font-size:20px"></asp:Label>
 
@@ -121,6 +125,61 @@
             });
         }
     </script>
+
+
+    
+   <script>
+       $.noConflict();
+       jQuery(document).ready(function ($) {
+           var dropdown = $("#<%= person.ClientID %>");
+        var options = dropdown.find("option").map(function () {
+            return {
+                value: $(this).text(),
+                tag: parseInt($(this).attr("value"))
+            };
+        }).get();
+
+        $("[id*=searchInput]").autocomplete({
+            source: options,
+            select: function (event, ui) {
+                var selectedValue = ui.item.tag;
+
+                // Convertir el valor a entero
+                var intValue = parseInt(selectedValue);
+
+                console.log(selectedValue);
+                // Guardar el valor como entero en el Label
+                $("#<%= idContact.ClientID %>").text(intValue);
+
+                // Realizar una llamada a servidor para asignar el valor seleccionado al código C#
+                $.ajax({
+                    type: "POST",
+                    url: "CompanySite.aspx/SetSelectedValue",
+                    data: JSON.stringify({ selectedValue: intValue }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        console.log("Valor seleccionado enviado al servidor.");
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error al enviar el valor seleccionado al servidor.");
+                    }
+                });
+            }
+        });
+    });
+   </script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

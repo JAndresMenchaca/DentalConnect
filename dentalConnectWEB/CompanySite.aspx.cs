@@ -47,6 +47,12 @@ namespace dentalConnectWEB
             idLabel.Visible = false;
             idDiv.Visible = true;
             opt.Visible = false;
+            idContact.Visible = false;
+        }
+        protected int SelectedValue
+        {
+            get { return (int)(ViewState["SelectedValue"] ?? 0); }
+            set { ViewState["SelectedValue"] = value; }
         }
 
 
@@ -148,8 +154,8 @@ namespace dentalConnectWEB
             int columnIndex = 0; // Índice de la columna 0
 
             string itemValue = row.Cells[columnIndex].Text;
-            string nameP = row.Cells[4].Text;
-            sendMessages(1, nameP);
+            string ci = row.Cells[4].Text;
+            //sendMessages(2, "id: " + ci);
             company = null;
 
 
@@ -171,17 +177,18 @@ namespace dentalConnectWEB
                 nameC.Text = company.BusinessName.Trim();
                 phoneC.Text = company.Phone.Trim();
 
-                QuerysImpl querys = new QuerysImpl();
+                Session["SelectedValue"] = company.ContactID;
+
                 string tagValue = company.ContactID.ToString(); // Valor del Tag que deseas buscar
 
                 ListItem item = person.Items.FindByValue(tagValue); // Buscar el elemento por valor
 
                 if (item != null)
                 {
-                    person.SelectedIndex = person.Items.IndexOf(item); // Establecer el índice seleccionado en el DropDownList
-                    //sendMessages(2, person.SelectedIndex+"");
+                    searchInput.Text = item.Text; // Asignar el texto del elemento encontrado al TextBox
                 }
-               
+
+
             }
             catch
             {
@@ -233,6 +240,12 @@ namespace dentalConnectWEB
             message.Text = "";
         }
 
+        [System.Web.Services.WebMethod]
+        public static void SetSelectedValue(int selectedValue)
+        {
+            // Guardar el valor seleccionado en una variable de estado de vista
+            HttpContext.Current.Session["SelectedValue"] = selectedValue;
+        }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -242,12 +255,16 @@ namespace dentalConnectWEB
                 string nit = nitC.Text;
                 string name = nameC.Text;
                 string phone = phoneC.Text;
-                int person1 = int.Parse(person.SelectedValue);
+                int person1 = (int)Session["SelectedValue"];
+
+
+
 
                 nameC.BackColor = Color.White;
                 nitC.BackColor = Color.White;
                 phoneC.BackColor = Color.White;
                 person.BackColor = Color.White;
+                sendMessages(1, idContact.Text);
 
                 #region verify
                 //if (string.IsNullOrEmpty(ci))
@@ -472,8 +489,8 @@ namespace dentalConnectWEB
             }
             catch (Exception ex)
             {
-
-                throw;
+                sendMessages(2, "id: "+ ex);
+                
             }
         }
 
@@ -487,10 +504,11 @@ namespace dentalConnectWEB
             person.BackColor = Color.White;
 
             
+
             string nit = nitC.Text.Trim();
             string name = nameC.Text.Trim();
             string phone = phoneC.Text.Trim();
-            int person1 = int.Parse(person.SelectedValue);
+            int person1 = (int)Session["SelectedValue"];
 
 
 
@@ -806,7 +824,7 @@ namespace dentalConnectWEB
                 company.Phone = phone;
                 company.Longitude = +1.25656;
                 company.Latitude = -4.211321;
-                company.ContactID = int.Parse(person.SelectedValue); //OJO
+                company.ContactID = (int)Session["SelectedValue"]; //OJO
 
                 //sendMessages(2, person.Id + "...");
                 //QuerysImpl query = new QuerysImpl();
@@ -853,6 +871,7 @@ namespace dentalConnectWEB
                 nitC.Text = "";
                 phoneC.Text = "";
                 person.SelectedValue = null;
+                searchInput.Text = string.Empty;
 
                 nameC.BackColor = Color.White;
                 nitC.BackColor = Color.White;
@@ -882,6 +901,8 @@ namespace dentalConnectWEB
             nameC.Text = "";
             nitC.Text = "";
             phoneC.Text = "";
+            searchInput.Text = string.Empty;
+
             person.SelectedValue = null;
 
             nameC.BackColor = Color.White;

@@ -60,6 +60,15 @@ namespace dentalConnectWEB
         protected global::System.Web.UI.WebControls.TextBox phoneC;
 
         /// <summary>
+        /// Control searchInput.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox searchInput;
+
+        /// <summary>
         /// Control person.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace dentalConnectWEB
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label idLabel;
+
+        /// <summary>
+        /// Control idContact.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idContact;
 
         /// <summary>
         /// Control message.
