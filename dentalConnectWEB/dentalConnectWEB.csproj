@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\dentalConnectDAO\packages\PresentationFramework.4.6.0\lib\PresentationFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -60,6 +63,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -69,6 +73,7 @@
   <ItemGroup>
     <Content Include="cambioSite.aspx" />
     <Content Include="CategorySite.aspx" />
+    <Content Include="CompanySite.aspx" />
     <Content Include="CustomerSite.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\functions\aplicacion.png" />
@@ -102,6 +107,13 @@
     </Compile>
     <Compile Include="cambioSite.aspx.designer.cs">
       <DependentUpon>cambioSite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompanySite.aspx.cs">
+      <DependentUpon>CompanySite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompanySite.aspx.designer.cs">
+      <DependentUpon>CompanySite.aspx</DependentUpon>
     </Compile>
     <Compile Include="CRUD.Master.cs">
       <DependentUpon>CRUD.Master</DependentUpon>

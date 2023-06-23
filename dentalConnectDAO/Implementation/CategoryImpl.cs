@@ -46,7 +46,6 @@ namespace dentalConnectDAO.Implementation
                 throw ex;
             }
         }
-
         public int Update(Category t)
         {
             query = @"UPDATE Category SET name=@name, description=@description, lastUpdate=CURRENT_TIMESTAMP, idUser=@idUser
@@ -87,7 +86,6 @@ namespace dentalConnectDAO.Implementation
                 throw ex;
             }
         }
-
         public Category Get(byte id)
         {
             Category category=null;

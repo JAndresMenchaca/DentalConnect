@@ -13,8 +13,8 @@ namespace dentalConnectDAO.Implementation
 {
     public class QuerysImpl
     {
-        //public string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
-        public string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";   
+        public string connectionString = @"Server=DESKTOP-UKT8QUD;Database=dbDentalConnect;User Id=sa;Password=sotwa;";
+        //public string connectionString = @"Server=LAPTOP_ANDRES\SQLEXPRESS;Database=dbDentalConnect;User Id=sa;Password=sotwa";   
         //public string connectionString = @"Server=DESKTOP-8LUHPUR;Database=dbDentalConnect;User Id=sa;Password=Mzhyde;";
         public int verifyEmail(string email)
         {
@@ -441,5 +441,85 @@ namespace dentalConnectDAO.Implementation
             return items;
 
         }
+
+        public class PersonComboItem
+        {
+            public string Content { get; set; }
+            public int Tag { get; set; }
+        }
+
+        public List<PersonComboItem> comboPerson()
+        {
+            List<PersonComboItem> items = new List<PersonComboItem>();
+
+            string consulta = @"SELECT CONCAT(p.firstName, ' ', p.lastName), p.id
+                        FROM Person p
+                        LEFT JOIN [User] u ON p.id = u.id
+                        LEFT JOIN Customer c ON p.id = c.id
+                        WHERE u.id IS NULL AND c.id IS NULL AND p.status = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string nombre = reader.GetString(0);
+                        int id = reader.GetInt32(1);
+
+                        PersonComboItem item = new PersonComboItem
+                        {
+                            Content = nombre,
+                            Tag = id
+                        };
+
+                        items.Add(item);
+                    }
+                }
+            }
+
+            return items;
+        }
+
+        public string namePerson(int id)
+        {
+            string nombre = string.Empty;
+
+            using (var conexion = new SqlConnection(connectionString))
+            {
+                // Abrir la conexión
+                conexion.Open();
+
+                // Ejecutar la consulta
+                string consulta = "SELECT CONCAT(firstName, ' ', lastName) FROM Person WHERE id = @id ";
+                int count = -1;
+
+                using (var comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Obtener el valor del primer campo (concatenación de firstName y lastName)
+                            nombre = reader.GetString(0);
+                        }
+                    }
+                }
+
+                // Cerrar la conexión
+                conexion.Close();
+            }
+
+            return nombre;
+        }
+
+
+
+
     }
 }
