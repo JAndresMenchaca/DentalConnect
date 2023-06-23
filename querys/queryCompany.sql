@@ -1,4 +1,4 @@
-SELECT CONCAT(p.firstName, ' ', p.lastName), p.id
+SELECT CONCAT(p.firstName, ' ', p.lastName), p.id, p.ci
                                 FROM Person p
                                 LEFT JOIN [User] u ON p.id = u.id
                                 LEFT JOIN Customer c ON p.id = c.id
@@ -23,7 +23,7 @@ VALUES ('154896', 'valor_businessName', 'valor_phone', 92, 5, -568656, -56721387
 
 ALTER VIEW vwCompany
 AS
-SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Teléfono', 
+SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Teléfono', p.ci AS 'Ci',
 		CONCAT(p.firstName, ' ', p.lastName) AS 'Contacto', c.registerDate AS 'Registro creado el:'
 FROM Company c
 INNER JOIN Person p ON c.contactID = p.id
