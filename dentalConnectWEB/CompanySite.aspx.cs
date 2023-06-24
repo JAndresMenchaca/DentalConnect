@@ -245,6 +245,7 @@ namespace dentalConnectWEB
         {
             // Guardar el valor seleccionado en una variable de estado de vista
             HttpContext.Current.Session["SelectedValue"] = selectedValue;
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -255,9 +256,18 @@ namespace dentalConnectWEB
                 string nit = nitC.Text;
                 string name = nameC.Text;
                 string phone = phoneC.Text;
-                int person1 = (int)Session["SelectedValue"];
+                int person1;
+                if (person.Text != null)
+                {
+                 person1 = (int)Session["SelectedValue"];
+                }
+                else
+                {
+                 person1 = 0;
+                }
 
-
+            
+                string personValue = person.Text.Trim();
 
 
                 nameC.BackColor = Color.White;
@@ -267,200 +277,64 @@ namespace dentalConnectWEB
                 sendMessages(1, idContact.Text);
 
                 #region verify
-                //if (string.IsNullOrEmpty(ci))
-                //{
-                //    sendMessages(2, "El campo de CI no puede estar vacío");
-                //    ci1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
+                if (string.IsNullOrEmpty(nit))
+                {
+                    sendMessages(2, "El campo de NIT no puede estar vacío");
+                    nitC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
 
-                //}
-                //if (string.IsNullOrEmpty(fName))
-                //{
+                }
+                if (string.IsNullOrEmpty(name))
+                {
 
-                //    sendMessages(2, "El campo de nombre no puede estar vacío");
-                //    name.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(lName))
-                //{
-                //    sendMessages(2, "El campo de 1er apellido no puede estar vacío");
-                //    a1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(fechaText))
-                //{
-                //    sendMessages(2, "El campo de fecha no puede estar vacío");
-                //    fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(gender.ToString()))
-                //{
-                //    sendMessages(2, "El campo de genero no puede estar vacío");
-                //    sex.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(mailS))
-                //{
-                //    sendMessages(2, "El campo de Email no puede estar vacío");
-                //    mail.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(phone))
-                //{
-                //    sendMessages(2, "El campo de teléfono no puede estar vacío");
-                //    phone1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(nit))
-                //{
-                //    sendMessages(2, "El campo de NIT no puede estar vacío");
-                //    nit1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(bn))
-                //{
-                //    sendMessages(2, "El campo de nombre de empresa no puede estar vacío");
-                //    bn1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(br))
-                //{
-                //    sendMessages(2, "El campo de razón social no puede estar vacío");
-                //    br1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(shipping))
-                //{
-                //    sendMessages(2, "El campo de dirección no puede estar vacío");
-                //    shipping1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-
-                //QuerysImpl query = new QuerysImpl();
+                    sendMessages(2, "El campo de nombre de empresa no puede estar vacío");
+                    nameC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
+                if (string.IsNullOrEmpty(phone))
+                {
+                    sendMessages(2, "El campo de teléfono apellido no puede estar vacío");
+                    phoneC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
+                if (string.IsNullOrEmpty(personValue))
+                {
+                    sendMessages(2, "El campo de contacto no puede estar vacío");
+                    person.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
 
 
-                //bool isCIValid = ValidationsImpl.ValidateCiC(ci);
-                //if (!isCIValid || ci1.Text.Length <= 7)
-                //{
-                //    sendMessages(2, "El CI debe cumplir con el formato válido: solo números y letras mayúsculas, y/o signos '-'; debe contener al menos 8 números; longitud permitida de 0 a 30 caracteres");
-                //    ci1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
+                bool isNITValid = ValidationsImpl.ValidateNitComp(nit);
+                if (!isNITValid || nitC.Text.Length <= 7)
+                {
+                    sendMessages(2, "El NIT debe cumplir con el formato válido: solo números y letras mayúsculas, y/o signos '-'; debe contener al menos 8 números; longitud permitida de 0 a 30 caracteres");
+                    nitC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
+                bool isLNameValid = ValidationsImpl.ValidateNameComp(name);
+                if (!isLNameValid)
+                {
+                    sendMessages(2, "El nombre de empresa debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres");
+                    nameC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
+                bool isPhoneValid = ValidationsImpl.ValidatePhoneComp(phone);
+                if (!isPhoneValid || phoneC.Text.Length <= 7)
+                {
+                    sendMessages(2, "El teléfono debe cumplir con el formato válido: solo números y/o signos '+' (siempre al inicio) o '-'; debe contener al menos 8 números; longitud permitida de 0 a 20 caracteres");
+                    phoneC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
+                bool isContactValid = ValidationsImpl.ValidateContactComp(person1.ToString());
+                if (!isContactValid)
+                {
+                    sendMessages(2, "El contacto no existe");
+                    person.BackColor = ColorTranslator.FromHtml("#f76262");
+                    return;
+                }
 
 
-                //QuerysImpl querysImpl = new QuerysImpl();
-
-                //int cont5 = querysImpl.verifyCiUser2(ci);
-
-                //if (cont5 > 0)
-                //{
-                //    sendMessages(2, "El CI que ingreso ya existe en la Base de Datos");
-                //    ci1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-
-
-                //bool isNameValid = ValidationsImpl.ValidateNameC(fName);
-                //if (!isNameValid)
-                //{
-                //    sendMessages(2, "El nombre debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres");
-                //    name.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //bool isLNameValid = ValidationsImpl.ValidateNameC(lName);
-                //if (!isLNameValid)
-                //{
-                //    sendMessages(2, "El 1er apellido debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres");
-                //    a1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //bool isSLNameValid = ValidationsImpl.ValidateNameC(slName);
-                //if (!isSLNameValid)
-                //{
-                //    sendMessages(2, "El 2do apellido debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres");
-                //    a2.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //if (fecha == null)
-                //{
-                //    sendMessages(2, "Debe seleccionar una fecha");
-                //    fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-
-                //if (DateTime.TryParse(fechaText, out birthDate))
-                //{
-                //    DateTime currentDate = DateTime.Now;
-                //    DateTime minDate = currentDate.AddYears(-85); // Minimum date allowed (85 years ago)
-                //    DateTime maxDate = currentDate.AddYears(-18); // Maximum date allowed (18 years ago)
-
-                //    if (birthDate > currentDate)
-                //    {
-                //        // Selected date is in the future
-                //        sendMessages(2, "No se puede seleccionar una fecha futura");
-                //        fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //        return;
-                //    }
-
-                //    if (birthDate < minDate || birthDate > maxDate)
-                //    {
-                //        // Selected date is outside the allowed range
-                //        sendMessages(2, "La edad debe ser entre 18 y 85 años");
-                //        fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //        return;
-                //    }
-                //}
-                //else
-                //{
-                //    // Handle invalid date format
-                //    sendMessages(2, "El campo de fecha tiene un formato inválido");
-                //    fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-
-                //bool isEmailValid = ValidationsImpl.ValidateEmailS(mailS);
-                //if (!isEmailValid)
-                //{
-                //    sendMessages(2, "El Email debe cumplir con el formato válido: solo letras, números y/o los signos '.' o '@'; longitud permitida de 0 a 30 caracteres");
-                //    mail.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phone);
-                //if (!isPhoneValid || phone1.Text.Length <= 7)
-                //{
-                //    sendMessages(2, "El teléfono debe cumplir con el formato válido: solo números y/o signos '+' (siempre al inicio) o '-'; debe contener al menos 8 números; longitud permitida de 0 a 20 caracteres");
-                //    phone1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-
-                //bool isNITValid = ValidationsImpl.ValidateSpecificNit(nit);
-                //if (!isNITValid)
-                //{
-                //    sendMessages(2, "El NIT debe tener el formato válido: XXXX-XXXXXX-XXX-X, donde X representa un dígito del 0 al 9");
-                //    nit1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //bool isBNValid = ValidationsImpl.ValidateNombreEmpresa(bn);
-                //if (!isBNValid)
-                //{
-                //    sendMessages(2, "El nombre de la empresa Debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres");
-                //    bn1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //bool isBRValid = ValidationsImpl.ValidateRazonSocial(br);
-                //if (!isBRValid)
-                //{
-                //    sendMessages(2, "La razón social Debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 70 caracteres");
-                //    br1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
-                //bool isStreetAValid = ValidationsImpl.ValidateStreetS(shipping);
-                //if (!isStreetAValid)
-                //{
-                //    sendMessages(2, "La dirección debe cumplir con el formato válido: solo letras, números y/o los signos '.', '#', '/', '-'; longitud permitida de 0 a 30 caracteres");
-                //    shipping1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    return;
-                //}
                 #endregion
 
                 company = new Company(nit, name, phone, -1.20211, -1.2464565, person1);
@@ -478,6 +352,7 @@ namespace dentalConnectWEB
                 nameC.Text = "";
                 nitC.Text = "";
                 phoneC.Text = "";
+                person.Text = null;
                 person.SelectedValue = null;
 
                 //nameC.BackColor = Color.White;
@@ -516,305 +391,100 @@ namespace dentalConnectWEB
             try
             {
                 #region validaciones
-                //string nameS = name.Text.Trim();
-                //string phoneS = phone.Text.Trim();
-                //string mailS = mail.Text.Trim();
-                //string webS = sitio.Text.Trim();
-                //string streetPS = calleP.Text.Trim();
-                //string streetSS = calleS.Text.Trim();
+
                 int id = byte.Parse(idLabel.Text);
 
-                //if (string.IsNullOrEmpty(ci))
-                //{
-                //    message.Text = "El CI no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    ci1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(fName))
-                //{
-                //    message.Text = "El nombre no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    name.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(lName))
-                //{
-                //    message.Text = "El 1er apellido no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    a1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(fechaText))
-                //{
-                //    message.Text = "La fecha de nacimiento no puede estar vacía";
-                //    message.CssClass = "error-message";
-                //    fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-
-                //if (DateTime.TryParse(fechaText, out birthDate))
-                //{
-                //    DateTime currentDate = DateTime.Now;
-                //    DateTime minDate = currentDate.AddYears(-85); // Minimum date allowed (85 years ago)
-                //    DateTime maxDate = currentDate.AddYears(-18); // Maximum date allowed (18 years ago)
-
-                //    if (birthDate > currentDate)
-                //    {
-                //        // Selected date is in the future
-                //        sendMessages(2, "No se puede seleccionar una fecha futura");
-                //        fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //        Button1.Visible = false;
-                //        Button2.Visible = true;
-                //        Button3.Visible = true;
-                //        return;
-                //    }
-
-                //    if (birthDate < minDate || birthDate > maxDate)
-                //    {
-                //        // Selected date is outside the allowed range
-                //        sendMessages(2, "La edad debe ser entre 18 y 85 años");
-                //        fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //        Button1.Visible = false;
-                //        Button2.Visible = true;
-                //        Button3.Visible = true;
-                //        return;
-                //    }
-                //}
-                //else
-                //{
-                //    // Handle invalid date format
-                //    sendMessages(2, "El campo de fecha tiene un formato inválido");
-                //    fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-
-                //if (string.IsNullOrEmpty(mailS))
-                //{
-                //    message.Text = "El Email no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    mail.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(phone))
-                //{
-                //    message.Text = "El campo de teléfono no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    phone1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(nit))
-                //{
-                //    message.Text = "El campo de NIT no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    nit1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(bn))
-                //{
-                //    message.Text = "El campo de nombre de empresa no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    bn1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(br))
-                //{
-                //    message.Text = "El campo de razón social no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    br1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (string.IsNullOrEmpty(shipping))
-                //{
-                //    message.Text = "El campo de dirección no puede estar vacío";
-                //    message.CssClass = "error-message";
-                //    shipping1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
+                if (string.IsNullOrEmpty(nit))
+                {
+                    message.Text = "El campo de NIT no puede estar vacío";
+                    message.CssClass = "error-message";
+                    nitC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                if (string.IsNullOrEmpty(name))
+                {
+                    message.Text = "El campo de nombre de empresa no puede estar vacío";
+                    message.CssClass = "error-message";
+                    nameC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                if (string.IsNullOrEmpty(phone))
+                {
+                    message.Text = "El campo de teléfono apellido no puede estar vacío";
+                    message.CssClass = "error-message";
+                    phoneC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                if (string.IsNullOrEmpty(person.SelectedValue))
+                {
+                    message.Text = "El campo de contacto no puede estar vacío";
+                    message.CssClass = "error-message";
+                    person.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
 
 
 
-                //bool isNameValid = ValidationsImpl.ValidateNameS(fName);
-                //if (!isNameValid)
-                //{
-                //    message.Text = "El nombre debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres";
-                //    message.CssClass = "error-message";
-                //    name.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phone);
-                //if (!isPhoneValid || !ValidarTelefono(phone) || phone.Length <= 7)
-                //{
-                //    message.Text = "El teléfono debe cumplir con el formato válido: solo números y/o signos '+' (siempre al inicio) o '-'; debe contener al menos 8 números; longitud permitida de 0 a 20 caracteres";
-                //    message.CssClass = "error-message";
-                //    phone1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
+                bool isCIValid = ValidationsImpl.ValidateCiC(nit);
+                if (!isCIValid || nitC.Text.Length <= 7)
+                {
+                    message.Text = "El NIT debe cumplir con el formato válido: solo números y letras mayúsculas, y/o signos '-'; debe contener al menos 8 números; longitud permitida de 0 a 30 caracteres";
+                    message.CssClass = "error-message";
+                    nitC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                bool isNameValid = ValidationsImpl.ValidateNameS(name);
+                if (!isNameValid)
+                {
+                    message.Text = "El nombre de empresa debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres";
+                    message.CssClass = "error-message";
+                    nameC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phone);
+                if (!isPhoneValid || phoneC.Text.Length <= 7)
+                {
+                    message.Text = "El teléfono debe cumplir con el formato válido: solo números y/o signos '+' (siempre al inicio) o '-'; debe contener al menos 8 números; longitud permitida de 0 a 20 caracteres";
+                    message.CssClass = "error-message";
+                    phoneC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
+                bool isContactValid = ValidationsImpl.ValidateContactComp(person1.ToString());
+                if (!isContactValid)
+                {
+                    message.Text = "El contacto no existe";
+                    message.CssClass = "error-message";
+                    person.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    return;
+                }
 
 
-                //bool isCIValid = ValidationsImpl.ValidateCiC(ci);
-                //if (!isCIValid || ci1.Text.Length <= 7)
-                //{
-                //    message.Text = "El CI debe cumplir con el formato válido: solo números y letras mayúsculas, y/o signos '-'; debe contener al menos 8 números; longitud permitida de 0 a 30 caracteres";
-                //    message.CssClass = "error-message";
-                //    ci1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
 
-
-                //bool isFNameValid = ValidationsImpl.ValidateNameC(fName);
-                //if (!isFNameValid)
-                //{
-                //    message.Text = "El nombre debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres";
-                //    message.CssClass = "error-message";
-                //    name.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isLNameValid = ValidationsImpl.ValidateNameC(lName);
-                //if (!isLNameValid)
-                //{
-                //    message.Text = "El 1er apellido debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres";
-                //    message.CssClass = "error-message";
-                //    a1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isSLNameValid = ValidationsImpl.ValidateNameC(slName);
-                //if (!isSLNameValid)
-                //{
-                //    message.Text = "El 2do apellido debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres";
-                //    message.CssClass = "error-message";
-                //    a2.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //if (fecha == null)
-                //{
-                //    message.Text = "Debe seleccionar una fecha";
-                //    message.CssClass = "error-message";
-                //    fecha.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isEmailValid = ValidationsImpl.ValidateEmailS(mailS);
-                //if (!isEmailValid)
-                //{
-                //    message.Text = "El Email debe cumplir con el formato válido: solo letras, números y/o los signos '.' o '@'; longitud permitida de 0 a 30 caracteres";
-                //    message.CssClass = "error-message";
-                //    mail.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isphoneValid = ValidationsImpl.ValidatePhoneS(phone);
-                //if (!isphoneValid || phone1.Text.Length <= 7)
-                //{
-                //    message.Text = "El teléfono debe cumplir con el formato válido: solo números y/o signos '+' (siempre al inicio) o '-'; debe contener al menos 8 números; longitud permitida de 0 a 20 caracteres";
-                //    message.CssClass = "error-message";
-                //    phone1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isNITValid = ValidationsImpl.ValidateSpecificNit(nit);
-                //if (!isNITValid)
-                //{
-                //    message.Text = "El NIT debe tener el formato válido: XXXX-XXXXXX-XXX-X, donde X representa un dígito del 0 al 9";
-                //    message.CssClass = "error-message";
-                //    nit1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isBNValid = ValidationsImpl.ValidateNombreEmpresa(bn);
-                //if (!isBNValid)
-                //{
-                //    message.Text = "El nombre de la empresa Debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres";
-                //    message.CssClass = "error-message";
-                //    bn1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isBRValid = ValidationsImpl.ValidateRazonSocial(br);
-                //if (!isBRValid)
-                //{
-                //    message.Text = "La razón social Debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 70 caracteres";
-                //    message.CssClass = "error-message";
-                //    br1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
-                //bool isStreetAValid = ValidationsImpl.ValidateStreetS(shipping);
-                //if (!isStreetAValid)
-                //{
-                //    message.Text = "La dirección debe cumplir con el formato válido: solo letras, números y / o los signos '.', '#', '/', '-'; longitud permitida de 0 a 30 caracteres";
-                //    message.CssClass = "error-message";
-                //    shipping1.BackColor = ColorTranslator.FromHtml("#f76262");
-                //    Button1.Visible = false;
-                //    Button2.Visible = true;
-                //    Button3.Visible = true;
-                //    return;
-                //}
                 #endregion
-
 
                 company = new Company(nit, name, phone, -1.2356, +1.2356, person1);
 

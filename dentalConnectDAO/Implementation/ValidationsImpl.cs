@@ -223,6 +223,59 @@ namespace dentalConnectDAO.Implementation
         }
         #endregion
 
+        #region "Company"
+        //NIT
+        private static readonly Regex regexNitCompany = new Regex("^(?!.*  )[A-Z0-9-]{0,15}$");
+
+        public static bool ValidateNitComp(string nit)
+        {
+            bool isValid = regexNitCompany.IsMatch(nit);
+
+            return isValid;
+        }
+
+        public static bool ValidateSpecificNitComp(string nit)
+        {
+            // Patrón para validar el formato específico del NIT: XXXX-XXXXXX-XXX-X
+            string pattern = @"^\d{4}-\d{6}-\d{3}-\d$";
+
+            // Verificar si el NIT coincide con el patrón
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(nit);
+        }
+        //Nombre empresa
+
+        private static readonly Regex regexNameCompany = new Regex("^(?!.*  )[a-zA-Z&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,50}$");
+
+        public static bool ValidateNameComp(string name)
+        {
+            // Verificar si el nombre cumple con el patrón de la expresión regular
+            bool isValid = regexNameCompany.IsMatch(name);
+
+            return isValid;
+        }
+        //Telefono
+
+        private static readonly Regex regexPhoneCompany = new Regex(@"^[0-9+-]{0,20}$");
+
+        public static bool ValidatePhoneComp(string phone)
+        {
+            bool isValid = regexPhoneCompany.IsMatch(phone);
+
+            return isValid;
+        }
+        //Contacto
+
+        private static readonly Regex regexContactCompany = new Regex(@"^[a-zA-Z0-9.-]{0,60}$");
+
+        public static bool ValidateContactComp(string contact)
+        {
+            bool isValid = regexContactCompany.IsMatch(contact);
+
+            return isValid;
+        }
+        #endregion
+
         #region "methodsUser"
         public static void TextPhoneU1(TextBox textBox)
         {
