@@ -63,11 +63,12 @@ namespace dentalConnectDAO.Implementation
                     DateTime lastUpdate = DateTime.Parse(table.Rows[0][6].ToString());
                     int contactID = int.Parse(table.Rows[0][7].ToString());
                     byte idUser = byte.Parse(table.Rows[0][8].ToString());
-                    double latitude;
-                    double.TryParse(table.Rows[0][9].ToString(), NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out latitude);
 
-                    double longitude;
-                    double.TryParse(table.Rows[0][10].ToString(), NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out longitude);
+
+                    double latitude = double.Parse(table.Rows[0][9].ToString());
+
+
+                    double longitude = double.Parse(table.Rows[0][10].ToString());
 
 
                     company = new Company(ID, nit, businessName, phone, latitude, longitude, 

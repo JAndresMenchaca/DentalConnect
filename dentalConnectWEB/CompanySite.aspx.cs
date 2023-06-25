@@ -197,23 +197,11 @@ namespace dentalConnectWEB
                     searchInput.Text = item.Text; // Asignar el texto del elemento encontrado al TextBox
                 }
 
-                string latitudStr = company.Latitude.ToString();
+                string latitudStr = company.Latitude.ToString().Replace(",", ".");
 
-                // Inserta el punto decimal en la posición adecuada
-                latitudStr = latitudStr.Insert(latitudStr.Length - 13, ".");
-
-                // Convierte la cadena resultante en un número de punto flotante
-                //phoneC.Text = latitudStr;
-                // Obtén el valor de la longitud en formato de cadena
-                string longitudStr = company.Longitude.ToString();
-
-                // Inserta el punto decimal en la posición adecuada
-                longitudStr = longitudStr.Insert(longitudStr.Length - 13, ".");
-
-                // Convierte la cadena resultante en un número de punto flotante
+                string longitudStr = company.Longitude.ToString().Replace(",", ".");
 
 
-                // Utiliza la longitud en tu código
 
 
                 string script = string.Format(@"
