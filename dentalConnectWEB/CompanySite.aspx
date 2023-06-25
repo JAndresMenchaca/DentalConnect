@@ -111,8 +111,67 @@
 
     <script>
         initMap();
+        var map;
+        var marker;
+
         function initMap() {
-            var myLatLng = { lat: +40.7128, lng: -74.0060 }; // Reemplaza LATITUD y LONGITUD con tus valores de longitud y latitud
+            var myLatLng = { lat: -17.4099986092565, lng: -64.7585481494511 }; // Ubicación inicial del mapa (puede ser cualquier valor) -17.173978935567913, -64.80249346195107
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: myLatLng
+            });
+
+            google.maps.event.addListener(map, 'dblclick', function (event) {
+                addMarker(event.latLng);
+            });
+        }
+
+        function addMarker(location) {
+            if (marker) {
+                marker.setMap(null); // Elimina el marcador existente si lo hay
+            }
+
+            marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                draggable: true // Permite arrastrar el marcador después de agregarlo
+            });
+
+            // Evento para capturar la ubicación seleccionada
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                var latitude = event.latLng.lat();
+                var longitude = event.latLng.lng();
+                // Aquí puedes hacer lo que desees con las coordenadas seleccionadas, como guardarlas en una base de datos o mostrarlas en pantalla
+                console.log('Ubicación seleccionada - Latitud: ' + latitude + ', Longitud: ' + longitude);
+                //Session("latitude") = parseFloat(latitude);
+                //Session("longitude") = parseFloat(longitude);
+            });
+
+            // Imprimir coordenadas al hacer doble clic
+            var latitude = location.lat();
+            var longitude = location.lng();
+            console.log('Ubicación seleccionada - Latitud: ' + latitude.toString() + ', Longitud: ' + longitude);
+            //Session("latitude") = parseFloat(latitude);
+            //Session("longitude") = parseFloat(longitude);
+
+            $.ajax({
+                type: "POST",
+                url: "CompanySite.aspx/SetCoor",
+                data: JSON.stringify({ lat1: latitude.toString(), lon1: longitude.toString() }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log("Valor seleccionado enviado al servidor: " + latitude + ", " + longitude);
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error al enviar el valor seleccionado al servidor.  " + xhr);
+                }
+            });
+        }
+
+        function getCoor(latitud, longitud) {
+            var myLatLng = { lat: latitud, lng: longitud };
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 10,
@@ -124,7 +183,9 @@
                 map: map
             });
         }
+
     </script>
+
 
 
     
@@ -159,7 +220,8 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                        console.log("Valor seleccionado enviado al servidor.");
+
+                        console.log("Valor seleccionado enviado al servidor." + intValue);
                     },
                     error: function (xhr, status, error) {
                         console.log("Error al enviar el valor seleccionado al servidor.");
