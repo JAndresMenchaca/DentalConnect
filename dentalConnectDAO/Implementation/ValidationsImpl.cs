@@ -245,7 +245,7 @@ namespace dentalConnectDAO.Implementation
         }
         //Nombre empresa
 
-        private static readonly Regex regexNameCompany = new Regex("^(?!.*  )[a-zA-Z&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,50}$");
+        private static readonly Regex regexNameCompany = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,50}$");
 
         public static bool ValidateNameComp(string name)
         {
