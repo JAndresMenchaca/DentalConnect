@@ -79,3 +79,13 @@ FROM Company c
 INNER JOIN Person p ON c.contactID = p.id
 WHERE p.id = c.contactID AND c.status = 1
 
+
+SELECT CONCAT(p.ci,' - ', p.firstName,' ',p.lastName), p.id
+                        FROM Person p
+                        LEFT JOIN [User] u ON p.id = u.id
+                        LEFT JOIN Customer c ON p.id = c.id
+                        WHERE u.id IS NULL AND c.id IS NULL AND p.status = '1'
+
+
+
+
