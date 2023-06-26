@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Documents;
 using dentalConnectDAO.Implementation;
 using dentalConnectDAO.Model;
 
@@ -18,6 +19,11 @@ namespace dentalConnectWEB
         protected void Page_Load(object sender, EventArgs e)
         {
             // Puedes realizar cualquier lógica adicional necesaria en el evento Page_Load si es necesario
+
+            HttpContext.Current.Session["SessionID"] = null;
+            HttpContext.Current.Session["SessionUserName"] = null;
+            HttpContext.Current.Session["SessionRole"] = null;
+            HttpContext.Current.Session["SessionChangePassword"] = null;
         }
 
         [WebMethod]

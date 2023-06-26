@@ -233,7 +233,6 @@ namespace dentalConnectDAO.Implementation
 
             return isValid;
         }
-
         public static bool ValidateSpecificNitComp(string nit)
         {
             // Patrón para validar el formato específico del NIT: XXXX-XXXXXX-XXX-X
@@ -244,8 +243,7 @@ namespace dentalConnectDAO.Implementation
             return regex.IsMatch(nit);
         }
         //Nombre empresa
-
-        private static readonly Regex regexNameCompany = new Regex("^(?!.*  )[a-zA-Z&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,50}$");
+        private static readonly Regex regexNameCompany = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,50}$");
 
         public static bool ValidateNameComp(string name)
         {
@@ -255,9 +253,7 @@ namespace dentalConnectDAO.Implementation
             return isValid;
         }
         //Telefono
-
         private static readonly Regex regexPhoneCompany = new Regex(@"^[0-9+-]{0,20}$");
-
         public static bool ValidatePhoneComp(string phone)
         {
             bool isValid = regexPhoneCompany.IsMatch(phone);

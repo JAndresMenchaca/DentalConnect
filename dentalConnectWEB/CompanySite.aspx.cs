@@ -336,6 +336,15 @@ namespace dentalConnectWEB
             nitC.Text = company.Nit.Trim();
             nameC.Text = company.BusinessName.Trim();
             phoneC.Text = company.Phone.Trim();
+
+            string tagValue = company.ContactID.ToString(); // Valor del Tag que deseas buscar
+
+            ListItem item = person.Items.FindByValue(tagValue); // Buscar el elemento por valor
+
+            if (item != null)
+            {
+                searchInput.Text = item.Text; // Asignar el texto del elemento encontrado al TextBox
+            }
             //person.Text = company.ContactID.ToString(); //OJO
 
 
@@ -496,6 +505,7 @@ namespace dentalConnectWEB
                 Session["SelectedValue"] = null;
                 Session["longitude"] = null;
                 Session["latitude"] = null;
+                searchInput.Text = null;
                 //nameC.BackColor = Color.White;
                 //nitC.BackColor = Color.White;
                 //phoneC.BackColor = Color.White;
@@ -698,7 +708,8 @@ namespace dentalConnectWEB
             //gridData.SelectedItem = null;
             company = null;
             Session["SelectedValue"] = null;
-            
+            Session["longitude"] = null;
+            Session["latitude"] = null;
 
 
 
@@ -723,6 +734,8 @@ namespace dentalConnectWEB
             nitC.BackColor = Color.White;
             phoneC.BackColor = Color.White;
             searchInput.BackColor = Color.White;
+            Session["longitude"] = null;
+            Session["latitude"] = null;
         }
 
         protected void yes_Click(object sender, EventArgs e)
@@ -747,6 +760,9 @@ namespace dentalConnectWEB
                     phoneC.Text = "";
                     person.SelectedValue = null;
                     Session["SelectedValue"] = null;
+                    searchInput.Text = string.Empty;
+                    Session["longitude"] = null;
+                    Session["latitude"] = null;
                 }
             }
             catch
@@ -768,6 +784,9 @@ namespace dentalConnectWEB
             Session["SelectedValue"] = null;
             Button1.Visible = true;
             Button1.Enabled = true;
+            searchInput.Text = string.Empty;
+            Session["longitude"] = null;
+            Session["latitude"] = null;
         }
 
         public void sendMessages(int opc, string mess)

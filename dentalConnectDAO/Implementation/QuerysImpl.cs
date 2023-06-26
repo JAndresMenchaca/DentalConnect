@@ -452,7 +452,7 @@ namespace dentalConnectDAO.Implementation
         {
             List<PersonComboItem> items = new List<PersonComboItem>();
 
-            string consulta = @"SELECT ci, p.id
+            string consulta = @"SELECT CONCAT(p.ci,' - ', p.firstName,' ',p.lastName), p.id
                         FROM Person p
                         LEFT JOIN [User] u ON p.id = u.id
                         LEFT JOIN Customer c ON p.id = c.id
