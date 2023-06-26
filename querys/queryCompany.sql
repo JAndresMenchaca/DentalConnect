@@ -23,7 +23,7 @@ VALUES ('154896', 'valor_businessName', 'valor_phone', 92, 5, -568656, -56721387
 
 ALTER VIEW vwCompany
 AS
-SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Tel�fono', p.ci AS 'Ci',
+SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Teléfono', p.ci AS 'Ci',
 		CONCAT(p.firstName, ' ', p.lastName) AS 'Contacto', c.registerDate AS 'Registro creado el:'
 FROM Company c
 INNER JOIN Person p ON c.contactID = p.id
@@ -70,4 +70,12 @@ INSERT INTO Person (ci, firstName, lastName, secondLastName, birthDate, gender, 
 VALUES ('9577126', 'Oscar', 'Prado', 'Cordova', CURRENT_TIMESTAMP , 'M', 1, 'OPC1@gmail.com', '69784552', 5)
 
 SELECT CONCAT(firstName, ' ', lastName) FROM Person WHERE id = 92 
+
+ALTER VIEW vwCompany
+AS
+SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Teléfono', p.ci AS 'Ci',
+        CONCAT(p.firstName, ' ', p.lastName) AS 'Contacto', c.registerDate AS 'Registro creado el:'
+FROM Company c
+INNER JOIN Person p ON c.contactID = p.id
+WHERE p.id = c.contactID AND c.status = 1
 
