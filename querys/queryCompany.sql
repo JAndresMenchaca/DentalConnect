@@ -23,7 +23,11 @@ VALUES ('154896', 'valor_businessName', 'valor_phone', 92, 5, -568656, -56721387
 
 ALTER VIEW vwCompany
 AS
+<<<<<<< HEAD
 SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Tel�fono', p.ci AS 'Ci',
+=======
+SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Teléfono', p.ci AS 'Ci',
+>>>>>>> 9e954a2a9728b6c5da8af73a99fb60ccefc7c8c4
 		CONCAT(p.firstName, ' ', p.lastName) AS 'Contacto', c.registerDate AS 'Registro creado el:'
 FROM Company c
 INNER JOIN Person p ON c.contactID = p.id
@@ -85,3 +89,10 @@ SELECT CONCAT(p.ci,' - ', p.firstName,' ',p.lastName), p.id
                         LEFT JOIN [User] u ON p.id = u.id
                         LEFT JOIN Customer c ON p.id = c.id
                         WHERE u.id IS NULL AND c.id IS NULL AND p.status = '1'
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 9e954a2a9728b6c5da8af73a99fb60ccefc7c8c4

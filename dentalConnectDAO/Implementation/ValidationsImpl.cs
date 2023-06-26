@@ -243,6 +243,10 @@ namespace dentalConnectDAO.Implementation
             return regex.IsMatch(nit);
         }
         //Nombre empresa
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e954a2a9728b6c5da8af73a99fb60ccefc7c8c4
         private static readonly Regex regexNameCompany = new Regex("^(?!.*  )[a-zA-Z0-9&.áéíóúüÉÁÚÍÓÜñÑ´ -]{0,50}$");
 
         public static bool ValidateNameComp(string name)
