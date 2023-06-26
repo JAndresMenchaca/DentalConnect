@@ -71,21 +71,6 @@ VALUES ('9577126', 'Oscar', 'Prado', 'Cordova', CURRENT_TIMESTAMP , 'M', 1, 'OPC
 
 SELECT CONCAT(firstName, ' ', lastName) FROM Person WHERE id = 92 
 
-ALTER VIEW vwCompany
-AS
-SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Teléfono', p.ci AS 'Ci',
-        CONCAT(p.firstName, ' ', p.lastName) AS 'Contacto', c.registerDate AS 'Registro creado el:'
-FROM Company c
-INNER JOIN Person p ON c.contactID = p.id
-WHERE p.id = c.contactID AND c.status = 1
-
-
-SELECT CONCAT(p.ci,' - ', p.firstName,' ',p.lastName), p.id
-                        FROM Person p
-                        LEFT JOIN [User] u ON p.id = u.id
-                        LEFT JOIN Customer c ON p.id = c.id
-                        WHERE u.id IS NULL AND c.id IS NULL AND p.status = '1'
-
 
 
 
