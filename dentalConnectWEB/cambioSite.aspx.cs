@@ -17,7 +17,10 @@ namespace dentalConnectWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            if (HttpContext.Current.Session["SessionRole"] == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)

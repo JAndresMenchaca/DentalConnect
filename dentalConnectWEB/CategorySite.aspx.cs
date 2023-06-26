@@ -25,15 +25,16 @@ namespace dentalConnectWEB
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (HttpContext.Current.Session["SessionRole"] == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
+
             select();
             Button3.Visible = false;
             Button2.Visible = false;
             idLabel.Visible = false;
             opt.Visible = false;
-
-
-
-
 
         }
         protected void gridData_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -162,7 +163,14 @@ namespace dentalConnectWEB
             byte id = byte.Parse(itemValue);
             idLabel.Text = id.ToString();
 
-            opt.Visible = true;
+            //opt.Visible = true;
+            string script = @"<script type='text/javascript'>
+                            $(document).ready(function() {
+                                mostrarModalConfirmacion();
+                            });
+                          </script>";
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "MostrarModalConfirmacion", script);
 
             // Bloquear el botón Button1
             Button1.Enabled = false;

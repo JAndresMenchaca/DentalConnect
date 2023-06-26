@@ -20,6 +20,12 @@ namespace dentalConnectWEB
         CustomerImpl customerImpl;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (HttpContext.Current.Session["SessionRole"] == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
+
             select();
             Button3.Visible = false;
             Button2.Visible = false;

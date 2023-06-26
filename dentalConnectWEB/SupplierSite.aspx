@@ -80,19 +80,41 @@
                     <h1><p style="font-size:30px">¿Desea borrar la categoría seleccionada?</p></h1>
 
                     
-                    <asp:Button ID="yes" OnClick="yes_Click" runat="server" CssClass="btn btn-success" Text="SI" onmouseover="this.style.backgroundColor='#4CAF50'" onmouseout="this.style.backgroundColor='green'" style="width: 20%;" />
+                    <%--<asp:Button ID="yes" OnClick="yes_Click" runat="server" CssClass="btn btn-success" Text="SI" onmouseover="this.style.backgroundColor='#4CAF50'" onmouseout="this.style.backgroundColor='green'" style="width: 20%;" />
 
                      <asp:Button ID="no" OnClick="no_Click" runat="server" CssClass="btn btn-danger" Text="NO" onmouseover="this.style.backgroundColor='#FF0000'" onmouseout="this.style.backgroundColor='red'" style="width: 20%;" />
-                    
+                    --%>
                   </div>
                   </div>
                   
-
-
-
               </div>
         </div>
+
+        <div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalLabel" aria-hidden="true" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmacionModalLabel" style="font-size:20px">Confirmación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="font-size:20px">
+                        ¿Estás seguro de que deseas eliminar la empresa?
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button Text="Aceptar" ID="Button4" OnClick="yes_Click" CssClass="btn btn-success" runat="server"/>
+                        <asp:Button Text="Cancelar" ID="Button5" OnClick="no_Click" CssClass="btn btn-danger" runat="server"/>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
+
+    <script>
+        function mostrarModalConfirmacion() {
+            $('#confirmacionModal').modal('show');
+        }
+    </script>
 </asp:Content>
 
 

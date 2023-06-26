@@ -19,6 +19,12 @@ namespace dentalConnectWEB
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (HttpContext.Current.Session["SessionRole"] == null )
+            {
+                Response.Redirect("Default.aspx");
+            }
+
             select();
             Button3.Visible = false;
             Button2.Visible = false;
@@ -185,7 +191,15 @@ namespace dentalConnectWEB
             calleS.Text = supplier.AdjacentStreet;
 
 
-            opt.Visible = true;
+            //opt.Visible = true;
+
+            string script = @"<script type='text/javascript'>
+                            $(document).ready(function() {
+                                mostrarModalConfirmacion();
+                            });
+                          </script>";
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "MostrarModalConfirmacion", script);
 
             Button1.Enabled = false;
         }

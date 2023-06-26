@@ -31,6 +31,13 @@ namespace dentalConnectWEB
         //}
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (HttpContext.Current.Session["SessionRole"] == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
+
+
             if (!IsPostBack)
             {
                 QuerysImpl querys = new QuerysImpl();
@@ -186,6 +193,8 @@ namespace dentalConnectWEB
                 nameC.Text = company.BusinessName.Trim();
                 phoneC.Text = company.Phone.ToString();
 
+                
+
                 Session["SelectedValue"] = company.ContactID;
 
                 string tagValue = company.ContactID.ToString(); // Valor del Tag que deseas buscar
@@ -201,7 +210,8 @@ namespace dentalConnectWEB
 
                 string longitudStr = company.Longitude.ToString().Replace(",", ".");
 
-
+                Session["longitude"] = longitudStr;
+                Session["latitude"] = latitudStr;
 
 
                 string script = string.Format(@"
