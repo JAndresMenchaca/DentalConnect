@@ -75,6 +75,7 @@ VALUES ('9577126', 'Oscar', 'Prado', 'Cordova', CURRENT_TIMESTAMP , 'M', 1, 'OPC
 
 SELECT CONCAT(firstName, ' ', lastName) FROM Person WHERE id = 92 
 
+<<<<<<< HEAD
 ALTER VIEW vwCompany
 AS
 SELECT c.id, c.nit AS 'Nit', c.businessName AS 'Nombre de la Empresa', c.phone AS 'Teléfono', p.ci AS 'Ci',
@@ -92,6 +93,8 @@ SELECT CONCAT(p.ci,' - ', p.firstName,' ',p.lastName), p.id
 <<<<<<< HEAD
 =======
 
+=======
+>>>>>>> 413c5d016e5cf0e4c3e4dcfdac943388a551e8e6
 
 
 
