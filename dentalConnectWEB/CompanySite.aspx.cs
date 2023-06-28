@@ -393,33 +393,7 @@ namespace dentalConnectWEB
                 double lat;
                 double lon;
 
-                if (Session["SelectedValue"] != null)
-                {
-                 person1 = (int)Session["SelectedValue"];
-                }
-                else
-                {
-                    sendMessages(2, "Debe seleccionar un CI de la base de datos");
-                    searchInput.BackColor = ColorTranslator.FromHtml("#f76262");
-                    miMapa();
-                    return;
-                }
-
-                if (Session["longitude"] != null && Session["latitude"] != null)
-                {
-                    latitudeString = Session["latitude"].ToString();
-
-                    double.TryParse(latitudeString, NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out lat);
-
-                    longitudString = Session["longitude"].ToString();
-
-                    double.TryParse(longitudString, NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out lon);
-                }
-                else
-                {
-                    sendMessages(2, "Debe seleccionar una ubicacion en el mapa");
-                    return;
-                }
+               
 
 
 
@@ -451,6 +425,35 @@ namespace dentalConnectWEB
                     miMapa();
                     return;
                 }
+
+                if (Session["SelectedValue"] != null)
+                {
+                    person1 = (int)Session["SelectedValue"];
+                }
+                else
+                {
+                    sendMessages(2, "Debe seleccionar un CI de la base de datos");
+                    searchInput.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
+                    return;
+                }
+
+                if (Session["longitude"] != null && Session["latitude"] != null)
+                {
+                    latitudeString = Session["latitude"].ToString();
+
+                    double.TryParse(latitudeString, NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out lat);
+
+                    longitudString = Session["longitude"].ToString();
+
+                    double.TryParse(longitudString, NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out lon);
+                }
+                else
+                {
+                    sendMessages(2, "Debe seleccionar una ubicacion en el mapa");
+                    return;
+                }
+
                 if (string.IsNullOrEmpty(personValue))
                 {
                     sendMessages(2, "El campo de contacto no puede estar vacío");
@@ -461,9 +464,9 @@ namespace dentalConnectWEB
 
 
                 bool isNITValid = ValidationsImpl.ValidateNitComp(nit);
-                if (!isNITValid || nitC.Text.Length <= 7)
+                if (!isNITValid || nitC.Text.Length <= 8)
                 {
-                    sendMessages(2, "El NIT debe cumplir con el formato válido: solo números y letras mayúsculas, y/o signos '-'; debe contener al menos 8 números; longitud permitida de 0 a 30 caracteres");
+                    sendMessages(2, "El NIT debe cumplir con el formato válido: solo números, debe contener al menos 9 números; longitud permitida de 0 a 15 caracteres");
                     nitC.BackColor = ColorTranslator.FromHtml("#f76262");
                     miMapa();
                     return;
@@ -545,44 +548,7 @@ namespace dentalConnectWEB
             string name = nameC.Text.Trim();
             string phone = phoneC.Text.Trim();
             int person1;
-            if (Session["SelectedValue"] != null)
-            {
-                person1 = (int)Session["SelectedValue"];
-
-            }
-            else
-            {
-                sendMessages(2, "Debe seleccionar un CI de la base de datos");
-                searchInput.BackColor = ColorTranslator.FromHtml("#f76262");
-                Button1.Visible = false;
-                Button2.Visible = true;
-                Button3.Visible = true;
-                return;
-            }
-            string latitudeString;
-            string longitudString;
-
-            double lat, lon;
-
-            if (Session["longitude"] != null && Session["latitude"] != null)
-            {
-                latitudeString = Session["latitude"].ToString();
-
-                double.TryParse(latitudeString, NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out lat);
-
-                longitudString = Session["longitude"].ToString();
-
-                double.TryParse(longitudString, NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out lon);
-            }
-            else
-            {
-                sendMessages(2, "Debe seleccionar una ubicacion en el mapa");
-                Button1.Visible = false;
-                Button2.Visible = true;
-                Button3.Visible = true;
-                return;
-            }
-
+            
 
             try
             {
@@ -598,6 +564,7 @@ namespace dentalConnectWEB
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
+                    miMapa();
                     return;
                 }
                 if (string.IsNullOrEmpty(name))
@@ -608,6 +575,7 @@ namespace dentalConnectWEB
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
+                    miMapa();
                     return;
                 }
                 if (string.IsNullOrEmpty(phone))
@@ -618,8 +586,49 @@ namespace dentalConnectWEB
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
+                    miMapa();
                     return;
                 }
+                if (Session["SelectedValue"] != null)
+                {
+                    person1 = (int)Session["SelectedValue"];
+
+                }
+                else
+                {
+                    sendMessages(2, "Debe seleccionar un CI de la base de datos");
+                    searchInput.BackColor = ColorTranslator.FromHtml("#f76262");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    miMapa();
+                    return;
+                }
+                string latitudeString;
+                string longitudString;
+
+                double lat, lon;
+
+                if (Session["longitude"] != null && Session["latitude"] != null)
+                {
+                    latitudeString = Session["latitude"].ToString();
+
+                    double.TryParse(latitudeString, NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out lat);
+
+                    longitudString = Session["longitude"].ToString();
+
+                    double.TryParse(longitudString, NumberStyles.AllowThousands | NumberStyles.Float, CultureInfo.InvariantCulture, out lon);
+                }
+                else
+                {
+                    sendMessages(2, "Debe seleccionar una ubicacion en el mapa");
+                    Button1.Visible = false;
+                    Button2.Visible = true;
+                    Button3.Visible = true;
+                    miMapa();
+                    return;
+                }
+
                 if (string.IsNullOrEmpty(searchInput.Text))
                 {
                     message.Text = "El campo de contacto no puede estar vacío";
@@ -628,6 +637,7 @@ namespace dentalConnectWEB
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
+                    miMapa();
                     return;
                 }
 
@@ -636,23 +646,25 @@ namespace dentalConnectWEB
                 bool isCIValid = ValidationsImpl.ValidateCiC(nit);
                 if (!isCIValid || nitC.Text.Length <= 7)
                 {
-                    message.Text = "El NIT debe cumplir con el formato válido: solo números y letras mayúsculas, y/o signos '-'; debe contener al menos 8 números; longitud permitida de 0 a 30 caracteres";
+                    sendMessages(2, "El NIT debe cumplir con el formato válido: solo números, debe contener al menos 9 números; longitud permitida de 0 a 15 caracteres");
                     message.CssClass = "error-message";
                     nitC.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
+                    miMapa();
                     return;
                 }
                 bool isNameValid = ValidationsImpl.ValidateNameS(name);
                 if (!isNameValid)
                 {
-                    message.Text = "El nombre de empresa debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres";
+                    message.Text = "El nombre de empresa debe cumplir con el formato válido: sin caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres";
                     message.CssClass = "error-message";
                     nameC.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
+                    miMapa();
                     return;
                 }
                 bool isPhoneValid = ValidationsImpl.ValidatePhoneS(phone);
@@ -664,6 +676,7 @@ namespace dentalConnectWEB
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
+                    miMapa();
                     return;
                 }
                 bool isContactValid = ValidationsImpl.ValidateContactComp(person1.ToString());
@@ -675,6 +688,7 @@ namespace dentalConnectWEB
                     Button1.Visible = false;
                     Button2.Visible = true;
                     Button3.Visible = true;
+                    miMapa();
                     return;
                 }
 

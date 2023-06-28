@@ -225,7 +225,7 @@ namespace dentalConnectDAO.Implementation
 
         #region "Company"
         //NIT
-        private static readonly Regex regexNitCompany = new Regex("^(?!.*  )[A-Z0-9-]{0,15}$");
+        private static readonly Regex regexNitCompany = new Regex("^(?!.*  )[0-9-]{0,15}$");
 
         public static bool ValidateNitComp(string nit)
         {

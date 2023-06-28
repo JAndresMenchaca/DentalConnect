@@ -106,3 +106,9 @@ C:\Users\USUARIO\Desktop\release9.2\DentalConnect\dentalConnectDAO\obj\Debug\den
 C:\Users\USUARIO\Desktop\release9.2\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.csproj.CoreCompileInputs.cache
 C:\Users\USUARIO\Desktop\release9.2\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.dll
 C:\Users\USUARIO\Desktop\release9.2\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.pdb
+C:\Users\Andre\OneDrive\Escritorio\releaseFinal\DentalConnect\dentalConnectDAO\bin\Debug\dentalConnectDAO.dll
+C:\Users\Andre\OneDrive\Escritorio\releaseFinal\DentalConnect\dentalConnectDAO\bin\Debug\dentalConnectDAO.pdb
+C:\Users\Andre\OneDrive\Escritorio\releaseFinal\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.csproj.AssemblyReference.cache
+C:\Users\Andre\OneDrive\Escritorio\releaseFinal\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.csproj.CoreCompileInputs.cache
+C:\Users\Andre\OneDrive\Escritorio\releaseFinal\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.dll
+C:\Users\Andre\OneDrive\Escritorio\releaseFinal\DentalConnect\dentalConnectDAO\obj\Debug\dentalConnectDAO.pdb
