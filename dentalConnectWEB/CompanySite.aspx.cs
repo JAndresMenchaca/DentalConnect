@@ -45,7 +45,9 @@ namespace dentalConnectWEB
                 person.DataTextField = "Content";
                 person.DataValueField = "Tag";
                 person.DataBind();
-
+                Session["longitude"] = null;
+                Session["latitude"] = null;
+                Session["SelectedValue"] = null;
             }
 
 
@@ -56,6 +58,11 @@ namespace dentalConnectWEB
             idDiv.Visible = true;
             opt.Visible = false;
             idContact.Visible = false;
+
+            //Session["longitude"] = null;
+            //Session["latitude"] = null;
+            //Session["SelectedValue"] = null;
+
         }
         protected int SelectedValue
         {
@@ -98,7 +105,6 @@ namespace dentalConnectWEB
                 e.Item.Cells[0].Visible = false;
             }
         }
-
         protected void gridData_ItemCreated(object sender, DataGridItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Header)
@@ -151,7 +157,6 @@ namespace dentalConnectWEB
                 e.Item.Cells.Add(eliminarCell);
             }
         }
-
         protected void EditarButton_Click(object sender, EventArgs e)
         {
             message.Text = "";
@@ -163,7 +168,7 @@ namespace dentalConnectWEB
             nitC.BackColor = Color.White;
             phoneC.BackColor = Color.White;
             person.BackColor = Color.White;
-
+            searchInput.BackColor = Color.White;
 
             Button btnEditar = (Button)sender;
             DataGridItem row = (DataGridItem)btnEditar.NamingContainer;
@@ -222,7 +227,7 @@ namespace dentalConnectWEB
                             var myLatLng = {{ lat: {0}, lng: {1} }};
         
                             map = new google.maps.Map(document.getElementById('map'), {{
-                                zoom: 10,
+                                zoom: 15,
                                 center: myLatLng
                             }});
 
@@ -313,7 +318,7 @@ namespace dentalConnectWEB
             nitC.BackColor = Color.White;
             phoneC.BackColor = Color.White;
             person.BackColor = Color.White;
-
+            searchInput.BackColor = Color.White;
 
             string script = @"<script type='text/javascript'>
                             $(document).ready(function() {
@@ -353,7 +358,6 @@ namespace dentalConnectWEB
             Button1.Enabled = false;
             message.Text = "";
         }
-
         [System.Web.Services.WebMethod]
         public static void SetSelectedValue(int selectedValue)
         {
@@ -361,7 +365,6 @@ namespace dentalConnectWEB
             HttpContext.Current.Session["SelectedValue"] = selectedValue;
 
         }
-
         [System.Web.Services.WebMethod]
         public static void SetCoor(string lat1, string lon1)//, double lon1)
         {
@@ -371,11 +374,15 @@ namespace dentalConnectWEB
 
             
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             try
             {
+                nameC.BackColor = Color.White;
+                nitC.BackColor = Color.White;
+                phoneC.BackColor = Color.White;
+                searchInput.BackColor = Color.White;
+
                 message.Text = "";
                 string nit = nitC.Text;
                 string name = nameC.Text;
@@ -394,6 +401,7 @@ namespace dentalConnectWEB
                 {
                     sendMessages(2, "Debe seleccionar un CI de la base de datos");
                     searchInput.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
                 }
 
@@ -417,11 +425,6 @@ namespace dentalConnectWEB
 
                 string personValue = person.Text.Trim();
 
-
-                nameC.BackColor = Color.White;
-                nitC.BackColor = Color.White;
-                phoneC.BackColor = Color.White;
-                searchInput.BackColor = Color.White;
                 sendMessages(1, idContact.Text);
 
                 #region verify
@@ -429,6 +432,7 @@ namespace dentalConnectWEB
                 {
                     sendMessages(2, "El campo de NIT no puede estar vacío");
                     nitC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
 
                 }
@@ -437,18 +441,21 @@ namespace dentalConnectWEB
 
                     sendMessages(2, "El campo de nombre de empresa no puede estar vacío");
                     nameC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
                 }
                 if (string.IsNullOrEmpty(phone))
                 {
-                    sendMessages(2, "El campo de teléfono apellido no puede estar vacío");
+                    sendMessages(2, "El campo de teléfono no puede estar vacío");
                     phoneC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
                 }
                 if (string.IsNullOrEmpty(personValue))
                 {
                     sendMessages(2, "El campo de contacto no puede estar vacío");
                     person.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
                 }
 
@@ -458,6 +465,7 @@ namespace dentalConnectWEB
                 {
                     sendMessages(2, "El NIT debe cumplir con el formato válido: solo números y letras mayúsculas, y/o signos '-'; debe contener al menos 8 números; longitud permitida de 0 a 30 caracteres");
                     nitC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
                 }
                 bool isLNameValid = ValidationsImpl.ValidateNameComp(name);
@@ -465,6 +473,7 @@ namespace dentalConnectWEB
                 {
                     sendMessages(2, "El nombre de empresa debe cumplir con el formato válido: sin números, caracteres especiales ni espacios al inicio o final; solo un espacio entre dos caracteres; longitud permitida de 0 a 50 caracteres");
                     nameC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
                 }
                 bool isPhoneValid = ValidationsImpl.ValidatePhoneComp(phone);
@@ -472,6 +481,7 @@ namespace dentalConnectWEB
                 {
                     sendMessages(2, "El teléfono debe cumplir con el formato válido: solo números y/o signos '+' (siempre al inicio) o '-'; debe contener al menos 8 números; longitud permitida de 0 a 20 caracteres");
                     phoneC.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
                 }
                 bool isContactValid = ValidationsImpl.ValidateContactComp(person1.ToString());
@@ -479,6 +489,7 @@ namespace dentalConnectWEB
                 {
                     sendMessages(2, "El contacto no existe");
                     person.BackColor = ColorTranslator.FromHtml("#f76262");
+                    miMapa();
                     return;
                 }
 
@@ -519,7 +530,6 @@ namespace dentalConnectWEB
                 
             }
         }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
             message.Text = "";
@@ -538,11 +548,15 @@ namespace dentalConnectWEB
             if (Session["SelectedValue"] != null)
             {
                 person1 = (int)Session["SelectedValue"];
+
             }
             else
             {
                 sendMessages(2, "Debe seleccionar un CI de la base de datos");
                 searchInput.BackColor = ColorTranslator.FromHtml("#f76262");
+                Button1.Visible = false;
+                Button2.Visible = true;
+                Button3.Visible = true;
                 return;
             }
             string latitudeString;
@@ -563,6 +577,9 @@ namespace dentalConnectWEB
             else
             {
                 sendMessages(2, "Debe seleccionar una ubicacion en el mapa");
+                Button1.Visible = false;
+                Button2.Visible = true;
+                Button3.Visible = true;
                 return;
             }
 
@@ -595,7 +612,7 @@ namespace dentalConnectWEB
                 }
                 if (string.IsNullOrEmpty(phone))
                 {
-                    message.Text = "El campo de teléfono apellido no puede estar vacío";
+                    message.Text = "El campo de teléfono no puede estar vacío";
                     message.CssClass = "error-message";
                     phoneC.BackColor = ColorTranslator.FromHtml("#f76262");
                     Button1.Visible = false;
@@ -603,7 +620,7 @@ namespace dentalConnectWEB
                     Button3.Visible = true;
                     return;
                 }
-                if (string.IsNullOrEmpty(person.SelectedValue))
+                if (string.IsNullOrEmpty(searchInput.Text))
                 {
                     message.Text = "El campo de contacto no puede estar vacío";
                     message.CssClass = "error-message";
@@ -737,7 +754,6 @@ namespace dentalConnectWEB
             Session["longitude"] = null;
             Session["latitude"] = null;
         }
-
         protected void yes_Click(object sender, EventArgs e)
         {
             int id = int.Parse(idLabel.Text);
@@ -770,7 +786,6 @@ namespace dentalConnectWEB
 
             }
         }
-
         protected void no_Click(object sender, EventArgs e)
         {
             idLabel.Visible = false;
@@ -788,7 +803,6 @@ namespace dentalConnectWEB
             Session["longitude"] = null;
             Session["latitude"] = null;
         }
-
         public void sendMessages(int opc, string mess)
         {
             switch (opc)
@@ -803,6 +817,86 @@ namespace dentalConnectWEB
                     return;
                     break;
             }
+        }
+
+        public void miMapa()
+        {
+            string script = string.Format(@"
+                        var map;
+                        var marker;
+
+                        function initializeMap() {{
+                            var myLatLng = {{ lat: {0}, lng: {1} }};
+        
+                            map = new google.maps.Map(document.getElementById('map'), {{
+                                zoom: 15,
+                                center: myLatLng
+                            }});
+
+                            marker = new google.maps.Marker({{
+                                position: myLatLng,
+                                map: map,
+                                draggable: true // Permite arrastrar el marcador después de agregarlo
+                            }});
+
+                            // Evento para capturar la ubicación seleccionada al arrastrar el marcador
+                            google.maps.event.addListener(marker, 'dragend', function (event) {{
+                                var latitude = event.latLng.lat();
+                                var longitude = event.latLng.lng();
+                                console.log('Ubicación seleccionada - Latitud: ' + latitude + ', Longitud: ' + longitude);
+                                sendCoordinates(latitude, longitude);
+                            }});
+
+                            // Evento para agregar un marcador al hacer doble clic en el mapa
+                            google.maps.event.addListener(map, 'dblclick', function (event) {{
+                                var latitude = event.latLng.lat();
+                                var longitude = event.latLng.lng();
+                                console.log('Ubicación seleccionada - Latitud: ' + latitude + ', Longitud: ' + longitude);
+                                addMarker(event.latLng);
+                                sendCoordinates(latitude, longitude);
+                            }});
+                        }}
+
+                        function addMarker(location) {{
+                            if (marker) {{
+                                marker.setMap(null); // Elimina el marcador existente si lo hay
+                            }}
+
+                            marker = new google.maps.Marker({{
+                                position: location,
+                                map: map,
+                                draggable: true // Permite arrastrar el marcador después de agregarlo
+                            }});
+
+                            // Evento para capturar la ubicación seleccionada al arrastrar el marcador
+                            google.maps.event.addListener(marker, 'dragend', function (event) {{
+                                var latitude = event.latLng.lat();
+                                var longitude = event.latLng.lng();
+                                console.log('Ubicación seleccionada - Latitud: ' + latitude + ', Longitud: ' + longitude);
+                                sendCoordinates(latitude, longitude);
+                            }});
+                        }}
+
+                        function sendCoordinates(latitude, longitude) {{
+                            $.ajax({{
+                                type: 'POST',
+                                url: 'CompanySite.aspx/SetCoor',
+                                data: JSON.stringify({{ lat1: latitude.toString(), lon1: longitude.toString() }}),
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                success: function (response) {{
+                                    console.log('Valor seleccionado enviado al servidor: ' + latitude + ', ' + longitude);
+                                }},
+                                error: function (xhr, status, error) {{
+                                    console.log('Error al enviar el valor seleccionado al servidor.  ' + xhr);
+                                }}
+                            }});
+                        }}
+
+                        // Llama a la función initializeMap cuando se haya cargado la biblioteca de Google Maps
+                        google.maps.event.addDomListener(window, 'load', initializeMap);
+                    ", Session["latitude"], Session["longitude"]);
+            ClientScript.RegisterStartupScript(this.GetType(), "CodigoJavaScript", script, true);
         }
     }
 }
